@@ -10,135 +10,267 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f4ef; --ink:#1c1b19; --muted:#6f6b63; --line:#dedad1; --accent:#b4532a; --card:#fbfaf7;
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
   }
   @media (prefers-color-scheme: dark){
-    :root{ --bg:#141412; --ink:#ece9e2; --muted:#9a958b; --line:#2b2a26; --accent:#e08a5c; --card:#1a1a17; }
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
-  nav .logo{font-family:"Instrument Serif",serif;font-size:24px}
-  nav ul{display:flex;gap:22px;list-style:none;font-size:14px;color:var(--muted)}
-  nav a:hover{color:var(--ink)}
-  .hero{padding:72px 0 64px;border-bottom:1px solid var(--line)}
-  .eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-  h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(44px,9vw,76px);line-height:1.02;margin:14px 0 22px;letter-spacing:-.01em}
-  h1 em{color:var(--accent)}
-  .lead{font-size:18px;color:var(--muted);max-width:560px}
-  .lead-th{font-family:"IBM Plex Sans Thai",sans-serif;font-size:15px;color:var(--muted);margin-top:10px}
-  .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
-  .btn{padding:11px 20px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--ink);transition:.2s}
-  .btn.solid{background:var(--ink);color:var(--bg)}
-  .btn:hover{transform:translateY(-1px)}
-  section{padding:64px 0;border-bottom:1px solid var(--line)}
-  h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:34px;margin-bottom:28px}
-  .about p{color:var(--muted);margin-bottom:14px;max-width:600px}
-  .about strong{color:var(--ink);font-weight:500}
-  .projects{display:grid;gap:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.2s}
-  .card:hover{border-color:var(--muted)}
-  .card .tag{font-size:12px;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
-  .card h3{font-size:18px;font-weight:500;margin:6px 0 6px}
-  .card p{font-size:15px;color:var(--muted)}
-  .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-  .stack span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted)}
-  .timeline{list-style:none}
-  .timeline li{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* ---------- top tag bar ---------- */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink);transform:translateY(-1px)}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);transition:.2s;white-space:nowrap}
+  .pill:hover{transform:translateY(-2px)}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:72px 0 80px}
+  .hi{font-size:40px;color:var(--accent);line-height:1;transform:rotate(-3deg);display:inline-block}
+  h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(48px,7vw,84px);line-height:.98;letter-spacing:-.02em;margin:14px 0 22px}
+  h1 em{font-style:italic;position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.08em;height:.32em;background:var(--butter);z-index:-1;border-radius:4px}
+  .lead{font-size:17px;color:var(--muted);max-width:500px}
+  .lead-th{font-family:"IBM Plex Sans Thai",sans-serif;font-size:15px;color:var(--muted);margin-top:8px}
+  .cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--ink);transition:.2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.solid{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 8px 18px -8px var(--accent)}
+
+  /* ---------- folder window ---------- */
+  .stage{position:relative;padding:30px 10px 10px}
+  .folder-tab{position:absolute;top:8px;left:34px;width:140px;height:34px;background:var(--sage);border:2px solid var(--ink);border-bottom:none;border-radius:12px 12px 0 0;font-size:13px;padding:6px 14px;transform:rotate(-2deg)}
+  .window{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:18px;box-shadow:8px 10px 0 var(--ink);transform:rotate(-2deg);overflow:hidden}
+  .bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:2px solid var(--ink)}
+  .bar .ctrl{width:20px;height:20px;border:2px solid var(--ink);border-radius:50%;flex:none}
+  .bar .search{flex:1;height:22px;border:2px solid var(--ink);border-radius:999px;display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--muted)}
+  .screen{aspect-ratio:4/4.3;position:relative;background:var(--accent-soft)}
+  .screen img{width:100%;height:100%;object-fit:cover;display:block}
+  .fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:28px;gap:14px}
+  .fallback .big{font-family:"Instrument Serif",serif;font-size:clamp(36px,5vw,54px);line-height:1;color:var(--accent)}
+  .fallback .small{font-size:13px;color:var(--muted)}
+  .sticker{position:absolute;font-size:24px;padding:4px 14px;border:1.5px solid var(--ink);border-radius:6px;box-shadow:2px 3px 0 var(--ink);z-index:3}
+  .s1{right:-6px;top:56px;background:var(--butter);transform:rotate(7deg)}
+  .s2{left:-8px;bottom:42px;background:var(--pink);transform:rotate(-6deg)}
+  .s3{right:22px;bottom:-12px;background:var(--paper);transform:rotate(4deg);font-size:14px;font-family:"IBM Plex Mono",monospace}
+  .flag{position:absolute;right:30px;top:-4px;width:46px;height:46px;transform:rotate(12deg);z-index:3}
+
+  /* ---------- ticker ---------- */
+  .ticker{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:var(--bg);overflow:hidden}
+  .ticker .track{display:flex;gap:40px;padding:12px 0;white-space:nowrap;animation:scroll 30s linear infinite;width:max-content;font-size:14px}
+  .ticker span::before{content:"✦ ";color:var(--butter)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+  /* ---------- sections ---------- */
+  section{padding:80px 0;border-bottom:1px dashed var(--line)}
+  .label{font-size:30px;color:var(--accent);transform:rotate(-2deg);display:inline-block}
+  h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(34px,4.5vw,48px);line-height:1.05;margin:4px 0 30px}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .about p{color:var(--muted);margin-bottom:14px}
+  .about strong{color:var(--ink);font-weight:600}
+  .facts{display:grid;gap:12px;align-content:start}
+  .fact{background:var(--paper);border:1.5px solid var(--ink);border-radius:14px;padding:16px 18px;box-shadow:4px 4px 0 var(--ink)}
+  .fact .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .fact .v{font-weight:600}
+  .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--paper);border:1.5px solid var(--ink);border-radius:16px;overflow:hidden;transition:.2s;box-shadow:4px 4px 0 var(--ink)}
+  .card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .card .cbar{display:flex;gap:6px;padding:10px 14px;border-bottom:1.5px solid var(--ink)}
+  .card .cbar i{width:10px;height:10px;border:1.5px solid var(--ink);border-radius:50%}
+  .card .body{padding:20px}
+  .card .tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+  .card h3{font-size:19px;font-weight:600;margin:12px 0 6px;line-height:1.3}
+  .card p{font-size:14.5px;color:var(--muted)}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .stack span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--muted)}
+  .timeline{list-style:none;max-width:760px}
+  .timeline li{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:18px 0;border-top:1px dashed var(--line)}
   .timeline li:first-child{border-top:none}
-  .timeline .when{font-size:14px;color:var(--muted)}
-  .timeline h4{font-weight:500;font-size:16px}
+  .timeline .when{font-size:13px;color:var(--muted)}
+  .timeline h4{font-weight:600;font-size:16px}
   .timeline p{font-size:14px;color:var(--muted)}
-  .contact p{color:var(--muted);margin-bottom:20px}
+  .contact-box{background:var(--paper);border:2px solid var(--ink);border-radius:20px;box-shadow:8px 8px 0 var(--ink);padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  .contact-box p{color:var(--muted)}
   .links{display:flex;flex-direction:column}
-  .links a{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line);font-size:17px}
-  .links a:last-child{border-bottom:1px solid var(--line)}
+  .links a{display:flex;justify-content:space-between;padding:14px 0;border-top:1px dashed var(--line);font-size:16px}
+  .links a:last-child{border-bottom:1px dashed var(--line)}
   .links a span{color:var(--muted)}
   .links a:hover span{color:var(--accent)}
   footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between}
+
+  @media (max-width:900px){
+    .tags{display:none}
+    .hero{grid-template-columns:1fr;gap:40px;padding:48px 0 60px}
+    .stage{max-width:420px;margin:0 auto;width:100%}
+    .about,.contact-box{grid-template-columns:1fr}
+    .projects{grid-template-columns:1fr}
+    .contact-box{padding:26px}
+  }
   @media (max-width:560px){
-    nav ul{gap:14px}
-    .timeline li{grid-template-columns:1fr;gap:4px}
-    .hero{padding:48px 0}
+    .timeline li{grid-template-columns:1fr;gap:2px}
+    .window{box-shadow:5px 6px 0 var(--ink)}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <a class="logo" href="#">sali.</a>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">sali<b>.</b></a>
+      <ul class="tags">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">Content</a></li>
+      </ul>
+      <a class="pill" href="#contact">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
   <header class="hero">
-    <div class="eyebrow">Data Scientist · Full-Stack Developer · Melbourne</div>
-    <h1>Turning data into<br><em>quiet, smart</em> things.</h1>
-    <p class="lead">I build ML models, data pipelines and small apps — and explain AI tools simply for people who want to make things.</p>
-    <p class="lead-th">สอนใช้ AI และสร้างแอปแบบเข้าใจง่าย สำหรับคนไทย ✦</p>
-    <div class="cta">
-      <a class="btn solid" href="#work">See my work</a>
-      <a class="btn" href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">@silly._.sali</a>
+    <div>
+      <span class="hi hand">Hi, I'm Sali ✦</span>
+      <h1>Turning data into <em>quiet, smart</em> things.</h1>
+      <p class="lead">Data scientist &amp; full-stack builder in Melbourne. I build ML models, data pipelines and small apps — and explain AI tools simply for anyone who wants to make things.</p>
+      <p class="lead-th">สอนใช้ AI และสร้างแอปแบบเข้าใจง่าย สำหรับคนไทย ✦</p>
+      <div class="cta">
+        <a class="btn solid" href="#work">See my work</a>
+        <a class="btn" href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">@silly._.sali</a>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="folder-tab mono">~/sali</div>
+      <svg class="flag" viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="4" fill="#fff" stroke="#1d1c1a" stroke-width="2"/><g fill="#1d1c1a"><rect x="2" y="2" width="9" height="9"/><rect x="20" y="2" width="9" height="9"/><rect x="11" y="11" width="9" height="9"/><rect x="29" y="11" width="9" height="9"/><rect x="2" y="20" width="9" height="9"/><rect x="20" y="20" width="9" height="9"/><rect x="11" y="29" width="9" height="9"/><rect x="29" y="29" width="9" height="9"/></g></svg>
+      <div class="window">
+        <div class="bar">
+          <span class="ctrl"></span>
+          <span class="search mono">sillysali.com</span>
+          <span class="ctrl"></span>
+        </div>
+        <div class="screen">
+          <div class="fallback">
+            <div class="big">Data · AI ·<br>Apps · F1</div>
+            <div class="small mono">📁 portfolio / 2026</div>
+          </div>
+          <img src="sali.jpg" alt="Sali" onerror="this.remove()">
+        </div>
+      </div>
+      <span class="sticker s1 hand">data nerd ✦</span>
+      <span class="sticker s2 hand">AI builder</span>
+      <span class="sticker s3">Melbourne · 🇹🇭🇦🇺</span>
     </div>
   </header>
+</div>
 
-  <section id="about" class="about">
-    <h2>About</h2>
-    <p>Hi, I'm <strong>Sali</strong>. I started in <strong>accounting</strong>, fell for data, and now I'm finishing a <strong>Master of IT (Data Science) at Swinburne University</strong>.</p>
-    <p>I've worked on churn modeling at <strong>Shopee Thailand</strong> and IoT data pipelines at <strong>Decon Technologies</strong>. Long-term, I'm working toward becoming an <strong> data analyst</strong> 🏎️</p>
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>Machine Learning</span><span>Python</span><span>Data Pipelines</span><span>Vibe Coding</span><span>AI Agents</span><span>React Native</span><span>FastAPI</span><span>Time Series</span><span>F1 Analytics</span><span>Thai AI Content</span>
+    <span>Machine Learning</span><span>Python</span><span>Data Pipelines</span><span>Vibe Coding</span><span>AI Agents</span><span>React Native</span><span>FastAPI</span><span>Time Series</span><span>F1 Analytics</span><span>Thai AI Content</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <span class="label hand">about me</span>
+    <h2>From spreadsheets<br>to machine learning.</h2>
+    <div class="about">
+      <div>
+        <p>Hi, I'm <strong>Sali</strong>. I started in <strong>accounting</strong>, fell for data, and now I'm finishing a <strong>Master of IT (Data Science) at Swinburne University</strong>.</p>
+        <p>I've worked on churn modeling at <strong>Shopee Thailand</strong> and IoT data pipelines at <strong>Decon Technologies</strong>. Long-term, I'm working toward becoming an <strong>F1 data analyst</strong> 🏎️</p>
+        <p>On the side, I make short videos explaining AI tools and app-building for Thai-speaking audiences.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="k">Currently</div><div class="v">Master of IT (Data Science) · Swinburne</div></div>
+        <div class="fact"><div class="k">Building</div><div class="v">ML projects, small apps &amp; AI workflows</div></div>
+        <div class="fact"><div class="k">Dream job</div><div class="v">F1 data analyst 🏁</div></div>
+      </div>
+    </div>
   </section>
 
   <section id="work">
-    <h2>Selected work</h2>
+    <span class="label hand">selected work</span>
+    <h2>Things I've built.</h2>
     <div class="projects">
       <div class="card">
-        <div class="tag">Machine Learning</div>
-        <h3>FIFA World Cup 2026 Predictor</h3>
-        <p>Monte Carlo simulation + ML to forecast tournament outcomes, with a 6-tab interactive dashboard and sensitivity analysis.</p>
-        <div class="stack"><span>Python</span><span>Monte Carlo</span><span>Kaggle</span><span>Dashboard</span></div>
+        <div class="cbar"><i></i><i></i><i></i></div>
+        <div class="body">
+          <span class="tag">Machine Learning</span>
+          <h3>FIFA World Cup 2026 Predictor</h3>
+          <p>Monte Carlo simulation + ML to forecast tournament outcomes, with a 6-tab interactive dashboard and sensitivity analysis.</p>
+          <div class="stack"><span>Python</span><span>Monte Carlo</span><span>Kaggle</span><span>Dashboard</span></div>
+        </div>
       </div>
       <div class="card">
-        <div class="tag">Quant / Trading</div>
-        <h3>Market Structure Analysis Engine</h3>
-        <p>Detects swing structure — BOS, CHoCH, Order Blocks, FVG — with multi-timeframe confluence.</p>
-        <div class="stack"><span>Python</span><span>Time Series</span><span>Technical Analysis</span></div>
+        <div class="cbar"><i></i><i></i><i></i></div>
+        <div class="body">
+          <span class="tag">Quant / Trading</span>
+          <h3>Market Structure Analysis Engine</h3>
+          <p>Detects swing structure — BOS, CHoCH, Order Blocks, FVG — with multi-timeframe confluence.</p>
+          <div class="stack"><span>Python</span><span>Time Series</span><span>Technical Analysis</span></div>
+        </div>
       </div>
       <div class="card">
-        <div class="tag">Product</div>
-        <h3>Melfit AI</h3>
-        <p>A Melbourne weather-based outfit planner and an AI outfit-scoring tool — from UI prototype to architecture.</p>
-        <div class="stack"><span>React Native</span><span>FastAPI</span><span>Firebase</span><span>Open-Meteo</span></div>
+        <div class="cbar"><i></i><i></i><i></i></div>
+        <div class="body">
+          <span class="tag">Product</span>
+          <h3>MelFit AI</h3>
+          <p>A Melbourne weather-based outfit planner and an AI outfit-scoring tool — from UI prototype to architecture.</p>
+          <div class="stack"><span>React Native</span><span>FastAPI</span><span>Firebase</span><span>Open-Meteo</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>Experience</h2>
+  <section id="experience">
+    <span class="label hand">the path so far</span>
+    <h2>Experience.</h2>
     <ul class="timeline">
-      <li><div class="when">Now</div><div><h4>Master of IT (Data Science)</h4><p>Swinburne University</p></div></li>
-      <li><div class="when">Data Specialist</div><div><h4>Decon Technologies Australia</h4><p>IoT data pipelines</p></div></li>
-      <li><div class="when">Data Analyst</div><div><h4>Shopee Thailand</h4><p>Analytics & churn modeling</p></div></li>
-      <li><div class="when">Bachelor's</div><div><h4>Accounting</h4><p>Where the numbers started</p></div></li>
+      <li><div class="when mono">Now</div><div><h4>Master of IT (Data Science)</h4><p>Swinburne University</p></div></li>
+      <li><div class="when mono">Data Specialist</div><div><h4>Decon Technologies Australia</h4><p>IoT data pipelines</p></div></li>
+      <li><div class="when mono">Data Analyst</div><div><h4>Shopee Thailand</h4><p>Analytics &amp; churn modeling</p></div></li>
+      <li><div class="when mono">Bachelor's</div><div><h4>Accounting</h4><p>Where the numbers started</p></div></li>
     </ul>
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Say hi</h2>
-    <p>Open to data roles, collabs and content partnerships.</p>
-    <div class="links">
-      <a href="mailto:hello@sillysali.com">Email <span>hello@sillysali.com ↗</span></a>
-      <a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">Instagram <span>@silly._.sali ↗</span></a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
-      <a href="https://github.com/salisall" target="_blank" rel="noopener">GitHub <span>@salisall ↗</span></a>
+  <section id="contact">
+    <div class="contact-box">
+      <div>
+        <span class="label hand">let's talk</span>
+        <h2 style="margin-bottom:12px">Say hi ✦</h2>
+        <p>Open to data roles, collabs and content partnerships.</p>
+      </div>
+      <div class="links">
+        <a href="mailto:hello@sillysali.com">Email <span>hello@sillysali.com ↗</span></a>
+        <a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">Instagram <span>@silly._.sali ↗</span></a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        <a href="https://github.com/salisall" target="_blank" rel="noopener">GitHub <span>@salisall ↗</span></a>
+      </div>
     </div>
   </section>
 
