@@ -169,7 +169,8 @@
 
   function chips(box, list, key, allLabel){
     box.innerHTML = "";
-    ["All", ...list].forEach(v => {
+    const used = new Set(GUIDES.map(g => g[key]));
+    ["All", ...list.filter(v => used.has(v))].forEach(v => {
       const b = el("button", "chip", v === "All" ? allLabel : v);
       b.type = "button";
       b.setAttribute("aria-pressed", state[key] === v);
@@ -205,9 +206,10 @@
       grid.appendChild(e);
     }
     list.forEach(g => {
-      const live = !!g.link;
+      const href = g.slug ? "guide.html?g=" + encodeURIComponent(g.slug) : g.link;
+      const live = !!href;
       const card = el(live ? "a" : "div", "card");
-      if (live){ card.href = g.link; card.target = "_blank"; card.rel = "noopener"; }
+      if (live){ card.href = href; if (!g.slug){ card.target = "_blank"; card.rel = "noopener"; } }
       const bar = el("div", "cbar");
       bar.append(el("i"), el("i"), el("i"));
       if (g.isNew) bar.appendChild(el("span", "new hand", "new!"));
@@ -218,8 +220,9 @@
       if (g.desc) body.appendChild(el("p", "", g.desc));
       const meta = el("div", "meta");
       meta.append(el("span", "t", g.topic), el("span", "tl", g.tool));
+      if (g.count) meta.appendChild(el("span", "t", g.count));
       body.appendChild(meta);
-      body.appendChild(el("span", live ? "go" : "go soon", live ? "Read guide →" : "Coming soon ✦"));
+      body.appendChild(el("span", live ? "go" : "go soon", live ? (g.slug ? "Read guide →" : "Open guide ↗") : "Coming soon ✦"));
       card.appendChild(body);
       grid.appendChild(card);
     });

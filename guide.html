@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Guide — Sali</title>
+<meta name="description" content="Free AI guide by Sali — copy-paste ready.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+    --code:#1d1c1a; --code-ink:#efebe3;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+      --code:#0c0c0b; --code-ink:#efebe3;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:860px;margin:0 auto}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .back{display:inline-block;margin:36px 0 18px;font-size:14px;color:var(--muted)}
+  .back:hover{color:var(--ink)}
+  .meta{display:flex;flex-wrap:wrap;gap:6px}
+  .meta span{font-size:12px;font-weight:600;padding:3px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--paper)}
+  .meta span.tl{background:var(--accent);border-color:var(--accent);color:#fff}
+  h1{font-family:"Instrument Serif","IBM Plex Sans Thai",serif;font-weight:400;font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-.01em;margin:14px 0 8px}
+  .sub{color:var(--muted);font-size:17px}
+
+  .callout{border:1.5px solid var(--ink);border-left-width:6px;border-radius:14px;padding:16px 20px;margin-top:18px;background:var(--paper);box-shadow:4px 4px 0 var(--ink)}
+  .callout.hi{border-left-color:var(--accent)}
+  .callout.dl{background:var(--butter);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .callout.dl span{font-weight:500}
+  .dlbtn{display:inline-block;font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--bg);white-space:nowrap}
+  .dlbtn:hover{transform:translateY(-1px)}
+
+  /* sections */
+  section{padding:40px 0 8px;border-top:1px dashed var(--line);margin-top:40px}
+  .label{font-size:24px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  h2{font-family:"Instrument Serif","IBM Plex Sans Thai",serif;font-weight:400;font-size:clamp(28px,3.6vw,38px);line-height:1.15;margin:2px 0 18px;padding-left:14px;border-left:5px solid var(--accent)}
+  .intro{color:var(--muted);margin:-6px 0 16px}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cards div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .cards b{display:block;font-weight:600}
+  .cards p{font-size:14px;color:var(--muted)}
+
+  .steps{list-style:none;counter-reset:s;display:grid;gap:12px}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .steps li::before{content:counter(s,decimal-leading-zero);font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:14px;width:44px;height:44px;border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;background:var(--butter)}
+  .steps b{display:block;font-weight:600}
+  .steps p{font-size:14.5px;color:var(--muted)}
+
+  .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+  .flow div{background:var(--paper);border:1.5px solid var(--ink);border-radius:12px;padding:10px 12px;box-shadow:3px 3px 0 var(--ink)}
+  .flow b{display:block;font-size:15px}
+  .flow span{display:block;font-size:12.5px;color:var(--muted)}
+  .flow i{display:block;font-style:normal;font-size:11px;color:var(--accent);font-family:"IBM Plex Mono",monospace;margin-top:4px}
+
+  .formula{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .formula span{font-size:14px;font-weight:500;padding:6px 14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper)}
+  .formula i{font-style:normal;color:var(--muted)}
+
+  .tips{list-style:none;display:grid;gap:8px}
+  .tips li{padding-left:24px;position:relative}
+  .tips li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:600}
+  .note{font-size:13px;color:var(--muted);font-style:italic;margin-top:28px;padding:12px 16px;border:1px dashed var(--line);border-radius:12px}
+
+  /* commands */
+  .finder{position:sticky;top:66px;z-index:10;display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px;padding:9px 18px;margin-bottom:18px;max-width:440px;box-shadow:3px 3px 0 var(--ink)}
+  .finder input{flex:1;border:none;background:none;outline:none;font:inherit;color:var(--ink);min-width:0}
+  .finder small{color:var(--muted);font-size:12px;white-space:nowrap}
+  .groups{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .group{background:var(--paper);border:1.5px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:4px 4px 0 var(--ink)}
+  .group h3{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:600;padding:10px 14px;border-bottom:1.5px solid var(--ink);background:var(--accent-soft)}
+  .group h3 i{width:9px;height:9px;border:1.5px solid var(--ink);border-radius:50%;flex:none}
+  .group h3 i:last-of-type{margin-right:6px}
+  .row{display:grid;grid-template-columns:minmax(0,auto) 1fr;gap:4px 14px;padding:9px 14px;border-top:1px dashed var(--line);align-items:baseline}
+  .row:first-of-type{border-top:none}
+  .cmd{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13.5px;color:var(--accent);text-align:left;padding:1px 6px;margin-left:-6px;border-radius:6px;white-space:nowrap}
+  .cmd:hover{background:var(--accent-soft)}
+  .desc{font-size:14px}
+  .ex{grid-column:2;font-size:12.5px;color:var(--muted);text-align:left;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .ex:hover{color:var(--ink)}
+  .ex::before{content:"เช่น ";opacity:.7}
+  .row.hide,.group.hide{display:none}
+  .none{display:none;color:var(--muted);padding:20px 0}
+
+  /* prompts */
+  .prompts{display:grid;gap:16px}
+  .code{background:var(--code);color:var(--code-ink);border-radius:14px;overflow:hidden;border:1.5px solid var(--ink)}
+  .code header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 12px 9px 16px;border-bottom:1px solid rgba(255,255,255,.12);font-size:13.5px;font-weight:600}
+  .copy{font-size:12px;font-weight:600;padding:5px 12px;border:1px solid rgba(255,255,255,.35);border-radius:8px;color:var(--code-ink);white-space:nowrap}
+  .copy:hover{background:rgba(255,255,255,.1)}
+  .code pre{padding:14px 16px;font-family:"IBM Plex Mono","IBM Plex Sans Thai",monospace;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+
+  .end{text-align:center;padding:56px 0 30px}
+  .end p{color:var(--muted);margin-bottom:16px}
+  .end a{display:inline-block;font-weight:600;padding:12px 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--butter);box-shadow:3px 3px 0 var(--ink);margin:4px}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;transition:.2s;pointer-events:none;z-index:50}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+  .missing{text-align:center;padding:100px 0}
+  .missing b{display:block;font-family:"Instrument Serif",serif;font-size:40px;font-weight:400}
+
+  @media (max-width:900px){
+    .tags li:not(.keep){display:none}
+    .groups{grid-template-columns:1fr}
+    .flow{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:600px){
+    .cards{grid-template-columns:1fr}
+    .flow{grid-template-columns:1fr 1fr}
+    .finder{top:62px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html">Free guides ✦</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#work">Projects</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">Content</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <main class="narrow" id="app"></main>
+  <footer>
+    <span>© 2026 Sali</span>
+    <span>Made in Melbourne ✦</span>
+  </footer>
+</div>
+<div class="toast" id="toast">Copied ✓</div>
+
+<script src="guides.js"></script>
+<script>
+(function(){
+  const app = document.getElementById("app");
+  const slug = new URLSearchParams(location.search).get("g") || "";
+  const meta = (typeof GUIDES !== "undefined" ? GUIDES : []).find(x => x.slug === slug) || {};
+
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const toast = document.getElementById("toast"); let tt;
+  function copy(text, label){
+    const done = () => { toast.textContent = (label || "Copied") + " ✓"; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove("on"), 1400); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, () => fallback(text, done));
+    else fallback(text, done);
+  }
+  function fallback(text, done){
+    const t = document.createElement("textarea"); t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch(e){} t.remove(); done();
+  }
+
+  function missing(){
+    app.innerHTML = "";
+    const m = el("div", "missing");
+    m.appendChild(el("b", "", "Guide not found"));
+    const a = el("a", "", "← กลับไปดูไกด์ทั้งหมด"); a.href = "guides.html"; a.style.color = "var(--accent)";
+    m.appendChild(a); app.appendChild(m);
+  }
+
+  if (!/^[a-z0-9-]+$/.test(slug)) return missing();
+
+  fetch("guides/" + slug + ".json").then(r => { if (!r.ok) throw 0; return r.json(); }).then(render).catch(missing);
+
+  function section(s){
+    const sec = el("section");
+    if (s.label) sec.appendChild(el("span", "label hand", s.label));
+    if (s.heading) sec.appendChild(el("h2", "", s.heading));
+    if (s.intro) sec.appendChild(el("p", "intro", s.intro));
+    return sec;
+  }
+
+  const renderers = {
+    cards(s, sec){
+      const box = el("div", "cards");
+      s.items.forEach(([t, p]) => { const d = el("div"); d.append(el("b", "", t), el("p", "", p)); box.appendChild(d); });
+      sec.appendChild(box);
+    },
+    steps(s, sec){
+      const ol = el("ol", "steps");
+      s.items.forEach(([t, p]) => { const li = el("li"); const d = el("div"); d.append(el("b", "", t), el("p", "", p)); li.appendChild(d); ol.appendChild(li); });
+      sec.appendChild(ol);
+    },
+    flow(s, sec){
+      const box = el("div", "flow");
+      s.items.forEach(([t, a, b], i) => { const d = el("div"); d.append(el("b", "", (i + 1) + " · " + t), el("span", "", a), el("i", "", b)); box.appendChild(d); });
+      sec.appendChild(box);
+    },
+    formula(s, sec){
+      const box = el("div", "formula");
+      s.items.forEach((t, i) => { if (i) box.appendChild(el("i", "", "+")); box.appendChild(el("span", "", t)); });
+      sec.appendChild(box);
+    },
+    tips(s, sec){
+      const ul = el("ul", "tips");
+      s.items.forEach(t => ul.appendChild(el("li", "", t)));
+      sec.appendChild(ul);
+    },
+    prompts(s, sec){
+      const box = el("div", "prompts");
+      s.items.forEach(([t, code]) => {
+        const c = el("div", "code"); const h = el("header");
+        const b = el("button", "copy", "Copy"); b.type = "button"; b.onclick = () => copy(code, "Prompt copied");
+        h.append(el("span", "", t), b);
+        c.append(h, el("pre", "", code)); box.appendChild(c);
+      });
+      sec.appendChild(box);
+    },
+    commands(s, sec){
+      const total = s.groups.reduce((n, g) => n + g.items.length, 0);
+      const finder = el("label", "finder");
+      finder.appendChild(el("span", "", "🔍"));
+      const inp = el("input"); inp.type = "search"; inp.placeholder = "ค้นหาคำสั่ง เช่น flash, สรุป, excel…";
+      const cnt = el("small", "", total + " commands");
+      finder.append(inp, cnt);
+      const wrap = el("div", "groups");
+      const rows = [];
+      s.groups.forEach(gp => {
+        const box = el("div", "group");
+        const h = el("h3"); h.append(el("i"), el("i"), el("i"), document.createTextNode(gp.name)); box.appendChild(h);
+        gp.items.forEach(([cmd, desc, ex]) => {
+          const r = el("div", "row");
+          const b = el("button", "cmd", cmd); b.type = "button"; b.title = "Copy " + cmd; b.onclick = () => copy(cmd);
+          r.append(b, el("span", "desc", desc));
+          if (ex){ const e = el("button", "ex", ex); e.type = "button"; e.title = "Copy example"; e.onclick = () => copy(ex, "Example copied"); r.appendChild(e); }
+          r.dataset.q = (cmd + " " + desc + " " + (ex || "")).toLowerCase();
+          box.appendChild(r); rows.push({ r, box });
+        });
+        wrap.appendChild(box);
+      });
+      const none = el("p", "none", "ไม่เจอคำสั่งนี้ ลองคำอื่นดูนะ");
+      inp.addEventListener("input", () => {
+        const q = inp.value.trim().toLowerCase(); let shown = 0; const vis = new Map();
+        rows.forEach(({ r, box }) => { const ok = !q || r.dataset.q.includes(q); r.classList.toggle("hide", !ok); if (ok){ shown++; vis.set(box, true); } });
+        wrap.querySelectorAll(".group").forEach(b => b.classList.toggle("hide", !vis.get(b)));
+        cnt.textContent = q ? shown + " / " + total : total + " commands";
+        none.style.display = shown ? "none" : "block";
+      });
+      sec.append(finder, wrap, none);
+      sec.appendChild(el("p", "intro", "แตะที่คำสั่งเพื่อก๊อป · แตะตัวอย่างเพื่อก๊อปทั้งประโยค")).style.marginTop = "14px";
+    }
+  };
+
+  function render(d){
+    document.title = d.title + " — Free Guide by Sali";
+    app.innerHTML = "";
+    const back = el("a", "back", "← Free guides"); back.href = "guides.html"; app.appendChild(back);
+
+    const m = el("div", "meta");
+    if (meta.topic) m.appendChild(el("span", "", meta.topic));
+    if (meta.tool) m.appendChild(el("span", "tl", meta.tool));
+    if (meta.count) m.appendChild(el("span", "", meta.count));
+    if (m.children.length) app.appendChild(m);
+
+    app.appendChild(el("h1", "", d.title));
+    if (d.subtitle) app.appendChild(el("p", "sub", d.subtitle));
+    if (d.greeting) app.appendChild(el("div", "callout hi", d.greeting));
+    if (d.download){
+      const c = el("div", "callout dl");
+      c.appendChild(el("span", "", "📥 อยากได้ไฟล์ไว้ปริ้นหรือเซฟเก็บ?"));
+      const a = el("a", "dlbtn", d.downloadLabel || "ดาวน์โหลดชีต PDF ↗"); a.href = d.download; a.target = "_blank"; a.rel = "noopener";
+      c.appendChild(a); app.appendChild(c);
+    }
+
+    (d.sections || []).forEach(s => {
+      if (s.type === "note"){ app.appendChild(el("p", "note", s.text)); return; }
+      const sec = section(s);
+      (renderers[s.type] || (() => {}))(s, sec);
+      app.appendChild(sec);
+    });
+
+    const end = el("div", "end");
+    end.appendChild(el("p", "", "ลองแล้วเป็นยังไง แท็กมาให้ดูได้เลย ✦"));
+    const a1 = el("a", "", "ดูไกด์อื่น ๆ"); a1.href = "guides.html";
+    const a2 = el("a", "", "@silly._.sali ↗"); a2.href = "https://instagram.com/silly._.sali"; a2.target = "_blank"; a2.rel = "noopener";
+    end.append(a1, a2); app.appendChild(end);
+  }
+})();
+</script>
+</body>
+</html>

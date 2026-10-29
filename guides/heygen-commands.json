@@ -1,0 +1,290 @@
+{
+ "title": "HeyGen Command Cheat Sheet",
+ "subtitle": "28 shortcuts จัดหมวดตามขั้นตอนผลิตวิดีโอ + Prompt Pack สำหรับ ChatGPT",
+ "greeting": "Hi, it's Sali ✦ Here's the HeyGen link you asked for — 28 commands grouped by production step, plus a ChatGPT prompt pack. Type /heygen + command. Hope you have lots of fun trying it out! 🤍",
+ "download": "https://drive.google.com/file/d/1zMrtsuvRs9v2c7JZcHR1k_ZiLJUsxD9R/view?usp=drivesdk",
+ "sections": [
+  {
+   "type": "flow",
+   "label": "the pipeline",
+   "heading": "6 ขั้นตอนการผลิต",
+   "items": [
+    [
+     "Idea",
+     "ไอเดีย → โครง",
+     "storyboard · hook"
+    ],
+    [
+     "Script",
+     "บท + เวลา",
+     "script · voiceover"
+    ],
+    [
+     "Look",
+     "แบรนด์ + สินค้า",
+     "brand-kit · product-lock"
+    ],
+    [
+     "Generate",
+     "ภาพ → วิดีโอ",
+     "scene-prompt · avatar"
+    ],
+    [
+     "Polish",
+     "ซับ + หลายภาษา",
+     "subtitles · localization"
+    ],
+    [
+     "Ship",
+     "ตรวจก่อนส่ง",
+     "quality-check"
+    ]
+   ]
+  },
+  {
+   "type": "commands",
+   "label": "A · heygen commands",
+   "heading": "28 คำสั่ง — พิมพ์ /heygen + คำสั่ง",
+   "cols": [
+    "Command",
+    "ใช้ทำอะไร",
+    ""
+   ],
+   "groups": [
+    {
+     "name": "1 · Plan & Story — วางแผน",
+     "items": [
+      [
+       "/heygen storyboard",
+       "ไอเดีย → Storyboard พร้อมผลิต",
+       ""
+      ],
+      [
+       "/heygen script",
+       "สร้างสคริปต์พร้อมระยะเวลา",
+       ""
+      ],
+      [
+       "/heygen hook",
+       "คิดประโยคเปิดคลิป 3 วินาทีแรก",
+       ""
+      ],
+      [
+       "/heygen template",
+       "วางเทมเพลตวิดีโอใช้ซ้ำ",
+       ""
+      ],
+      [
+       "/heygen production-ready",
+       "Production Brief พร้อม Prompt",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "2 · Ad Formats — รูปแบบโฆษณา",
+     "items": [
+      [
+       "/heygen ugc",
+       "วิดีโอรีวิวสินค้าแนว UGC",
+       ""
+      ],
+      [
+       "/heygen product-ad",
+       "สร้างโฆษณาสินค้า",
+       ""
+      ],
+      [
+       "/heygen luxury-ad",
+       "วางโฆษณาสไตล์ Luxury",
+       ""
+      ],
+      [
+       "/heygen vertical-ad",
+       "ออกแบบวิดีโอแนวตั้ง 9:16",
+       ""
+      ],
+      [
+       "/heygen variations",
+       "หลายเวอร์ชันสำหรับ A/B Test",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "3 · Visual & Motion — สร้างภาพเคลื่อนไหว",
+     "items": [
+      [
+       "/heygen image-to-video",
+       "สร้างวิดีโอจากภาพนิ่ง",
+       ""
+      ],
+      [
+       "/heygen reference-to-video",
+       "สร้างวิดีโอจากภาพอ้างอิง",
+       ""
+      ],
+      [
+       "/heygen scene-prompt",
+       "สร้าง Prompt แยกแต่ละฉาก",
+       ""
+      ],
+      [
+       "/heygen prompt-enhance",
+       "ปรับ Prompt ให้ชัดเจน",
+       ""
+      ],
+      [
+       "/heygen camera-motion",
+       "เขียนคำสั่งการเคลื่อนกล้อง",
+       ""
+      ],
+      [
+       "/heygen motion-control",
+       "กำหนดท่าทางและการเคลื่อนไหว",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "4 · Avatar & Voice — ผู้นำเสนอ + เสียง",
+     "items": [
+      [
+       "/heygen avatar",
+       "เตรียมวิดีโอ AI Presenter",
+       ""
+      ],
+      [
+       "/heygen digital-twin",
+       "Avatar หน้าตาเหมือนตัวเอง",
+       ""
+      ],
+      [
+       "/heygen talking-photo",
+       "ทำภาพบุคคลให้พูด",
+       ""
+      ],
+      [
+       "/heygen voiceover",
+       "เขียนบทพากย์",
+       ""
+      ],
+      [
+       "/heygen lip-sync",
+       "เตรียมบทและเสียงให้ปากตรง",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "5 · Brand & Consistency — คุมแบรนด์",
+     "items": [
+      [
+       "/heygen brand-kit",
+       "เตรียมสี โลโก้ องค์ประกอบแบรนด์",
+       ""
+      ],
+      [
+       "/heygen product-lock",
+       "รักษารูปทรงและโลโก้สินค้า",
+       ""
+      ],
+      [
+       "/heygen consistency",
+       "ตรวจความต่อเนื่องสินค้า / ตัวละคร",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "6 · Localize — ซับ + หลายภาษา",
+     "items": [
+      [
+       "/heygen subtitles",
+       "ออกแบบซับไตเติล",
+       ""
+      ],
+      [
+       "/heygen localization",
+       "แปลและปรับวิดีโอหลายภาษา",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "7 · QA & Fix — ตรวจ + แก้",
+     "items": [
+      [
+       "/heygen troubleshoot",
+       "วิเคราะห์ปัญหาวิดีโอที่ Generate",
+       ""
+      ],
+      [
+       "/heygen quality-check",
+       "ตรวจคุณภาพก่อนส่งงาน",
+       ""
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "prompts",
+   "label": "B · chatgpt prompt pack",
+   "heading": "Production Prompt Pack",
+   "intro": "ก๊อปไปวางใน ChatGPT แก้แค่ [ช่องในวงเล็บ] แล้วส่งต่อเข้า HeyGen",
+   "items": [
+    [
+     "1 · Creative Brief → production-ready",
+     "Act as a video producer. สร้าง brief สำหรับ [สินค้า] กลุ่มเป้าหมาย [ใคร] เป้าหมาย [ยอดขาย/รู้จัก] ความยาว [15/30s] ให้มี: key message, tone, CTA, shot list, ข้อห้าม"
+    ],
+    [
+     "2 · Hook Lab → hook · variations",
+     "เขียน 10 hook ภาษาไทย ≤ 8 คำ สำหรับ [หัวข้อ] แบ่ง 5 สไตล์: คำถาม, ตัวเลข, pain point, ช็อก, before/after พร้อมให้คะแนน scroll-stop 1–10"
+    ],
+    [
+     "3 · Timed Script → script · voiceover",
+     "เขียนสคริปต์ [30s] เป็นตาราง: เวลา | ภาพ | บทพูด | ซับ ≤ 12 คำ/บรรทัด คำพูด ~2.5 คำ/วินาที จบด้วย CTA [ลิงก์/โค้ด]"
+    ],
+    [
+     "4 · Scene Prompts → scene-prompt · camera",
+     "แปลงสคริปต์นี้เป็น prompt ภาษาอังกฤษทีละฉาก ใช้สูตรด้านล่าง ล็อกสินค้า: [สี/โลโก้/รูปทรง] ห้ามเปลี่ยนตลอดทุกฉาก [วางสคริปต์]"
+    ],
+    [
+     "5 · Localize → localization · subtitles",
+     "แปลบทเป็น [EN/JP/VN] แบบ transcreation ไม่แปลตรงตัว รักษาความยาวพูดให้ใกล้เดิม ±10% เพื่อ lip-sync และปรับมุก/สกุลเงินให้เข้าวัฒนธรรม"
+    ],
+    [
+     "6 · QC Critic → quality-check · troubleshoot",
+     "Act as a strict ad reviewer. ตรวจ [บท/คำอธิบายคลิป] ตาม: hook 3s, ความชัดสินค้า, ความต่อเนื่อง, ซับอ่านทัน, CTA ให้คะแนน /10 และบอก 3 จุดที่ต้องแก้ก่อน render"
+    ]
+   ]
+  },
+  {
+   "type": "formula",
+   "label": "scene formula",
+   "heading": "สูตรเขียนแต่ละฉาก",
+   "items": [
+    "Subject",
+    "Action",
+    "Setting",
+    "Camera move",
+    "Lighting",
+    "Style",
+    "Duration",
+    "9:16"
+   ]
+  },
+  {
+   "type": "tips",
+   "label": "pro tips",
+   "heading": "Pro tips",
+   "items": [
+    "เริ่มด้วย production-ready ครั้งเดียว ได้ brief + prompt ครบชุด",
+    "ใช้ product-lock ก่อน generate ทุกครั้งที่มีโลโก้ / แพ็กเกจ",
+    "ทำ 3 hooks × 1 body ด้วย variations แล้วค่อยเทสต์",
+    "วางซับกลางจอบน ไม่ทับ UI ของ TikTok / Reels"
+   ]
+  }
+ ]
+}

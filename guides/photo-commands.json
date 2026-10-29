@@ -1,0 +1,441 @@
+{
+ "title": "Image Edit Commands",
+ "subtitle": "65 photo cheat codes · 9 หมวด · พร้อมสูตรผสม",
+ "greeting": "Hi, it's Sali ✦ Here's the Photo Cheat Code you asked for. Choose a look, add an edit, then add your details — use these shortcuts with your image. Tap any command to copy. Hope you have lots of fun trying it out! 🤍",
+ "download": "https://drive.google.com/file/d/1qMN7t1Sq1amCbWMW-3uu1VNuHm_6qAfI/view?usp=sharing",
+ "sections": [
+  {
+   "type": "formula",
+   "label": "the formula",
+   "heading": "สูตรใช้งาน",
+   "items": [
+    "เลือก look",
+    "เพิ่ม edit",
+    "ใส่รายละเอียด"
+   ]
+  },
+  {
+   "type": "commands",
+   "label": "the commands",
+   "heading": "65 photo commands",
+   "cols": [
+    "Command",
+    "What it does",
+    ""
+   ],
+   "groups": [
+    {
+     "name": "01 · Camera looks",
+     "items": [
+      [
+       "/ricoh",
+       "Ricoh GR-style photo",
+       ""
+      ],
+      [
+       "/ricohflash",
+       "Ricoh + direct flash",
+       ""
+      ],
+      [
+       "/ricohnight",
+       "Ricoh night + flash",
+       ""
+      ],
+      [
+       "/ricohsoft",
+       "Soft Ricoh look",
+       ""
+      ],
+      [
+       "/ricohstreet",
+       "Ricoh street / candid",
+       ""
+      ],
+      [
+       "/compact",
+       "Compact digital camera",
+       ""
+      ],
+      [
+       "/digicam",
+       "Retro digital camera",
+       ""
+      ],
+      [
+       "/ccd",
+       "Nostalgic CCD digital look",
+       ""
+      ],
+      [
+       "/pointshoot",
+       "Point-and-shoot snapshot",
+       ""
+      ],
+      [
+       "/canoncompact",
+       "Canon compact aesthetic",
+       ""
+      ],
+      [
+       "/sonycompact",
+       "Sony compact aesthetic",
+       ""
+      ],
+      [
+       "/fujifilm",
+       "Fuji-inspired film look",
+       ""
+      ],
+      [
+       "/leica",
+       "Premium street-camera aesthetic",
+       ""
+      ],
+      [
+       "/flashcam",
+       "Compact + direct flash",
+       ""
+      ],
+      [
+       "/nightcompact",
+       "Compact camera at night",
+       ""
+      ],
+      [
+       "/2000scam",
+       "2000s digital camera",
+       ""
+      ],
+      [
+       "/2010cam",
+       "Early-2010s compact camera",
+       ""
+      ],
+      [
+       "/vacationcam",
+       "Casual travel-camera look",
+       ""
+      ],
+      [
+       "/paparazzi",
+       "Candid paparazzi + flash",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "02 · Angles / composition",
+     "items": [
+      [
+       "/droneview",
+       "Drone / aerial perspective",
+       ""
+      ],
+      [
+       "/topdown",
+       "Top-down perspective",
+       ""
+      ],
+      [
+       "/lowangle",
+       "Dramatic low angle",
+       ""
+      ],
+      [
+       "/ultrawide",
+       "0.5x ultra-wide look",
+       ""
+      ],
+      [
+       "/fisheye",
+       "Fisheye lens distortion",
+       ""
+      ],
+      [
+       "/wideview",
+       "Wider environmental shot",
+       ""
+      ],
+      [
+       "/fullbody",
+       "Extend into a full-body view",
+       ""
+      ],
+      [
+       "/expand",
+       "Extend beyond image borders",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "03 · Photography styles",
+     "items": [
+      [
+       "/cinematic",
+       "Movie-still look",
+       ""
+      ],
+      [
+       "/film",
+       "35mm / analog film",
+       ""
+      ],
+      [
+       "/editorial",
+       "Fashion editorial",
+       ""
+      ],
+      [
+       "/street",
+       "Street photography",
+       ""
+      ],
+      [
+       "/portrait",
+       "Professional portrait",
+       ""
+      ],
+      [
+       "/luxury",
+       "Luxury campaign",
+       ""
+      ],
+      [
+       "/y2k",
+       "Y2K aesthetic",
+       ""
+      ],
+      [
+       "/polaroid",
+       "Instant-film photo",
+       ""
+      ],
+      [
+       "/disposable",
+       "Disposable camera",
+       ""
+      ],
+      [
+       "/studio",
+       "Studio photography",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "04 · Lighting / weather / mood",
+     "items": [
+      [
+       "/goldenhour",
+       "Warm golden-hour light",
+       ""
+      ],
+      [
+       "/sunset",
+       "Sunset atmosphere",
+       ""
+      ],
+      [
+       "/night",
+       "Nighttime version",
+       ""
+      ],
+      [
+       "/neon",
+       "Neon / nightlife",
+       ""
+      ],
+      [
+       "/rain",
+       "Rainy atmosphere",
+       ""
+      ],
+      [
+       "/fog",
+       "Fog / mist",
+       ""
+      ],
+      [
+       "/flash",
+       "Direct-camera flash",
+       ""
+      ],
+      [
+       "/bokeh",
+       "Blurred background",
+       ""
+      ],
+      [
+       "/motion",
+       "Motion / action blur",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "05 · Locations",
+     "items": [
+      [
+       "/beach",
+       "Beach setting",
+       ""
+      ],
+      [
+       "/city",
+       "Urban / city setting",
+       ""
+      ],
+      [
+       "/mountain",
+       "Mountains",
+       ""
+      ],
+      [
+       "/cafe",
+       "Cafe setting",
+       ""
+      ],
+      [
+       "/rooftop",
+       "Rooftop setting",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "06 · Fashion / beauty",
+     "items": [
+      [
+       "/outfit",
+       "Change outfit — add your details",
+       ""
+      ],
+      [
+       "/hair",
+       "Change hairstyle — add your details",
+       ""
+      ],
+      [
+       "/makeup",
+       "Makeup treatment",
+       ""
+      ],
+      [
+       "/sharp",
+       "Improve perceived detail",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "07 · Cleanup / fixes",
+     "items": [
+      [
+       "/cleanup",
+       "Remove distracting objects / people",
+       ""
+      ],
+      [
+       "/cleanbg",
+       "Clean / simplify background",
+       ""
+      ],
+      [
+       "/sky",
+       "Improve / replace sky",
+       ""
+      ],
+      [
+       "/expand",
+       "Extend image boundaries",
+       ""
+      ],
+      [
+       "/sharp",
+       "Enhance detail",
+       ""
+      ],
+      [
+       "/removepeople",
+       "Remove others, keep the main person",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "08 · Social / design",
+     "items": [
+      [
+       "/magazine",
+       "Magazine-cover composition",
+       ""
+      ],
+      [
+       "/poster",
+       "Poster design",
+       ""
+      ],
+      [
+       "/story",
+       "Vertical Story format",
+       ""
+      ],
+      [
+       "/profile",
+       "Profile-picture composition",
+       ""
+      ]
+     ]
+    },
+    {
+     "name": "09 · Creative",
+     "items": [
+      [
+       "/anime",
+       "Anime transformation",
+       ""
+      ],
+      [
+       "/sequence",
+       "Another shot from the same photoshoot",
+       ""
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "prompts",
+   "label": "mix & match",
+   "heading": "Quick combinations",
+   "items": [
+    [
+     "Night flash + cleanup",
+     "/ricohflash /removepeople /night"
+    ],
+    [
+     "Warm travel view",
+     "/droneview /goldenhour /beach"
+    ],
+    [
+     "Fashion campaign",
+     "/editorial /luxury /outfit black dress"
+    ],
+    [
+     "Retro snapshot",
+     "/digicam /flash"
+    ],
+    [
+     "Add specific details",
+     "/hair long wavy hair"
+    ]
+   ]
+  },
+  {
+   "type": "note",
+   "text": "Conversation-defined prompt shortcuts — not official commands. /expand and /sharp appear in two categories."
+  }
+ ]
+}

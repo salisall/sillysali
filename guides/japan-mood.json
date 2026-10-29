@@ -1,0 +1,73 @@
+{
+ "title": "Japan mood prompts / Cinema",
+ "subtitle": "AI short film สไตล์ญี่ปุ่น 6 ฉาก ด้วย Higgsfield Cinema Studio",
+ "greeting": "สวัสดีค่ะ ซาลี่เอง ✦ นี่คือ Japan mood prompts ที่ขอไว้ ด้านล่างเป็นภาพรวม workflow ส่วน prompt เต็มทุกฉากอยู่ในเอกสาร กดปุ่มเปิดได้เลย ขอให้สนุกกับการลองใช้นะคะ",
+ "download": "https://docs.google.com/document/u/0/d/1OO6zfUlqJ4ZiTRKEs-qbB81ms9PNsJuUGcGTQUD-1cI/mobilebasic?pli=1",
+ "downloadLabel": "เปิด prompt เต็ม (Google Doc)",
+ "sections": [
+  {
+   "type": "steps",
+   "label": "the workflow",
+   "heading": "ทำยังไง",
+   "items": [
+    [
+     "เข้า Cinema Studio",
+     "ใช้ Higgsfield Cinema Studio จัดการทุกโปรเจกต์ เลือก Image เพื่อสร้าง asset และ Video เพื่อสร้างคลิป"
+    ],
+    [
+     "ทำ character sheet",
+     "เลือก Seedream 5.0 PRO → ใส่รูปเซลฟี่ → วาง prompt character sheet ได้ตัวละครเดียวกันใช้ทุกฉาก"
+    ],
+    [
+     "สร้าง location",
+     "แต่ละฉากใช้ Cinema Studio Soul Location สร้างภาพสถานที่ก่อน"
+    ],
+    [
+     "สร้างวิดีโอ",
+     "เลือก Seedance 2.5 → ใส่ character sheet (+ location) → วาง prompt วิดีโอของฉากนั้น"
+    ]
+   ]
+  },
+  {
+   "type": "cards",
+   "label": "the scenes",
+   "heading": "6 ฉาก",
+   "items": [
+    [
+     "1 · Shibuya crossing",
+     "ทางม้าลายกลางเมืองยามค่ำ ป้ายไฟสะท้อนถนนเปียก"
+    ],
+    [
+     "2 · Lying in the field",
+     "นอนกลางทุ่ง บรรยากาศอบอุ่น"
+    ],
+    [
+     "3 · Spin in the field",
+     "หมุนตัวกลางทุ่ง กล้องถือมือ"
+    ],
+    [
+     "4 · Train station",
+     "สถานีรถไฟ ใช้ location 2 ภาพ"
+    ],
+    [
+     "5 · In the shop",
+     "ในร้านเล็ก ๆ แบบญี่ปุ่น"
+    ],
+    [
+     "6 · Night city",
+     "เมืองยามค่ำคืน แสงนีออน"
+    ]
+   ]
+  },
+  {
+   "type": "tips",
+   "label": "tip",
+   "heading": "เคล็ดลับ",
+   "items": [
+    "ทำ character sheet ให้ดีก่อน ทุกฉากจะใช้หน้าเดียวกัน",
+    "ใส่ไฟล์อ้างอิงให้ครบตามที่แต่ละฉากบอก (character / location)",
+    "ลองปรับ prompt แล้วแท็กผลงานมาให้ดูได้เลย"
+   ]
+  }
+ ]
+}

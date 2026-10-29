@@ -1,0 +1,68 @@
+{
+ "title": "สร้างรายงานข้อมูลเป็นสไลด์ด้วย Gamma AI",
+ "subtitle": "Workflow + worksheet: จากไฟล์ CSV ถึงรายงาน PDF",
+ "greeting": "สวัสดีค่ะ ซาลี่เอง ✦ นี่คือ Gamma Tutorial + prompt ที่ขอไว้ เปลี่ยนไฟล์ยอดขาย CSV ให้เป็น executive presentation ที่สื่อสารข้อมูลชัด ทำตาม 7 ขั้นนี้ได้เลย ขอให้สนุกกับการลองใช้นะคะ",
+ "download": "https://drive.google.com/file/d/12usu2vQfNKSM1o6_KBWC9fTga4OeCb9Y/view?usp=sharing",
+ "sections": [
+  {
+   "type": "steps",
+   "label": "the workflow",
+   "heading": "7 ขั้นตอน",
+   "items": [
+    [
+     "เข้า gamma.app",
+     "AI tool ที่ช่วยเปลี่ยน sales CSV ให้เป็น executive presentation ได้รวดเร็ว และช่วยจัดโครงเรื่องการนำเสนอ"
+    ],
+    [
+     "แนบไฟล์ข้อมูล",
+     "กดเครื่องหมาย + เพื่อ add file ข้อมูลจริงที่จะวิเคราะห์ (เช่น sales CSV ประจำเดือน)"
+    ],
+    [
+     "วาง prompt",
+     "ก๊อป prompt ด้านล่าง (Basic หรือ Advance) ไปวางได้เลย"
+    ],
+    [
+     "เลือก Presentation",
+     "สำคัญ! อย่าลืมเลือกตัวเลือกสร้างสไลด์ presentation แล้วกดลูกศรเพื่อส่ง"
+    ],
+    [
+     "Generate",
+     "Gamma จะสรุปโครงทั้งหมดให้เช็กก่อน ถ้าโอเคแล้วกด Generate ได้เลย"
+    ],
+    [
+     "เปลี่ยน style / theme",
+     "เลือกสีและรูปแบบสไลด์ได้ตามใจ สไลด์ทั้งหมดจะถูกสร้างในเวลาไม่นาน"
+    ],
+    [
+     "Export",
+     "กดจุดสามจุดมุมขวาบน เซฟเป็น PDF หรือ PowerPoint เพื่อเอาไปแก้ต่อได้"
+    ]
+   ]
+  },
+  {
+   "type": "prompts",
+   "label": "copy-paste",
+   "heading": "Prompts",
+   "items": [
+    [
+     "3.1 Basic — presentation แบบเปิดกว้าง",
+     "จากไฟล์นี้ช่วยสรุปพอยต์สำคัญของแต่ละรายการที่ควรจะพรีเซนต์ให้หัวหน้าทราบในการสรุปของแต่ละเดือน"
+    ],
+    [
+     "3.2 Advance — executive review",
+     "ในฐานะ Senior Business Analyst (ชื่อตำแหน่งคุณ) สร้าง Executive Monthly Presentation Review (จำนวนสไลด์) พร้อม Insights และข้อเสนอแนะ ที่ตอบโจทย์ผู้บริหารทั้ง 3 คำถามสำคัญในทุกสไลด์:\n\na. เกิดอะไรขึ้น? (What happened?)\nb. ทำไมเรื่องนี้ถึงสำคัญ? (Why does it matter?)\nc. ผู้บริหารควรทำอย่างไรต่อไป? (What should management do next?)"
+    ]
+   ]
+  },
+  {
+   "type": "tips",
+   "label": "tip",
+   "heading": "เคล็ดลับ",
+   "items": [
+    "เปลี่ยน (ชื่อตำแหน่งคุณ) และ (จำนวนสไลด์) ให้ตรงกับงานจริง",
+    "ใช้ข้อมูลจริงของเดือนนั้น ผลลัพธ์จะเจาะจงกว่าไฟล์ตัวอย่าง",
+    "Export เป็น PowerPoint ถ้าต้องแก้ต่อ, PDF ถ้าจะส่งเลย"
+   ]
+  }
+ ]
+}
