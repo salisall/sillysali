@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Club Waitlist — Sali</title>
+<meta name="description" content="Join the AI Club waitlist — answer 5 quick questions about how you use AI.">
+<meta property="og:title" content="AI Club ✦ — Sali">
+<meta property="og:description" content="A small, friendly room to share AI skills and tools. Join the waitlist.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  .px{font-family:"Press Start 2P",monospace}
+
+  /* top bar (same as home) */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .head{text-align:center;padding:56px 0 34px;max-width:640px;margin:0 auto}
+  .head .eyebrow{font-size:30px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  .head h1{font-family:"Press Start 2P",monospace;font-weight:400;font-size:clamp(26px,5vw,42px);line-height:1.3;margin:12px 0 18px;letter-spacing:.02em}
+  .head h1 span{background:var(--butter);padding:0 8px;box-shadow:4px 4px 0 var(--ink);border:3px solid var(--ink);display:inline-block}
+  .head p{color:var(--muted);font-size:17px}
+  .head .meta{display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .head .meta span{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:4px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--ink)}
+
+  /* pixel window */
+  .pxwin{position:relative;max-width:720px;margin:0 auto 90px;background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+  .tbar{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P",monospace;font-size:10px}
+  .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .tbar .step{margin-left:auto}
+  .prog{display:flex;gap:4px;padding:10px 14px;border-bottom:3px solid var(--ink);background:color-mix(in srgb,var(--accent-soft) 60%,var(--paper))}
+  .prog i{flex:1;height:10px;border:2px solid var(--ink);background:var(--paper);transition:background .2s steps(2)}
+  .prog i.on{background:var(--butter)}
+  .prog i.now{background:var(--pink);animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:.4}}
+
+  .feed{min-height:340px;max-height:56vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:18px 16px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;scroll-behavior:smooth}
+  .msg{display:flex;gap:10px;align-items:flex-end;animation:pop .35s steps(4) both}
+  .msg.me{flex-direction:row-reverse}
+  @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
+  .ava{flex:none;width:36px;height:36px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .bub{max-width:80%;background:var(--bg);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:9px 12px;font-size:15px;line-height:1.55}
+  .msg.me .bub{background:var(--butter)}
+  .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent);margin-bottom:5px}
+  .bub small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px}
+  .typing .bub{display:flex;gap:5px;padding:13px 12px}
+  .typing .bub i{width:6px;height:6px;background:var(--ink);animation:dot 1s steps(2) infinite}
+  .typing .bub i:nth-child(2){animation-delay:.2s}.typing .bub i:nth-child(3){animation-delay:.4s}
+  @keyframes dot{50%{transform:translateY(-4px)}}
+
+  /* answer area */
+  .dock{border-top:3px solid var(--ink);padding:14px 16px 16px;background:color-mix(in srgb,var(--bg) 50%,var(--paper));min-height:76px}
+  .dock .hint{font-size:12.5px;color:var(--muted);margin-bottom:10px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .opt{display:flex;align-items:center;gap:10px;text-align:left;padding:11px 12px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.35;transition:transform .08s steps(2),box-shadow .08s steps(2)}
+  .opt:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+  .opt:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .opt[aria-pressed="true"]{background:var(--butter)}
+  .opt .ic{flex:none;width:22px;height:22px;border:2px solid var(--ink);display:grid;place-items:center;font-family:"Press Start 2P",monospace;font-size:8px;color:#fff}
+  .opt .chk{margin-left:auto;font-family:"Press Start 2P",monospace;font-size:9px;opacity:0}
+  .opt[aria-pressed="true"] .chk{opacity:1}
+  .row{display:flex;gap:10px;margin-top:12px;justify-content:flex-end;flex-wrap:wrap}
+  .pxbtn{font-family:"Press Start 2P",monospace;font-size:10px;line-height:1.4;padding:11px 14px;background:var(--ink);color:var(--bg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .08s steps(2),box-shadow .08s steps(2)}
+  .pxbtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--accent)}
+  .pxbtn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+  .pxbtn.ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .field{display:flex;gap:10px}
+  .field input{flex:1;min-width:0;font:inherit;font-size:15px;padding:10px 12px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);outline:none;box-shadow:inset 3px 3px 0 color-mix(in srgb,var(--ink) 10%,transparent)}
+  .field input:focus{border-color:var(--accent)}
+
+  /* done */
+  .done{text-align:center;padding:6px 0 2px}
+  .done .big{font-family:"Press Start 2P",monospace;font-size:14px;line-height:1.6;margin-bottom:10px}
+  .done .row{justify-content:center}
+  .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .confetti i{position:absolute;top:-12px;width:9px;height:9px;border:2px solid var(--ink);animation:fall 1.8s steps(12) forwards}
+  @keyframes fall{to{transform:translateY(520px) rotate(270deg);opacity:0}}
+  .spark{position:absolute;width:10px;height:10px;background:var(--butter);border:2px solid var(--ink);animation:float 2.4s steps(6) infinite}
+  .spark.a{top:-14px;right:50px}.spark.b{bottom:60px;left:-16px;background:var(--pink);animation-delay:.8s}.spark.c{top:90px;right:-16px;background:var(--sage);animation-delay:1.4s}
+  @keyframes float{50%{transform:translateY(-8px) rotate(45deg)}}
+
+  .privacy{max-width:720px;margin:-60px auto 60px;font-size:12.5px;color:var(--muted);text-align:center}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+
+  @media (max-width:900px){ .tags li:not(.keep){display:none} }
+  @media (max-width:560px){
+    .opts{grid-template-columns:1fr}
+    .pxwin{box-shadow:5px 5px 0 var(--ink)}
+    .feed{max-height:52vh}
+    .bub{max-width:86%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .msg,.spark,.prog i.now,.typing .bub i,.confetti i{animation:none}
+    .confetti{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
+        <li><a href="index.html#about" data-th="เกี่ยวกับฉัน">About</a></li>
+        <li><a href="index.html#work" data-th="ผลงาน">Projects</a></li>
+        <li><a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener" data-th="คอนเทนต์">Content</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="head">
+    <span class="eyebrow hand" data-th="ลงชื่อรอเข้าคลับ ✦">join the waitlist ✦</span>
+    <h1><span>AI CLUB</span></h1>
+    <p data-th="ก่อนเปิดห้อง ขอรู้จักกันนิดนึง ตอบ 5 คำถามสั้น ๆ จะได้จัดคอนเทนต์ให้ตรงกับที่ทุกคนอยากรู้">Before the doors open, let's get to know you. Answer 5 quick questions so the club covers what you actually want to learn.</p>
+    <div class="meta">
+      <span data-th="⏱ ~1 นาที">⏱ ~1 min</span>
+      <span data-th="5 คำถาม">5 questions</span>
+      <span data-th="ฟรี ✦">free ✦</span>
+    </div>
+  </header>
+
+  <div class="pxwin" id="win">
+    <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i>
+    <div class="tbar"><span class="sq"></span>#welcome<span class="step" id="step"></span></div>
+    <div class="prog" id="prog"></div>
+    <div class="feed" id="feed" aria-live="polite"></div>
+    <div class="dock" id="dock"></div>
+  </div>
+  <p class="privacy" data-th="คำตอบใช้เพื่อวางแผนคลับเท่านั้น ช่องติดต่อไม่บังคับ และใช้แค่ส่งลิงก์เชิญตอนคลับเปิด">Answers are only used to plan the club. Contact is optional and only used to send your invite when it opens.</p>
+
+  <footer>
+    <span>© 2026 Sali</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
+  </footer>
+</div>
+
+<script src="lang.js"></script>
+<script>
+/* ============================================================
+   AI CLUB SURVEY
+   ------------------------------------------------------------
+   SURVEY_URL: paste your Google Apps Script web-app URL here
+   (see survey-setup.md). While it's empty, answers are NOT
+   collected anywhere — the page still works for testing.
+   ============================================================ */
+const SURVEY_URL = "";
+
+(function(){
+  /* ---------- questions (edit freely) ---------- */
+  const QUESTIONS = [
+    { id:"tool", type:"one",
+      q:()=>t("First up: which AI tool do you use the most? 👀","เริ่มที่คำถามแรก: ใช้ AI ตัวไหนบ่อยที่สุด? 👀"),
+      opts:[
+        {v:"Claude",  c:"#d97757"},
+        {v:"ChatGPT", c:"#10a37f"},
+        {v:"Gemini",  c:"#4f7df3"},
+        {v:"Copilot", c:"#8a5cf5"}
+      ]},
+    { id:"uses", type:"many",
+      q:()=>t("Nice pick! What do you mostly use AI for?","เลือกดี! ส่วนใหญ่ใช้ AI ทำอะไร?"),
+      hint:()=>t("pick as many as you like","เลือกได้หลายข้อ"),
+      opts:[
+        {v:"work",    l:()=>t("Work & office stuff","งานออฟฟิศ / งานประจำ"),       e:"💼"},
+        {v:"content", l:()=>t("Content: images & video","ทำคอนเทนต์ รูป / วิดีโอ"), e:"🎬"},
+        {v:"code",    l:()=>t("Coding & building apps","เขียนโค้ด / สร้างแอป"),     e:"💻"},
+        {v:"study",   l:()=>t("Study & research","เรียน / หาข้อมูล"),             e:"📚"}
+      ]},
+    { id:"level", type:"one",
+      q:()=>t("How would you describe your AI level right now?","ตอนนี้คิดว่าตัวเองใช้ AI อยู่ระดับไหน?"),
+      opts:[
+        {v:"newbie",  l:()=>t("Just getting started","มือใหม่ เพิ่งเริ่ม"),            e:"🌱"},
+        {v:"daily",   l:()=>t("I use it every day","ใช้ทุกวันเป็นปกติ"),            e:"☕"},
+        {v:"builder", l:()=>t("I build my own skills / prompts","สร้าง skill / prompt เองได้"), e:"🛠"},
+        {v:"pro",     l:()=>t("I build agents & automations","ทำ agent / automation"), e:"🚀"}
+      ]},
+    { id:"want", type:"many",
+      q:()=>t("What would you love to see in the club?","อยากเห็นอะไรในคลับมากที่สุด?"),
+      hint:()=>t("pick as many as you like","เลือกได้หลายข้อ"),
+      opts:[
+        {v:"skills",    l:()=>t("How to build Skills","สอนสร้าง Skill"),          e:"✦"},
+        {v:"prompts",   l:()=>t("Prompt packs to copy","Prompt พร้อมก๊อป"),        e:"📋"},
+        {v:"tools",     l:()=>t("New tool reviews","รีวิว tool ใหม่ ๆ"),          e:"🧰"},
+        {v:"live",      l:()=>t("Live build-alongs","ไลฟ์ทำไปด้วยกัน"),           e:"📺"}
+      ]},
+    { id:"contact", type:"text",
+      q:()=>t("Last one! Where should I send your invite when the club opens?","ข้อสุดท้าย! อยากให้ส่งลิงก์เชิญไปที่ไหนตอนคลับเปิด?"),
+      sub:()=>t("IG handle or email — totally optional","IG หรืออีเมล ไม่ใส่ก็ได้นะ"),
+      ph:()=>t("@yourhandle or you@email.com","@ไอจีของคุณ หรือ อีเมล")}
+  ];
+
+  /* ---------- pixel sprites ---------- */
+  const SPRITES = {
+    sali: {pal:{a:"#f4d3b5",b:"#1d1c1a",c:"#2f4bd6",d:"#f3a6a0"}, px:["..bbbb..",".bbbbbb.","bbaaaabb","babaabab","baaaaaab","bdaccadb",".aaaaaa.",".cc..cc."]},
+    you:  {pal:{a:"#cfdcc4",b:"#1d1c1a",c:"#e58f86",d:"#ffffff"}, px:["..aaaa..",".aaaaaa.","aabaabaa","aadaadaa","aaaaaaaa","aaaccaaa",".aaaaaa.","..a..a.."]}
+  };
+  function sprite(k){
+    const s = SPRITES[k]; let r = "";
+    s.px.forEach((row,y)=>[...row].forEach((ch,x)=>{ if (s.pal[ch]) r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${s.pal[ch]}"/>`; }));
+    return `<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+  }
+
+  /* ---------- helpers ---------- */
+  const $ = id => document.getElementById(id);
+  const feed = $("feed"), dock = $("dock");
+  const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const KEY = "sali-club-survey";
+
+  let answers = {}, step = 0, run = 0;
+
+  function say(who, html){
+    const row = el("div", "msg" + (who === "you" ? " me" : ""));
+    row.appendChild(el("div", "ava", sprite(who)));
+    row.appendChild(el("div", "bub", `<span class="nm">${who === "you" ? t("you","คุณ") : "sali"}</span>${html}`));
+    feed.appendChild(row); feed.scrollTop = feed.scrollHeight;
+  }
+  function botSay(html, cb){
+    const id = run;
+    if (still){ say("sali", html); cb && cb(); return; }
+    const tp = el("div", "msg typing");
+    tp.append(el("div", "ava", sprite("sali")), el("div", "bub", "<i></i><i></i><i></i>"));
+    feed.appendChild(tp); feed.scrollTop = feed.scrollHeight;
+    setTimeout(() => { if (id !== run) return; tp.remove(); say("sali", html); cb && cb(); }, 750);
+  }
+  function progress(){
+    const p = $("prog"); p.innerHTML = "";
+    QUESTIONS.forEach((_, i) => p.appendChild(el("i", i < step ? "on" : i === step ? "now" : "")));
+    $("step").textContent = step < QUESTIONS.length ? (step + 1) + "/" + QUESTIONS.length : "✦";
+  }
+  function label(q, v){
+    const o = (q.opts || []).find(o => o.v === v);
+    return o ? (o.l ? o.l() : o.v) : v;
+  }
+  function answerText(q){
+    const a = answers[q.id];
+    if (q.type === "many") return a.map(v => label(q, v)).join(", ");
+    if (q.type === "text") return a ? a : t("(skipped)","(ข้าม)");
+    return label(q, a);
+  }
+
+  /* ---------- question UI ---------- */
+  function ask(){
+    progress();
+    dock.innerHTML = "";
+    if (step >= QUESTIONS.length) return finish();
+    const q = QUESTIONS[step];
+    botSay(esc(q.q()) + (q.sub ? `<small>${esc(q.sub())}</small>` : ""), () => showOptions(q));
+  }
+
+  function showOptions(q){
+    dock.innerHTML = "";
+    if (q.hint) dock.appendChild(el("div", "hint", "✦ " + esc(q.hint())));
+
+    if (q.type === "text"){
+      const f = el("div", "field");
+      const inp = el("input"); inp.type = "text"; inp.maxLength = 80; inp.placeholder = q.ph(); inp.autocomplete = "email";
+      const go = el("button", "pxbtn", t("SEND","ส่ง")); go.type = "button";
+      const skip = el("button", "pxbtn ghost", t("SKIP","ข้าม")); skip.type = "button";
+      const submit = v => { answers[q.id] = v.trim(); next(q); };
+      go.onclick = () => submit(inp.value);
+      skip.onclick = () => submit("");
+      inp.onkeydown = e => { if (e.key === "Enter") submit(inp.value); };
+      f.append(inp, go); dock.appendChild(f);
+      const r = el("div", "row"); r.appendChild(skip); dock.appendChild(r);
+      setTimeout(() => inp.focus({preventScroll:true}), 50);
+      return;
+    }
+
+    const box = el("div", "opts");
+    const picked = new Set();
+    q.opts.forEach(o => {
+      const b = el("button", "opt"); b.type = "button"; b.setAttribute("aria-pressed", "false");
+      const ic = o.c ? `<span class="ic" style="background:${o.c}">${o.v[0]}</span>` : `<span class="ic" style="background:var(--paper);font-family:inherit;font-size:13px">${o.e}</span>`;
+      b.innerHTML = ic + `<span>${esc(o.l ? o.l() : o.v)}</span><span class="chk">✓</span>`;
+      b.onclick = () => {
+        if (q.type === "one"){ answers[q.id] = o.v; b.setAttribute("aria-pressed","true"); setTimeout(() => next(q), 180); return; }
+        picked.has(o.v) ? picked.delete(o.v) : picked.add(o.v);
+        b.setAttribute("aria-pressed", picked.has(o.v));
+        nb.disabled = !picked.size;
+      };
+      box.appendChild(b);
+    });
+    dock.appendChild(box);
+    let nb;
+    if (q.type === "many"){
+      const r = el("div", "row");
+      nb = el("button", "pxbtn", t("NEXT ▶","ต่อไป ▶")); nb.type = "button"; nb.disabled = true;
+      nb.onclick = () => { answers[q.id] = [...picked]; next(q); };
+      r.appendChild(nb); dock.appendChild(r);
+    }
+  }
+
+  const REACT = {
+    tool:  v => ({Claude:t("Claude gang ✦","ทีม Claude ✦"), ChatGPT:t("A classic! 💚","ตัวยอดฮิตเลย 💚"), Gemini:t("Gemini fans unite 💙","สาย Gemini 💙"), Copilot:t("Copilot crew 💜","ทีม Copilot 💜")})[v],
+    level: v => ({newbie:t("Perfect, the club is made for you 🌱","เหมาะมาก คลับนี้ทำมาเพื่อมือใหม่เลย 🌱"), daily:t("Love that ☕","ชอบเลย ☕"), builder:t("Ooh, you'll have lots to share 🛠","โห มีของมาแชร์เพียบแน่ 🛠"), pro:t("A pro in the house 🚀","มือโปรมาแล้ว 🚀")})[v]
+  };
+
+  function next(q){
+    dock.innerHTML = "";
+    say("you", esc(answerText(q)));
+    step++;
+    const r = REACT[q.id] && REACT[q.id](answers[q.id]);
+    if (r) botSay(esc(r), ask); else ask();
+  }
+
+  /* ---------- finish ---------- */
+  function send(){
+    const payload = { tool:answers.tool, uses:answers.uses, level:answers.level, want:answers.want, contact:answers.contact || "", lang:window.LANG, page:location.href };
+    try { localStorage.setItem(KEY, JSON.stringify({at:Date.now(), ...payload})); } catch(e){}
+    if (!SURVEY_URL) { console.info("[AI Club] SURVEY_URL is empty — answer not collected:", payload); return; }
+    // text/plain + no-cors so it works with Google Apps Script without a preflight
+    fetch(SURVEY_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(payload) }).catch(()=>{});
+  }
+
+  function confetti(){
+    if (still) return;
+    const c = el("div", "confetti"); const cols = ["var(--butter)","var(--pink)","var(--sage)","var(--accent)"];
+    for (let i = 0; i < 26; i++){
+      const p = el("i"); p.style.left = Math.random()*100 + "%"; p.style.background = cols[i % 4];
+      p.style.animationDelay = (Math.random()*.6) + "s"; c.appendChild(p);
+    }
+    $("win").appendChild(c); setTimeout(() => c.remove(), 2600);
+  }
+
+  function finish(){
+    send(); progress();
+    botSay(esc(t("Yay, you're on the list! 🎉 I'll share the invite when the club opens. See you inside ✦","เย้ ลงชื่อเรียบร้อย! 🎉 คลับเปิดเมื่อไหร่จะส่งลิงก์ไปให้นะ เจอกันข้างใน ✦")), () => { confetti(); doneDock(); });
+  }
+
+  function doneDock(again){
+    dock.innerHTML = "";
+    const d = el("div", "done");
+    d.appendChild(el("div", "big", again ? t("YOU'RE ALREADY IN ✦","ลงชื่อไว้แล้ว ✦") : t("THANK YOU ✦","ขอบคุณนะ ✦")));
+    const r = el("div", "row");
+    const home = el("a", "pxbtn", t("◀ HOME","◀ หน้าแรก")); home.href = "index.html";
+    const gd = el("a", "pxbtn ghost", t("FREE GUIDES","ไกด์ฟรี")); gd.href = "guides.html";
+    const re = el("button", "pxbtn ghost", t("RETAKE","ตอบใหม่")); re.type = "button"; re.onclick = () => start(true);
+    r.append(home, gd, re); d.appendChild(r); dock.appendChild(d);
+  }
+
+  /* ---------- start ---------- */
+  function start(fresh){
+    run++; feed.innerHTML = ""; dock.innerHTML = ""; answers = {}; step = 0;
+    let prev = null;
+    if (!fresh){ try { prev = JSON.parse(localStorage.getItem(KEY) || "null"); } catch(e){} }
+    if (prev){
+      step = QUESTIONS.length; progress();
+      botSay(esc(t("Welcome back! You're already on the waitlist ✦","ยินดีต้อนรับกลับมา! คุณลงชื่อไว้แล้วนะ ✦")), () => doneDock(true));
+      return;
+    }
+    progress();
+    botSay(esc(t("Hi! I'm Sali ✦ Welcome to the AI Club waitlist.","สวัสดี! สาลี่เองนะ ✦ ยินดีต้อนรับสู่ AI Club")), ask);
+  }
+
+  start();
+  // re-run in the new language (keeps it simple: restart this visit's chat)
+  document.addEventListener("langchange", () => start(step === 0 || step >= QUESTIONS.length ? false : true));
+})();
+</script>
+</body>
+</html>

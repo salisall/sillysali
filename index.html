@@ -437,7 +437,8 @@
 <script>
 /* ============================================================
    AI CLUB — paste your group invite link here (Discord, LINE
-   OpenChat, Telegram…). Leave empty to show "coming soon".
+   OpenChat, Telegram…). Leave empty to send people to the
+   waitlist survey (club.html).
    ============================================================ */
 const CLUB_URL = "";
 
@@ -520,12 +521,10 @@ const CLUB_URL = "";
   const join = document.getElementById("club-join");
   if (CLUB_URL){ join.href = CLUB_URL; }
   else {
-    join.removeAttribute("href"); join.removeAttribute("target");
-    join.classList.add("soon");
+    // club not open yet → send people to the waitlist survey
+    join.href = "club.html"; join.removeAttribute("target");
     const span = join.querySelector("span");
-    span.setAttribute("data-th", "เปิดเร็ว ๆ นี้ ✦"); span.textContent = "OPENING SOON ✦";
-    delete span.dataset.orig;
-    if (window.LANG === "th") span.textContent = "เปิดเร็ว ๆ นี้ ✦";
+    span.setAttribute("data-th", "ลงชื่อรอเข้าคลับ ✦"); span.textContent = "JOIN THE WAITLIST ✦";
   }
 })();
 </script>
