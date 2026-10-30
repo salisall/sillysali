@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
@@ -153,6 +153,66 @@
     .news{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 14px}
     .ncard{scroll-snap-align:start}
   }
+
+  /* ---------- AI club (pixel community) ---------- */
+  .px{font-family:"Press Start 2P",monospace}
+  .club{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+  .club h2 .px-title{display:block;font-family:"Press Start 2P",monospace;font-size:clamp(16px,2vw,20px);color:var(--accent);margin-bottom:14px;letter-spacing:.02em}
+  .club-copy p{color:var(--muted);margin-bottom:12px}
+  .chan{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+  .chan span{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+  .chan span b{color:var(--accent);font-weight:500}
+  .px-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Press Start 2P",monospace;font-size:11px;line-height:1.4;padding:14px 18px;background:var(--butter);color:var(--ink);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .1s steps(2),box-shadow .1s steps(2)}
+  .px-btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+  .px-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+  .px-btn.soon{background:var(--paper);cursor:default}
+  .px-btn.soon:hover{transform:none;box-shadow:5px 5px 0 var(--ink)}
+  .club-note{font-size:12px;color:var(--muted);margin-top:16px}
+
+  .pxwin{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto 1fr;image-rendering:pixelated}
+  .pxwin .tbar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P",monospace;font-size:10px}
+  .pxwin .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .pxwin .tbar .online{margin-left:auto;display:flex;align-items:center;gap:6px}
+  .pxwin .tbar .online i{width:8px;height:8px;background:#7CFC9A;animation:blink 1.2s steps(2) infinite}
+  @keyframes blink{50%{opacity:.25}}
+  .side{border-right:3px solid var(--ink);padding:12px 10px;display:flex;flex-direction:column;gap:6px;background:color-mix(in srgb,var(--accent-soft) 60%,var(--paper))}
+  .side .h{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--muted);margin:4px 0 4px}
+  .side span{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:4px 6px;color:var(--muted)}
+  .side span.on{background:var(--ink);color:var(--bg)}
+  .side .who{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink)}
+  .side .who svg{width:20px;height:20px}
+  .feed{height:380px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:16px 14px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .msg{display:flex;gap:10px;align-items:flex-end;animation:pop .35s steps(4) both}
+  .msg.me{flex-direction:row-reverse}
+  @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
+  .ava{flex:none;width:34px;height:34px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .bub{max-width:78%;background:var(--bg);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-size:14px;line-height:1.5}
+  .msg.me .bub{background:var(--butter)}
+  .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent);margin-bottom:5px}
+  .file{display:flex;align-items:center;gap:8px;margin-top:6px;padding:6px 8px;background:var(--paper);border:2px dashed var(--ink);font-family:"IBM Plex Mono",monospace;font-size:12px}
+  .file i{width:14px;height:16px;background:var(--accent);box-shadow:inset -4px 4px 0 var(--accent-soft)}
+  .typing .bub{display:flex;gap:5px;padding:12px 12px}
+  .typing .bub i{width:6px;height:6px;background:var(--ink);animation:dot 1s steps(2) infinite}
+  .typing .bub i:nth-child(2){animation-delay:.2s}.typing .bub i:nth-child(3){animation-delay:.4s}
+  @keyframes dot{50%{transform:translateY(-4px)}}
+  .compose{grid-column:2;display:flex;gap:8px;padding:10px 14px;border-top:3px solid var(--ink)}
+  .compose span{flex:1;font-size:13px;color:var(--muted);padding:7px 10px;border:2px solid var(--ink);background:var(--bg)}
+  .compose b{font-family:"Press Start 2P",monospace;font-size:9px;padding:8px 10px;background:var(--ink);color:var(--bg)}
+  .spark{position:absolute;width:10px;height:10px;background:var(--butter);border:2px solid var(--ink);animation:float 2.4s steps(6) infinite}
+  .spark.a{top:-14px;right:40px}.spark.b{bottom:30px;left:-16px;background:var(--pink);animation-delay:.8s}.spark.c{top:60px;right:-16px;background:var(--sage);animation-delay:1.4s}
+  @keyframes float{50%{transform:translateY(-8px) rotate(45deg)}}
+  .demo-tag{position:absolute;top:-30px;left:0;font-size:11.5px;color:var(--muted)}
+  @media (max-width:900px){
+    .club{grid-template-columns:1fr;gap:56px}
+    .pxwin{grid-template-columns:1fr}
+    .side{display:none}
+    .compose{grid-column:1}
+    .feed{height:340px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .msg,.spark,.pxwin .tbar .online i,.typing .bub i{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -163,6 +223,7 @@
       <a class="logo" href="#">sali<b>.</b></a>
       <ul class="tags">
         <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="#club" data-th="คอมมูนิตี้">AI Club</a></li>
         <li><a href="#about" data-th="เกี่ยวกับฉัน">About</a></li>
         <li><a href="#work" data-th="ผลงาน">Projects</a></li>
         <li><a href="#experience" data-th="ประสบการณ์">Experience</a></li>
@@ -257,6 +318,38 @@
     <p class="news-note" data-en="Summarised by Sali · links go to the original articles">สรุปและแปลโดย Sali · ลิงก์ไปยังต้นฉบับ</p>
   </section>
 
+  <section id="club">
+    <div class="club">
+      <div class="club-copy">
+        <span class="label hand" data-th="มาคุยกัน">come hang out</span>
+        <h2><span class="px-title">AI CLUB ✦</span><span data-th="ห้องเล็ก ๆ ไว้แชร์<br>เรื่อง AI ด้วยกัน">A small room to share<br>what we learn about AI.</span></h2>
+        <p data-th="คอมมูนิตี้เล็ก ๆ สำหรับคนที่ชอบลองของใหม่ แชร์วิธีสร้าง skill ส่ง tool ที่ใช้แล้วเวิร์ค ถามได้ทุกเรื่อง ไม่ต้องเป็นสายโค้ดก็เข้าได้">A cozy group for people who like trying new things: share how you build skills, pass around tools that actually work, and ask anything. No coding background needed.</p>
+        <div class="chan">
+          <span><b>#</b>skills</span>
+          <span><b>#</b>tools</span>
+          <span><b>#</b>prompts</span>
+          <span><b>#</b>showcase</span>
+        </div>
+        <a class="px-btn" id="club-join" href="#" target="_blank" rel="noopener">▶ <span data-th="เข้าร่วมคลับ">JOIN THE CLUB</span></a>
+        <p class="club-note" id="club-note" data-th="กลุ่มเล็ก เป็นกันเอง ภาษาไทย/อังกฤษ ✦">Small, friendly, Thai &amp; English ✦</p>
+      </div>
+
+      <div class="pxwin" aria-label="Example community chat">
+        <span class="demo-tag mono" data-th="ตัวอย่างบรรยากาศในกลุ่ม">example of what the chat looks like</span>
+        <i class="spark a"></i><i class="spark b"></i><i class="spark c"></i>
+        <div class="tbar"><span class="sq"></span>#skills<span class="online"><i></i><span id="club-online">5</span> online</span></div>
+        <div class="side">
+          <div class="h">CHANNELS</div>
+          <span># general</span><span class="on"># skills</span><span># tools</span><span># showcase</span>
+          <div class="h" style="margin-top:10px">ONLINE</div>
+          <div id="club-who"></div>
+        </div>
+        <div class="feed" id="club-feed"></div>
+        <div class="compose"><span data-th="พิมพ์ข้อความ…">type a message…</span><b>SEND</b></div>
+      </div>
+    </div>
+  </section>
+
   <section id="about">
     <span class="label hand">about me</span>
     <h2 data-th="จากสเปรดชีต<br>สู่ machine learning">From spreadsheets<br>to machine learning.</h2>
@@ -341,5 +434,100 @@
   </footer>
 </div>
 <script src="lang.js"></script>
+<script>
+/* ============================================================
+   AI CLUB — paste your group invite link here (Discord, LINE
+   OpenChat, Telegram…). Leave empty to show "coming soon".
+   ============================================================ */
+const CLUB_URL = "";
+
+(function(){
+  // 8x8 pixel sprites: a = body, b = ink, c = accent, d = blush
+  const SPRITES = {
+    sali:  {pal:{a:"#f4d3b5",b:"#1d1c1a",c:"#2f4bd6",d:"#f3a6a0"}, px:["..bbbb..",".bbbbbb.","bbaaaabb","babaabab","baaaaaab","bdaccadb",".aaaaaa.",".cc..cc."]},
+    bunny: {pal:{a:"#f3cfc4",b:"#1d1c1a",c:"#e58f86",d:"#ffffff"}, px:[".a....a.",".a....a.",".aa..aa.","aaaaaaaa","abaaaaba","aaacc aa".replace(" ","a"),".aaaaaa.","..a..a.."]},
+    bot:   {pal:{a:"#cfd8ff",b:"#1d1c1a",c:"#2f4bd6",d:"#ffffff"}, px:["...cc...","...b....",".aaaaaa.","abbaabba","abdaabda","aaaaaaaa","aaccccaa",".a....a."]},
+    cat:   {pal:{a:"#f6e7a8",b:"#1d1c1a",c:"#e58f86",d:"#ffffff"}, px:["a......a","aa....aa","aaaaaaaa","abaaaaba","aaaccaaa","aaaaaaaa",".aaaaaa.","a......a"]},
+    frog:  {pal:{a:"#a9c99a",b:"#1d1c1a",c:"#e58f86",d:"#ffffff"}, px:[".aa..aa.","adbaadba","aaaaaaaa","aaaaaaaa","abbbbbba","aaaaaaaa",".aaaaaa.","a.a..a.a"]}
+  };
+  function sprite(k){
+    const s = SPRITES[k]; let r = "";
+    s.px.forEach((row,y)=>[...row].forEach((ch,x)=>{ if (s.pal[ch]) r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${s.pal[ch]}"/>`; }));
+    return `<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+  }
+  const NAMES = {sali:"sali", bunny:"mochi", bot:"b0t_ken", cat:"nom", frog:"kero"};
+
+  // example conversation (illustrative only)
+  const SCRIPT = () => [
+    {w:"bunny", m:t("Has anyone built their own Claude Skill yet? 👀","มีใครเคยสร้าง Claude Skill ไว้ใช้เองบ้าง? 👀")},
+    {w:"bot",   m:t("Yep! Mine turns meeting notes into a to-do list","มี! ของเราเอาโน้ตประชุมมาแปลงเป็น to-do list"), file:"meeting-todo.skill"},
+    {w:"cat",   m:t("Ooh can I copy that? 🙏","ขอก๊อปไปลองด้วยได้มั้ย 🙏")},
+    {w:"bot",   m:t("Go for it, it's in #skills","ได้เลย อยู่ใน #skills นะ")},
+    {w:"frog",  m:t("Tool tip: Gamma for slides is 🔥","แชร์ tool: ทำสไลด์ใช้ Gamma ดีมาก 🔥")},
+    {w:"sali",  m:t("Love this! Got a tool that works? Drop it in #tools ✦","ชอบมาก! ใครมี tool เด็ด ๆ โยนเข้า #tools ได้เลย ✦"), me:true}
+  ];
+
+  const feed = document.getElementById("club-feed");
+  const who = document.getElementById("club-who");
+  const el = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+  const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  who.innerHTML = Object.keys(SPRITES).map(k => `<div class="who">${sprite(k)}${NAMES[k]}</div>`).join("");
+
+  function bubble(x){
+    const row = el("div", "msg" + (x.me ? " me" : ""));
+    row.appendChild(el("div", "ava", sprite(x.w)));
+    const b = el("div", "bub", `<span class="nm">${NAMES[x.w]}</span>${esc(x.m)}`);
+    if (x.file) b.appendChild(el("div", "file", `<i></i>${esc(x.file)}`));
+    row.appendChild(b);
+    return row;
+  }
+  function typing(w){
+    const row = el("div", "msg typing");
+    row.append(el("div", "ava", sprite(w)), el("div", "bub", "<i></i><i></i><i></i>"));
+    return row;
+  }
+  function trim(){ while (feed.children.length > 6) feed.firstChild.remove(); }
+
+  let timer, run = 0;
+  const still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function play(){
+    const id = ++run; clearTimeout(timer); feed.innerHTML = "";
+    const msgs = SCRIPT();
+    if (still){ msgs.forEach(x => feed.appendChild(bubble(x))); trim(); return; }
+    let i = 0;
+    (function next(){
+      if (id !== run) return;
+      if (i >= msgs.length){ timer = setTimeout(play, 5000); return; }
+      const x = msgs[i++], tp = typing(x.w);
+      feed.appendChild(tp); trim();
+      timer = setTimeout(() => {
+        if (id !== run) return;
+        tp.replaceWith(bubble(x)); trim();
+        timer = setTimeout(next, 1100);
+      }, 900 + Math.min(x.m.length * 18, 900));
+    })();
+  }
+
+  // start when the chat scrolls into view
+  if ("IntersectionObserver" in window){
+    let started = false;
+    new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !started){ started = true; play(); o.disconnect(); } }, {threshold:.3}).observe(feed);
+  } else play();
+  document.addEventListener("langchange", () => { if (feed.children.length) play(); });
+
+  // join button
+  const join = document.getElementById("club-join");
+  if (CLUB_URL){ join.href = CLUB_URL; }
+  else {
+    join.removeAttribute("href"); join.removeAttribute("target");
+    join.classList.add("soon");
+    const span = join.querySelector("span");
+    span.setAttribute("data-th", "เปิดเร็ว ๆ นี้ ✦"); span.textContent = "OPENING SOON ✦";
+    delete span.dataset.orig;
+    if (window.LANG === "th") span.textContent = "เปิดเร็ว ๆ นี้ ✦";
+  }
+})();
+</script>
 </body>
 </html>
