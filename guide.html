@@ -151,13 +151,13 @@
     <nav>
       <a class="logo" href="index.html">sali<b>.</b></a>
       <ul class="tags">
-        <li class="keep"><a class="hot" href="guides.html">Free guides ✦</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#work">Projects</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener">Content</a></li>
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#about" data-th="เกี่ยวกับฉัน">About</a></li>
+        <li><a href="index.html#work" data-th="ผลงาน">Projects</a></li>
+        <li><a href="index.html#experience" data-th="ประสบการณ์">Experience</a></li>
+        <li><a href="https://instagram.com/silly._.sali" target="_blank" rel="noopener" data-th="คอนเทนต์">Content</a></li>
       </ul>
-      <a class="pill" href="index.html#contact">Say hi ↗</a>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
     </nav>
   </div>
 </div>
@@ -166,11 +166,12 @@
   <main class="narrow" id="app"></main>
   <footer>
     <span>© 2026 Sali</span>
-    <span>Made in Melbourne ✦</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
   </footer>
 </div>
 <div class="toast" id="toast">Copied ✓</div>
 
+<script src="lang.js"></script>
 <script src="guides.js"></script>
 <script>
 (function(){
@@ -181,7 +182,7 @@
   const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
   const toast = document.getElementById("toast"); let tt;
   function copy(text, label){
-    const done = () => { toast.textContent = (label || "Copied") + " ✓"; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove("on"), 1400); };
+    const done = () => { toast.textContent = (label || t("Copied", "ก๊อปแล้ว")) + " ✓"; toast.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove("on"), 1400); };
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, () => fallback(text, done));
     else fallback(text, done);
   }
@@ -193,14 +194,22 @@
   function missing(){
     app.innerHTML = "";
     const m = el("div", "missing");
-    m.appendChild(el("b", "", "Guide not found"));
-    const a = el("a", "", "← กลับไปดูไกด์ทั้งหมด"); a.href = "guides.html"; a.style.color = "var(--accent)";
+    m.appendChild(el("b", "", t("Guide not found", "ไม่พบไกด์นี้")));
+    const a = el("a", "", t("← Back to all guides", "← กลับไปดูไกด์ทั้งหมด")); a.href = "guides.html"; a.style.color = "var(--accent)";
     m.appendChild(a); app.appendChild(m);
   }
 
   if (!/^[a-z0-9-]+$/.test(slug)) return missing();
 
-  fetch("guides/" + slug + ".json").then(r => { if (!r.ok) throw 0; return r.json(); }).then(render).catch(missing);
+  // EN mode tries guides/<slug>.en.json first, then falls back to the Thai original
+  const get = f => fetch("guides/" + f + ".json").then(r => { if (!r.ok) throw 0; return r.json(); });
+  function load(){
+    const en = window.LANG === "en";
+    (en ? get(slug + ".en").then(d => (d._en = true, d)).catch(() => get(slug)) : get(slug))
+      .then(render).catch(missing);
+  }
+  load();
+  document.addEventListener("langchange", load);
 
   function section(s){
     const sec = el("section");
@@ -240,7 +249,7 @@
       const box = el("div", "prompts");
       s.items.forEach(([t, code]) => {
         const c = el("div", "code"); const h = el("header");
-        const b = el("button", "copy", "Copy"); b.type = "button"; b.onclick = () => copy(code, "Prompt copied");
+        const b = el("button", "copy", t("Copy", "ก๊อป")); b.type = "button"; b.onclick = () => copy(code, t("Prompt copied", "ก๊อป prompt แล้ว"));
         h.append(el("span", "", t), b);
         c.append(h, el("pre", "", code)); box.appendChild(c);
       });
@@ -250,8 +259,8 @@
       const total = s.groups.reduce((n, g) => n + g.items.length, 0);
       const finder = el("label", "finder");
       finder.appendChild(el("span", "", "🔍"));
-      const inp = el("input"); inp.type = "search"; inp.placeholder = "ค้นหาคำสั่ง เช่น flash, สรุป, excel…";
-      const cnt = el("small", "", total + " commands");
+      const inp = el("input"); inp.type = "search"; inp.placeholder = t("Search commands, e.g. flash, summary, excel…", "ค้นหาคำสั่ง เช่น flash, สรุป, excel…");
+      const cnt = el("small", "", total + t(" commands", " คำสั่ง"));
       finder.append(inp, cnt);
       const wrap = el("div", "groups");
       const rows = [];
@@ -260,45 +269,46 @@
         const h = el("h3"); h.append(el("i"), el("i"), el("i"), document.createTextNode(gp.name)); box.appendChild(h);
         gp.items.forEach(([cmd, desc, ex]) => {
           const r = el("div", "row");
-          const b = el("button", "cmd", cmd); b.type = "button"; b.title = "Copy " + cmd; b.onclick = () => copy(cmd);
+          const b = el("button", "cmd", cmd); b.type = "button"; b.title = t("Copy ", "ก๊อป ") + cmd; b.onclick = () => copy(cmd);
           r.append(b, el("span", "desc", desc));
-          if (ex){ const e = el("button", "ex", ex); e.type = "button"; e.title = "Copy example"; e.onclick = () => copy(ex, "Example copied"); r.appendChild(e); }
+          if (ex){ const e = el("button", "ex", ex); e.type = "button"; e.title = t("Copy example", "ก๊อปตัวอย่าง"); e.onclick = () => copy(ex, t("Example copied", "ก๊อปตัวอย่างแล้ว")); r.appendChild(e); }
           r.dataset.q = (cmd + " " + desc + " " + (ex || "")).toLowerCase();
           box.appendChild(r); rows.push({ r, box });
         });
         wrap.appendChild(box);
       });
-      const none = el("p", "none", "ไม่เจอคำสั่งนี้ ลองคำอื่นดูนะ");
+      const none = el("p", "none", t("No matching command — try another word.", "ไม่เจอคำสั่งนี้ ลองคำอื่นดูนะ"));
       inp.addEventListener("input", () => {
         const q = inp.value.trim().toLowerCase(); let shown = 0; const vis = new Map();
         rows.forEach(({ r, box }) => { const ok = !q || r.dataset.q.includes(q); r.classList.toggle("hide", !ok); if (ok){ shown++; vis.set(box, true); } });
         wrap.querySelectorAll(".group").forEach(b => b.classList.toggle("hide", !vis.get(b)));
-        cnt.textContent = q ? shown + " / " + total : total + " commands";
+        cnt.textContent = q ? shown + " / " + total : total + t(" commands", " คำสั่ง");
         none.style.display = shown ? "none" : "block";
       });
       sec.append(finder, wrap, none);
-      sec.appendChild(el("p", "intro", "แตะที่คำสั่งเพื่อก๊อป · แตะตัวอย่างเพื่อก๊อปทั้งประโยค")).style.marginTop = "14px";
+      sec.appendChild(el("p", "intro", t("Tap a command to copy it · tap an example to copy the whole line", "แตะที่คำสั่งเพื่อก๊อป · แตะตัวอย่างเพื่อก๊อปทั้งประโยค"))).style.marginTop = "14px";
     }
   };
 
   function render(d){
-    document.title = d.title + " — Free Guide by Sali";
+    document.title = d.title + t(" — Free Guide by Sali", " — ไกด์ฟรีโดย Sali");
     app.innerHTML = "";
-    const back = el("a", "back", "← Free guides"); back.href = "guides.html"; app.appendChild(back);
+    const back = el("a", "back", t("← Free guides", "← ไกด์ฟรี")); back.href = "guides.html"; app.appendChild(back);
 
     const m = el("div", "meta");
     if (meta.topic) m.appendChild(el("span", "", meta.topic));
     if (meta.tool) m.appendChild(el("span", "tl", meta.tool));
-    if (meta.count) m.appendChild(el("span", "", meta.count));
+    if (meta.count) m.appendChild(el("span", "", t(meta.countEn || meta.count, meta.count)));
     if (m.children.length) app.appendChild(m);
 
     app.appendChild(el("h1", "", d.title));
     if (d.subtitle) app.appendChild(el("p", "sub", d.subtitle));
+    if (window.LANG === "en" && !d._en) app.appendChild(el("div", "callout hi", "🇹🇭 This guide is written in Thai — prompts and commands work the same in any language."));
     if (d.greeting) app.appendChild(el("div", "callout hi", d.greeting));
     if (d.download){
       const c = el("div", "callout dl");
-      c.appendChild(el("span", "", "📥 อยากได้ไฟล์ไว้ปริ้นหรือเซฟเก็บ?"));
-      const a = el("a", "dlbtn", d.downloadLabel || "ดาวน์โหลดชีต PDF ↗"); a.href = d.download; a.target = "_blank"; a.rel = "noopener";
+      c.appendChild(el("span", "", t("📥 Want a copy to print or save?", "📥 อยากได้ไฟล์ไว้ปริ้นหรือเซฟเก็บ?")));
+      const a = el("a", "dlbtn", d.downloadLabel || t("Download the PDF sheet ↗", "ดาวน์โหลดชีต PDF ↗")); a.href = d.download; a.target = "_blank"; a.rel = "noopener";
       c.appendChild(a); app.appendChild(c);
     }
 
@@ -310,8 +320,8 @@
     });
 
     const end = el("div", "end");
-    end.appendChild(el("p", "", "ลองแล้วเป็นยังไง แท็กมาให้ดูได้เลย ✦"));
-    const a1 = el("a", "", "ดูไกด์อื่น ๆ"); a1.href = "guides.html";
+    end.appendChild(el("p", "", t("Tried it? Tag me so I can see ✦", "ลองแล้วเป็นยังไง แท็กมาให้ดูได้เลย ✦")));
+    const a1 = el("a", "", t("More guides", "ดูไกด์อื่น ๆ")); a1.href = "guides.html";
     const a2 = el("a", "", "@silly._.sali ↗"); a2.href = "https://instagram.com/silly._.sali"; a2.target = "_blank"; a2.rel = "noopener";
     end.append(a1, a2); app.appendChild(end);
   }
