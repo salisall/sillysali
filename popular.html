@@ -162,12 +162,14 @@
   /* answers = sage green */
   .has{display:flex;flex-direction:column;gap:10px;padding:16px;background:color-mix(in srgb,var(--sage) 45%,var(--paper));max-height:520px;overflow-y:auto}
   .has .lbl{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--muted);margin-bottom:2px}
-  .ha{display:flex;gap:10px;align-items:flex-end}
-  .ha .bub{max-width:86%;background:var(--sage);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;color:#1d1c1a}
+  .ha{display:flex;flex-direction:row-reverse;gap:10px;align-items:flex-end;margin-left:auto;max-width:88%}
+  .ha .bub{text-align:left}
+  .has .lbl{text-align:right}
+  .ha .bub{max-width:100%;background:var(--sage);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;color:#1d1c1a}
   .ha .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:#2f4bd6;margin-bottom:4px}
   .ha .bub .when{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#55604e;margin-left:6px}
   .ha.pending .bub{border-style:dashed;opacity:.8}
-  .ha .num{flex:none;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--muted);width:22px;text-align:right;padding-bottom:6px}
+  .ha .num{flex:none;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--muted);width:22px;text-align:left;padding-bottom:6px}
   .hotq .reply{grid-template-columns:150px 1fr auto;padding:14px 16px;border-top:3px solid var(--ink);margin:0;background:var(--paper)}
   .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:-8px 0 30px;font-size:13px;color:var(--muted)}
   .legend span{display:flex;align-items:center;gap:6px}

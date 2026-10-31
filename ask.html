@@ -111,12 +111,12 @@
   .toggle .arr{margin-left:auto;font-family:"Press Start 2P",monospace;font-size:8px}
   .answers{display:none;border-top:3px solid var(--ink);background:color-mix(in srgb,var(--accent-soft) 45%,var(--paper));padding:14px 16px;gap:10px;flex-direction:column}
   .thread.open .answers{display:flex}
-  .a{display:flex;gap:10px;align-items:flex-end;animation:pop .3s steps(4) both}
-  .a .bub{max-width:84%;background:var(--bg);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+  .a{display:flex;flex-direction:row-reverse;gap:10px;align-items:flex-end;margin-left:auto;max-width:88%;animation:pop .3s steps(4) both}
+  .a .bub{max-width:100%;background:var(--sage);color:#1d1c1a;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
   .a .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent);margin-bottom:4px}
   .a .bub .when{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-left:6px}
   .a.pending .bub{border-style:dashed}
-  .noans{font-size:13.5px;color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .noans{text-align:right;font-size:13.5px;color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
   .reply{display:grid;grid-template-columns:150px 1fr auto;gap:8px;margin-top:6px}
   .reply .inp{font-size:14px;padding:8px 10px}
 
