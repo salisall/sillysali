@@ -99,9 +99,6 @@
   .q .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:4px}
   .q .meta .nm{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent)}
   .q .meta .tg{font-family:"IBM Plex Mono",monospace;padding:0 6px;border:1.5px solid var(--ink);color:var(--ink);background:var(--bg)}
-  .q .meta .hotb{font-family:"Press Start 2P",monospace;font-size:8px;padding:3px 6px;background:#ff7a59;color:#fff;border:1.5px solid var(--ink)}
-  .hotlink{display:inline-block;margin-top:18px;font-family:"Press Start 2P",monospace;font-size:10px;padding:10px 14px;background:var(--paper);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
-  .hotlink:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
   .q .meta .sending{font-family:"IBM Plex Mono",monospace;background:var(--butter);padding:0 6px;border:1.5px solid var(--ink);color:var(--ink)}
   .q .txt{font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
   .toggle{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:9px 16px;border:none;border-top:2px dashed var(--line);background:none;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted)}
@@ -152,7 +149,6 @@
       <ul class="tags">
         <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
         <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
-        <li><a href="popular.html" data-th="🔥 ยอดฮิต">🔥 Hot</a></li>
         <li><a href="club.html" data-th="ลงชื่อรอ">Waitlist</a></li>
         <li><a href="index.html#about" data-th="เกี่ยวกับฉัน">About</a></li>
       </ul>
@@ -167,7 +163,6 @@
       <span class="eyebrow hand" data-th="สงสัยอะไร ถามได้เลย ✦">no question is too small ✦</span>
       <h1><span>ASK BOARD</span></h1>
       <p data-th="ติดตรงไหนเรื่อง AI ทิ้งคำถามไว้ตรงนี้ ใครรู้หรืออยากคุยด้วยก็แวะมาตอบได้ ✦">Stuck on something AI? Leave your question here, and anyone who knows (or just wants to chat) can drop by and answer ✦</p>
-      <br><a class="hotlink" href="popular.html" data-th="🔥 ดูคำถามยอดฮิต ▶">🔥 HOT QUESTIONS ▶</a>
     </header>
 
     <!-- new question -->
@@ -217,7 +212,6 @@
    ============================================================ */
 const BOARD_URL = "https://script.google.com/macros/s/AKfycbw3eMKnOPpJYgNGr5FK8d8RTyAA5Xy5UfvvH0V0VOZsAVmbN2wq4ozJs67GU6DUx40/exec";
 const TAGS = ["general", "skills", "tools", "prompts"];
-const HOT_MORE_THAN = 10;   // questions with MORE than this many answers go to popular.html
 
 (function(){
   /* ---------- pixel avatars ---------- */
@@ -341,7 +335,6 @@ const HOT_MORE_THAN = 10;   // questions with MORE than this many answers go to 
     const body = el("div", "body");
     const meta = el("div", "meta");
     meta.append(el("span", "nm", q.name || anonName()), el("span", "tg", "#" + (q.tag || "general")));
-    if (!isPending && q.answers.length > HOT_MORE_THAN){ const h = el("a", "hotb", t("🔥 HOT", "🔥 ยอดฮิต")); h.href = "popular.html#q-" + q.id; meta.appendChild(h); }
     meta.appendChild(isPending ? el("span", "sending", t("sending…", "กำลังส่ง…")) : el("span", "", ago(q.time)));
     body.append(meta, el("div", "txt", q.text));
     top.append(av, body); card.appendChild(top);
