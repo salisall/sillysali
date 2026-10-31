@@ -155,14 +155,15 @@
   }
 
   /* ---------- AI club (pixel community) ---------- */
-  .px{font-family:"Press Start 2P",monospace}
+  .px{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace}
   .club{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-  .club h2 .px-title{display:block;font-family:"Press Start 2P",monospace;font-size:clamp(16px,2vw,20px);color:var(--accent);margin-bottom:14px;letter-spacing:.02em}
+  .club h2 .px-title{display:block;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:clamp(16px,2vw,20px);color:var(--accent);margin-bottom:14px;letter-spacing:.02em}
   .club-copy p{color:var(--muted);margin-bottom:12px}
   .chan{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
-  .chan span{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
-  .chan span b{color:var(--accent);font-weight:500}
-  .px-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Press Start 2P",monospace;font-size:11px;line-height:1.4;padding:14px 18px;background:var(--butter);color:var(--ink);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .1s steps(2),box-shadow .1s steps(2)}
+  .chan a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+  .chan span,.chan a{transition:transform .08s steps(2),box-shadow .08s steps(2);font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+  .chan span b,.chan a b{color:var(--accent);font-weight:500}
+  .px-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:11px;line-height:1.4;padding:14px 18px;background:var(--butter);color:var(--ink);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .1s steps(2),box-shadow .1s steps(2)}
   .px-btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
   .px-btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
   .px-btn.soon{background:var(--paper);cursor:default}
@@ -172,13 +173,13 @@
   .px-btn.ask{background:var(--pink)}
 
   .pxwin{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto 1fr;image-rendering:pixelated}
-  .pxwin .tbar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P",monospace;font-size:10px}
+  .pxwin .tbar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px}
   .pxwin .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
   .pxwin .tbar .online{margin-left:auto;display:flex;align-items:center;gap:6px}
   .pxwin .tbar .online i{width:8px;height:8px;background:#7CFC9A;animation:blink 1.2s steps(2) infinite}
   @keyframes blink{50%{opacity:.25}}
   .side{border-right:3px solid var(--ink);padding:12px 10px;display:flex;flex-direction:column;gap:6px;background:color-mix(in srgb,var(--accent-soft) 60%,var(--paper))}
-  .side .h{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--muted);margin:4px 0 4px}
+  .side .h{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8px;color:var(--muted);margin:4px 0 4px}
   .side span{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:4px 6px;color:var(--muted)}
   .side span.on{background:var(--ink);color:var(--bg)}
   .side .who{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink)}
@@ -191,7 +192,7 @@
   .ava svg{width:100%;height:100%;display:block}
   .bub{max-width:78%;background:var(--bg);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-size:14px;line-height:1.5}
   .msg.me .bub{background:var(--butter)}
-  .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent);margin-bottom:5px}
+  .bub .nm{display:block;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8px;color:var(--accent);margin-bottom:5px}
   .file{display:flex;align-items:center;gap:8px;margin-top:6px;padding:6px 8px;background:var(--paper);border:2px dashed var(--ink);font-family:"IBM Plex Mono",monospace;font-size:12px}
   .file i{width:14px;height:16px;background:var(--accent);box-shadow:inset -4px 4px 0 var(--accent-soft)}
   .typing .bub{display:flex;gap:5px;padding:12px 12px}
@@ -200,7 +201,7 @@
   @keyframes dot{50%{transform:translateY(-4px)}}
   .compose{grid-column:2;display:flex;gap:8px;padding:10px 14px;border-top:3px solid var(--ink)}
   .compose span{flex:1;font-size:13px;color:var(--muted);padding:7px 10px;border:2px solid var(--ink);background:var(--bg)}
-  .compose b{font-family:"Press Start 2P",monospace;font-size:9px;padding:8px 10px;background:var(--ink);color:var(--bg)}
+  .compose b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px;padding:8px 10px;background:var(--ink);color:var(--bg)}
   .spark{position:absolute;width:10px;height:10px;background:var(--butter);border:2px solid var(--ink);animation:float 2.4s steps(6) infinite}
   .spark.a{top:-14px;right:40px}.spark.b{bottom:30px;left:-16px;background:var(--pink);animation-delay:.8s}.spark.c{top:60px;right:-16px;background:var(--sage);animation-delay:1.4s}
   @keyframes float{50%{transform:translateY(-8px) rotate(45deg)}}
@@ -244,10 +245,10 @@
         <h2><span class="px-title">AI CLUB ✦</span><span data-th="ห้องเล็ก ๆ ไว้แชร์<br>เรื่อง AI ด้วยกัน">A small room to share<br>what we learn about AI.</span></h2>
         <p data-th="คอมมูนิตี้เล็ก ๆ สำหรับคนที่ชอบลองของใหม่ แชร์วิธีสร้าง skill ส่ง tool ที่ใช้แล้วเวิร์ค ถามได้ทุกเรื่อง ไม่ต้องเป็นสายโค้ดก็เข้าได้">A cozy group for people who like trying new things: share how you build skills, pass around tools that actually work, and ask anything. No coding background needed.</p>
         <div class="chan">
-          <span><b>#</b>skills</span>
-          <span><b>#</b>tools</span>
-          <span><b>#</b>prompts</span>
-          <span><b>#</b>showcase</span>
+          <a href="skills.html"><b>#</b>skills</a>
+          <a href="tools.html"><b>#</b>tools</a>
+          <a href="plugins.html"><b>#</b>plugins</a>
+          <a href="showcase.html"><b>#</b>showcase</a>
         </div>
         <div class="club-cta">
           <a class="px-btn" id="club-join" href="#" target="_blank" rel="noopener">▶ <span data-th="เข้าร่วมคลับ">JOIN THE CLUB</span></a>
@@ -262,7 +263,7 @@
         <div class="tbar"><span class="sq"></span>#skills<span class="online"><i></i><span id="club-online">5</span> online</span></div>
         <div class="side">
           <div class="h">CHANNELS</div>
-          <span># general</span><span class="on"># skills</span><span># tools</span><span># showcase</span>
+          <span># general</span><span class="on"># skills</span><span># tools</span><span># plugins</span><span># showcase</span>
           <div class="h" style="margin-top:10px">ONLINE</div>
           <div id="club-who"></div>
         </div>

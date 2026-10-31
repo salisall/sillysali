@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Plugins — Sali's AI Club</title>
+<meta name="description" content="Useful plugins and connectors that link AI to the apps you already use.">
+<meta property="og:title" content="AI Plugins ✦ — Sali's AI Club">
+<meta property="og:description" content="Useful plugins and connectors that link AI to the apps you already use.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:760px;margin:0 auto}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* top bar (same as home) */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .head{text-align:center;padding:52px 0 32px}
+  .head .eyebrow{font-size:30px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  .head h1{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:clamp(24px,5vw,40px);line-height:1.3;margin:12px 0 18px}
+  .head h1 span{background:var(--pink);padding:0 8px;box-shadow:4px 4px 0 var(--ink);border:3px solid var(--ink);display:inline-block}
+  .head p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto}
+
+  /* shared pixel bits */
+  .pxbox{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .tbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px}
+  .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .tbar .r{margin-left:auto}
+  .pxbtn{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;line-height:1.4;padding:11px 14px;background:var(--ink);color:var(--bg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .08s steps(2),box-shadow .08s steps(2);white-space:nowrap}
+  .pxbtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--accent)}
+  .pxbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--accent)}
+  .pxbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .pxbtn.ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .inp{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);outline:none;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .inp:focus{border-color:var(--accent);background:var(--paper)}
+  textarea.inp{resize:vertical;min-height:92px;line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .08s steps(2)}
+  .chip b{color:var(--accent);font-weight:500}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .chip[aria-pressed="true"] b{color:var(--butter)}
+  .ava{flex:none;width:34px;height:34px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+
+  .rules{font-size:12.5px;color:var(--muted);text-align:center;margin:10px 0 60px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;padding:12px 16px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .25s steps(4),visibility .25s;z-index:50;visibility:hidden}
+  .toast.on{transform:translate(-50%,0);visibility:visible}
+
+  @media (max-width:900px){ .tags li:not(.keep){display:none} }
+  @media (max-width:560px){
+    .reply{grid-template-columns:1fr auto}
+    .reply .nmi{grid-column:1/-1}
+    .compose .who .inp{max-width:none}
+    .pxbox{box-shadow:5px 5px 0 var(--ink)}
+  }
+  @media (prefers-reduced-motion:reduce){ .thread,.a,.compose .spark,.dots i{animation:none} }
+
+  :root{--c:#e7d3ff}
+
+  .head h1 span{background:var(--c)}
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 40px}
+  .tabs a{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:7px 14px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .08s steps(2)}
+  .tabs a b{color:var(--accent);font-weight:500}
+  .tabs a:hover{transform:translate(-1px,-1px)}
+  .tabs a[aria-current]{background:var(--ink);color:var(--bg)}
+  .tabs a[aria-current] b{color:var(--butter)}
+  .updated{display:block;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin:-26px 0 34px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:50px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{display:flex;flex-direction:column;background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);animation:pop .3s steps(4) both}
+  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .card .top{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:3px solid var(--ink);background:var(--c)}
+  .card .top .ic{width:30px;height:30px;display:grid;place-items:center;background:var(--paper);border:2px solid var(--ink);font-size:16px}
+  .card .top .no{margin-left:auto;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px}
+  .card .in{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .card h3{font-size:18px;font-weight:600;line-height:1.35}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .try{margin-top:auto;padding:10px 12px;background:var(--butter);border:2px dashed var(--ink);font-size:14px;line-height:1.55;color:var(--ink)}
+  .try b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px;display:block;margin-bottom:5px}
+  .good{display:flex;flex-wrap:wrap;gap:6px}
+  .good span{font-size:12px;padding:1px 8px;border:1.5px solid var(--ink);background:var(--bg);font-family:"IBM Plex Mono",monospace}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .links a{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8.5px;line-height:1.4;padding:8px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:2px 2px 0 var(--ink)}
+  .links a.g{background:var(--accent);color:#fff}
+  .links a:hover{transform:translate(-1px,-1px)}
+
+  .cat{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .cat h2{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:13px;line-height:1.5}
+  .cat i{flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 10px)}
+  .cat p{font-size:13.5px;color:var(--muted)}
+
+  .note{max-width:640px;margin:0 auto 26px;padding:12px 16px;border:2px dashed var(--line);font-size:13.5px;color:var(--muted);text-align:center;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:20px;margin:10px 0 70px;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .cta b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:12px;display:block;margin-bottom:8px;line-height:1.5}
+  .cta p{color:var(--muted);font-size:14.5px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta .btns{display:flex;gap:10px;flex-wrap:wrap}
+  @media (max-width:900px){ .grid.three{grid-template-columns:1fr 1fr} }
+  @media (max-width:640px){ .grid,.grid.three{grid-template-columns:1fr} .cta{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ .card{animation:none} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
+        <li><a href="ask.html" data-th="ถามคลับ">Ask board</a></li>
+        <li><a href="club.html" data-th="ลงชื่อรอ">Waitlist</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="head">
+    <span class="eyebrow hand" data-th="เสียบ AI เข้ากับแอปที่ใช้ ✦">plug AI into your apps ✦</span>
+    <h1><span>#PLUGINS</span></h1>
+    <p data-th="ปลั๊กอินและ connector ที่มีประโยชน์ ให้ AI ทำงานใน Drive, Notion, Canva, อีเมล และอื่น ๆ ได้">Useful plugins and connectors that let AI work inside Drive, Notion, Canva, your inbox and more.</p>
+  </header>
+  <nav class="tabs" aria-label="AI Club channels"><a href="skills.html"><b>#</b>skills</a><a href="tools.html"><b>#</b>tools</a><a href="plugins.html" aria-current="page"><b>#</b>plugins</a><a href="showcase.html"><b>#</b>showcase</a></nav>
+  <span class="updated" data-th="อัปเดต ต.ค. 2026 · โลก AI เปลี่ยนเร็ว บางอย่างอาจเปลี่ยนไปแล้ว">Updated Oct 2026 · AI moves fast, things may have changed</span>
+
+<p class="note" data-th="ปลั๊กอินและ connector คือตัวเชื่อม AI เข้ากับแอปที่เราใช้อยู่ ให้มันอ่านไฟล์และทำงานจริงให้ได้ เปิดใช้ได้ในหน้าตั้งค่าของแอป AI">Plugins and connectors plug AI into the apps you already use, so it can read your files and do real work. Turn them on in your AI app&#x27;s settings.</p>
+<section class="grid">
+<article class="card">
+<div class="top"><span class="ic">🗂</span><span class="no">01</span></div>
+<div class="in">
+<h3 data-th="Google Drive connector">Google Drive connector</h3>
+<p data-th="ให้ AI อ่าน Docs, Sheets และ PDF ใน Drive ได้เลย ไม่ต้องก๊อปมาแปะ">Let your AI read your Docs, Sheets and PDFs directly instead of copy-pasting.</p>
+<div class="good"><span>Claude</span><span>ChatGPT</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="ลองถาม: &quot;หารายงานล่าสุดใน Drive แล้วสรุปตัวเลขหลัก 3 ตัว&quot;">Ask: &quot;Find my latest report in Drive and summarise the 3 main numbers.&quot;</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">📓</span><span class="no">02</span></div>
+<div class="in">
+<h3 data-th="Notion connector">Notion connector</h3>
+<p data-th="ค้นโน้ต อัปเดตหน้า และเปลี่ยนสิ่งที่คุยให้เป็นเอกสารหรือ task list ใน Notion">Search your notes, update pages and turn chats into tidy docs or task lists.</p>
+<div class="good"><span>Claude</span><span>ChatGPT</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="ลองถาม: &quot;เปลี่ยนแชตนี้เป็นหน้า Notion พร้อม checklist&quot;">Ask: &quot;Turn this chat into a Notion page with a checklist.&quot;</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">🎨</span><span class="no">03</span></div>
+<div class="in">
+<h3 data-th="Canva connector">Canva connector</h3>
+<p data-th="สร้างและแก้ดีไซน์ใน Canva จากในแชต เช่น โพสต์โซเชียล หรือสไลด์ตามแบรนด์">Create and edit Canva designs from a chat, like social posts or slides in your brand.</p>
+<div class="good"><span>Claude</span><span>ChatGPT</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="ลองถาม: &quot;ทำดีไซน์โพสต์ IG 3 แบบใน Canva จากแคปชันนี้&quot;">Ask: &quot;Make 3 IG post designs in Canva for this caption.&quot;</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">🖌</span><span class="no">04</span></div>
+<div class="in">
+<h3 data-th="Figma connector">Figma connector</h3>
+<p data-th="อ่านดีไซน์แล้วแปลงเป็นโค้ด หรือส่งไอเดียกลับเข้า Figma">Read designs to turn them into code, or push ideas back into Figma.</p>
+<div class="good"><span>Claude</span><span>Cursor</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="แปะลิงก์ Figma แล้วถามว่า: &quot;สร้างหน้านี้เป็น HTML ให้หน่อย&quot;">Paste a Figma link and ask: &quot;Build this screen as an HTML page.&quot;</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">📅</span><span class="no">05</span></div>
+<div class="in">
+<h3 data-th="Gmail &amp; Calendar">Gmail &amp; Calendar</h3>
+<p data-th="หาอีเมล ร่างคำตอบ และเช็กตารางนัดได้ โดยไม่ต้องสลับแอป">Find emails, draft replies and check your schedule without switching apps.</p>
+<div class="good"><span>Claude</span><span>Gemini</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="ลองถาม: &quot;สัปดาห์นี้มีนัดอะไรบ้าง และอีเมลไหนที่ต้องตอบ?&quot;">Ask: &quot;What&#x27;s on my calendar this week, and which emails need a reply?&quot;</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">🌐</span><span class="no">06</span></div>
+<div class="in">
+<h3 data-th="ส่วนขยาย AI ในเบราว์เซอร์">AI browser extensions</h3>
+<p data-th="ส่วนขยายอย่าง Claude in Chrome อ่านหน้าเว็บที่เปิดอยู่ และช่วยกดทำงานบนเว็บให้ได้">Extensions like Claude in Chrome can read the page you&#x27;re on and click through tasks for you.</p>
+<div class="good"><span>Chrome</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="ลองกับงานน่าเบื่อ เช่น เทียบสินค้า 3 หน้าเว็บให้เป็นตาราง">Try it on something boring, like comparing 3 product pages in a table.</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">📦</span><span class="no">07</span></div>
+<div class="in">
+<h3 data-th="Claude plugins">Claude plugins</h3>
+<p data-th="ชุดสำเร็จรูปที่รวม skill และ connector สำหรับงานแต่ละแบบ ทำให้ Claude รู้วิธีทำงานของเราตั้งแต่วันแรก">Ready-made bundles of skills and connectors for one kind of work, so Claude knows your process from day one.</p>
+<div class="good"><span>Claude</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="เข้าไปดูรายการปลั๊กอินใน Claude แล้วเพิ่มอันที่ตรงกับงานของเรา">Browse the plugin list in Claude and add one that matches your job.</span></div>
+</div></article>
+<article class="card">
+<div class="top"><span class="ic">🔗</span><span class="no">08</span></div>
+<div class="in">
+<h3 data-th="Zapier / n8n">Zapier / n8n bridges</h3>
+<p data-th="ถ้าแอปไหนไม่มี connector ในตัว สองตัวนี้ช่วยเชื่อม AI เข้ากับแอปอื่นได้แทบทุกอย่าง">When an app has no built-in connector, these link your AI to almost anything else.</p>
+<div class="good"><span>Zapier</span><span>n8n</span></div>
+<div class="try"><b><span data-th="ลองเลย ✦">TRY THIS ✦</span></b><span data-th="เริ่มง่าย ๆ: &quot;มีคนตอบฟอร์มใหม่ → ให้ AI สรุป → ส่งข้อความหาเรา&quot;">Start small: &quot;Every new form reply → AI summary → message me.&quot;</span></div>
+</div></article>
+</section>
+
+  <div class="cta">
+    <div>
+      <b><span data-th="ใช้ปลั๊กอินที่ไม่มีในนี้?">USING A PLUGIN WE MISSED?</span></b>
+      <p data-th="เล่าให้คลับฟัง หรือโชว์สิ่งที่มันช่วยให้สร้างได้">Tell the club about it, or show off what it helped you make.</p>
+    </div>
+    <div class="btns">
+      <a class="pxbtn" href="ask.html"><span data-th="ถามคลับ ▶">ASK THE CLUB ▶</span></a>
+      <a class="pxbtn ghost" href="showcase.html"><span data-th="โชว์ผลงาน">SHOWCASE</span></a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Sali</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
+  </footer>
+</div>
+
+<script src="lang.js"></script>
+</body>
+</html>

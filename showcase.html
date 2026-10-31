@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Showcase — Sali's AI Club</title>
+<meta name="description" content="See what the AI Club has built with AI, and share your own project.">
+<meta property="og:title" content="Showcase ✦ — Sali's AI Club">
+<meta property="og:description" content="See what the AI Club has built with AI, and share your own project.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:760px;margin:0 auto}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* top bar (same as home) */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .head{text-align:center;padding:52px 0 32px}
+  .head .eyebrow{font-size:30px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  .head h1{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:clamp(24px,5vw,40px);line-height:1.3;margin:12px 0 18px}
+  .head h1 span{background:var(--pink);padding:0 8px;box-shadow:4px 4px 0 var(--ink);border:3px solid var(--ink);display:inline-block}
+  .head p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto}
+
+  /* shared pixel bits */
+  .pxbox{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .tbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px}
+  .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .tbar .r{margin-left:auto}
+  .pxbtn{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;line-height:1.4;padding:11px 14px;background:var(--ink);color:var(--bg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .08s steps(2),box-shadow .08s steps(2);white-space:nowrap}
+  .pxbtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--accent)}
+  .pxbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--accent)}
+  .pxbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .pxbtn.ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .inp{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);outline:none;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .inp:focus{border-color:var(--accent);background:var(--paper)}
+  textarea.inp{resize:vertical;min-height:92px;line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .08s steps(2)}
+  .chip b{color:var(--accent);font-weight:500}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .chip[aria-pressed="true"] b{color:var(--butter)}
+  .ava{flex:none;width:34px;height:34px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+
+  .rules{font-size:12.5px;color:var(--muted);text-align:center;margin:10px 0 60px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;padding:12px 16px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .25s steps(4),visibility .25s;z-index:50;visibility:hidden}
+  .toast.on{transform:translate(-50%,0);visibility:visible}
+
+  @media (max-width:900px){ .tags li:not(.keep){display:none} }
+  @media (max-width:560px){
+    .reply{grid-template-columns:1fr auto}
+    .reply .nmi{grid-column:1/-1}
+    .compose .who .inp{max-width:none}
+    .pxbox{box-shadow:5px 5px 0 var(--ink)}
+  }
+  @media (prefers-reduced-motion:reduce){ .thread,.a,.compose .spark,.dots i{animation:none} }
+
+  :root{--c:#ffd9a8}
+
+  .head h1 span{background:var(--c)}
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 40px}
+  .tabs a{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:7px 14px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .08s steps(2)}
+  .tabs a b{color:var(--accent);font-weight:500}
+  .tabs a:hover{transform:translate(-1px,-1px)}
+  .tabs a[aria-current]{background:var(--ink);color:var(--bg)}
+  .tabs a[aria-current] b{color:var(--butter)}
+  .updated{display:block;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin:-26px 0 34px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:50px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{display:flex;flex-direction:column;background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);animation:pop .3s steps(4) both}
+  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .card .top{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:3px solid var(--ink);background:var(--c)}
+  .card .top .ic{width:30px;height:30px;display:grid;place-items:center;background:var(--paper);border:2px solid var(--ink);font-size:16px}
+  .card .top .no{margin-left:auto;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px}
+  .card .in{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .card h3{font-size:18px;font-weight:600;line-height:1.35}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .try{margin-top:auto;padding:10px 12px;background:var(--butter);border:2px dashed var(--ink);font-size:14px;line-height:1.55;color:var(--ink)}
+  .try b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px;display:block;margin-bottom:5px}
+  .good{display:flex;flex-wrap:wrap;gap:6px}
+  .good span{font-size:12px;padding:1px 8px;border:1.5px solid var(--ink);background:var(--bg);font-family:"IBM Plex Mono",monospace}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .links a{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8.5px;line-height:1.4;padding:8px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:2px 2px 0 var(--ink)}
+  .links a.g{background:var(--accent);color:#fff}
+  .links a:hover{transform:translate(-1px,-1px)}
+
+  .cat{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .cat h2{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:13px;line-height:1.5}
+  .cat i{flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 10px)}
+  .cat p{font-size:13.5px;color:var(--muted)}
+
+  .note{max-width:640px;margin:0 auto 26px;padding:12px 16px;border:2px dashed var(--line);font-size:13.5px;color:var(--muted);text-align:center;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:20px;margin:10px 0 70px;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .cta b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:12px;display:block;margin-bottom:8px;line-height:1.5}
+  .cta p{color:var(--muted);font-size:14.5px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta .btns{display:flex;gap:10px;flex-wrap:wrap}
+  @media (max-width:900px){ .grid.three{grid-template-columns:1fr 1fr} }
+  @media (max-width:640px){ .grid,.grid.three{grid-template-columns:1fr} .cta{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ .card{animation:none} }
+
+  .form{background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);margin-bottom:46px}
+  .form .in{padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form .full{grid-column:1/-1}
+  .form label{display:grid;gap:5px;font-size:12.5px;color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .form .foot{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .form .foot small{margin-right:auto;color:var(--muted);font-size:12.5px}
+  .inp{width:100%;font:inherit;font-size:15px;padding:9px 11px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);outline:none;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .inp:focus{border-color:var(--accent);background:var(--paper)}
+  textarea.inp{resize:vertical;min-height:84px;line-height:1.55}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+  .bar2{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .bar2 .count{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);margin-left:auto}
+  .refresh{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:5px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:2px 2px 0 var(--ink)}
+  .show .top{justify-content:flex-start}
+  .show .top .ava{width:30px;height:30px;background:var(--paper);border:2px solid var(--ink);padding:2px}
+  .show .top .ava svg{width:100%;height:100%;display:block}
+  .show .top .by{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8px;line-height:1.4}
+  .show .top .tm{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px}
+  .show .pending{font-family:"IBM Plex Mono",monospace;font-size:11px;background:var(--butter);padding:0 6px;border:1.5px solid var(--ink)}
+  .show .desc{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--ink);opacity:.85}
+  .show h3{overflow-wrap:anywhere}
+  .show .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto}
+  .cheer{display:flex;align-items:center;gap:6px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:6px 10px;border:2px solid var(--ink);background:var(--bg);box-shadow:2px 2px 0 var(--ink)}
+  .cmts{display:none;flex-direction:column;gap:8px;padding:12px 16px 16px;border-top:3px solid var(--ink);background:color-mix(in srgb,var(--sage) 40%,var(--paper))}
+  .show.open .cmts{display:flex}
+  .cm{display:flex;flex-direction:row-reverse;gap:8px;align-items:flex-end;margin-left:auto;max-width:92%}
+  .cm .ava{flex:none;width:26px;height:26px;background:var(--paper);border:2px solid var(--ink);padding:1px}
+  .cm .ava svg{width:100%;height:100%;display:block}
+  .cm .b{background:var(--sage);color:#1d1c1a;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);padding:6px 9px;font-size:14px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cm .b .nm{display:block;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:7px;color:#2f4bd6;margin-bottom:3px}
+  .cm.pending .b{border-style:dashed}
+  .cmform{display:grid;grid-template-columns:120px 1fr auto;gap:8px;margin-top:4px}
+  .cmform .inp{font-size:14px;padding:7px 9px}
+  .state{grid-column:1/-1;text-align:center;padding:40px 16px;border:3px dashed var(--line);color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .state b{display:block;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:12px;color:var(--ink);margin-bottom:10px;font-weight:400;line-height:1.6}
+  .dots{display:inline-flex;gap:6px}.dots i{width:8px;height:8px;background:var(--ink);animation:dot 1s steps(2) infinite}
+  .dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+  @keyframes dot{50%{transform:translateY(-5px)}}
+  @media (max-width:640px){ .form .in{grid-template-columns:1fr} .cmform{grid-template-columns:1fr auto} .cmform .nmi{grid-column:1/-1} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
+        <li><a href="ask.html" data-th="ถามคลับ">Ask board</a></li>
+        <li><a href="club.html" data-th="ลงชื่อรอ">Waitlist</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="head">
+    <span class="eyebrow hand" data-th="โชว์ผลงานกันหน่อย ✦">show us what you made ✦</span>
+    <h1><span>#SHOWCASE</span></h1>
+    <p data-th="ทำอะไรด้วย AI มาแล้วบ้าง? แอป Skill วิดีโอ workflow หรือไอเดียแปลก ๆ แชร์ไว้ตรงนี้ ให้คนอื่นได้เรียนรู้และเชียร์กัน">Built something with AI? An app, a Skill, a video, a workflow, a wild idea. Share it here so others can learn from it and cheer you on.</p>
+  </header>
+  <nav class="tabs" aria-label="AI Club channels"><a href="skills.html"><b>#</b>skills</a><a href="tools.html"><b>#</b>tools</a><a href="plugins.html"><b>#</b>plugins</a><a href="showcase.html" aria-current="page"><b>#</b>showcase</a></nav>
+
+  <div class="form">
+    <div class="tbar"><span class="sq"></span>#share-your-work<span class="r" id="cc">0/300</span></div>
+    <div class="in">
+      <label><span data-th="ชื่อของคุณ">Your name</span><input class="inp" id="s-name" maxlength="24" placeholder="sali" data-th-placeholder="ชื่อเล่น"></label>
+      <label><span data-th="ทำด้วย">Made with</span><input class="inp" id="s-tool" maxlength="40" placeholder="Claude, Gamma, Canva…" data-th-placeholder="Claude, Gamma, Canva…"></label>
+      <label class="full"><span data-th="ชื่อผลงาน">Project name</span><input class="inp" id="s-title" maxlength="60" placeholder="e.g. Weekly meal planner skill" data-th-placeholder="เช่น Skill วางแผนเมนูอาหารรายสัปดาห์"></label>
+      <label class="full"><span data-th="ทำอะไรได้ / ไอเดียคืออะไร">What it does / your idea</span><textarea class="inp" id="s-desc" maxlength="300" placeholder="What did you make, and how did AI help?" data-th-placeholder="สร้างอะไร และ AI ช่วยตรงไหน?"></textarea></label>
+      <label class="full"><span data-th="ลิงก์ (ไม่ใส่ก็ได้)">Link (optional)</span><input class="inp" id="s-url" maxlength="150" placeholder="https://…" inputmode="url"></label>
+      <input class="hp" id="s-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="foot">
+        <small data-th="โพสต์แล้วทุกคนเห็น แชร์เฉพาะลิงก์ที่โอเคให้ทุกคนเปิดได้">Posts are public. Share links you&#x27;re happy for anyone to open.</small>
+        <button class="pxbtn" id="s-send" type="button" disabled>SHOW IT ▶</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar2">
+    <span class="count" id="count"></span>
+    <button class="refresh" id="refresh" type="button">↻</button>
+  </div>
+  <section class="grid" id="list"></section>
+  <div class="toast" id="toast"></div>
+
+
+  <div class="cta">
+    <div>
+      <b><span data-th="ทำโปรเจกต์แล้วติด?">STUCK ON YOUR PROJECT?</span></b>
+      <p data-th="ถามคลับได้เลย หรือดู skill กับ tool เพื่อหาไอเดีย">Ask the club for help, or browse skills and tools for ideas.</p>
+    </div>
+    <div class="btns">
+      <a class="pxbtn" href="ask.html"><span data-th="ถามคลับ ▶">ASK THE CLUB ▶</span></a>
+      <a class="pxbtn ghost" href="tools.html"><span data-th="ดู tools">SEE TOOLS</span></a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Sali</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
+  </footer>
+</div>
+
+<script src="lang.js"></script>
+<script>
+/* ============================================================
+   SHOWCASE — stored with the Ask Board (same Google Sheet,
+   "questions" tab). Rows start with ✦SHOWCASE✦ so the Ask Board
+   skips them. Hide one: type x in its "hide" column.
+   ============================================================ */
+const BOARD_URL = "https://script.google.com/macros/s/AKfycbw3eMKnOPpJYgNGr5FK8d8RTyAA5Xy5UfvvH0V0VOZsAVmbN2wq4ozJs67GU6DUx40/exec";
+const MARK = "✦SHOWCASE✦ ", SEP = "\n---\n";
+
+(function(){
+  const SPRITES = [
+    {pal:{a:"#f3cfc4",b:"#1d1c1a",c:"#e58f86"}, px:[".a....a.",".a....a.",".aa..aa.","aaaaaaaa","abaaaaba","aaaccaaa",".aaaaaa.","..a..a.."]},
+    {pal:{a:"#cfd8ff",b:"#1d1c1a",c:"#2f4bd6"}, px:["...cc...","...b....",".aaaaaa.","abbaabba","abbaabba","aaaaaaaa","aaccccaa",".a....a."]},
+    {pal:{a:"#f6e7a8",b:"#1d1c1a",c:"#e58f86"}, px:["a......a","aa....aa","aaaaaaaa","abaaaaba","aaaccaaa","aaaaaaaa",".aaaaaa.","a......a"]},
+    {pal:{a:"#a9c99a",b:"#1d1c1a",c:"#e58f86"}, px:[".aa..aa.","abaaaaba","aaaaaaaa","aaaaaaaa","abbbbbba","aaaaaaaa",".aaaaaa.","a.a..a.a"]},
+    {pal:{a:"#cfdcc4",b:"#1d1c1a",c:"#e58f86"}, px:["..aaaa..",".aaaaaa.","aabaabaa","aaaaaaaa","aaaaaaaa","aaaccaaa",".aaaaaa.","..a..a.."]},
+    {pal:{a:"#e7d3ff",b:"#1d1c1a",c:"#8a5cf5"}, px:["..c..c..",".aaaaaa.","aaaaaaaa","abaaaaba","aaaaaaaa","aacaacaa",".aaaaaa.",".a.aa.a."]}
+  ];
+  const COLORS = ["#f6e7a8","#cfdcc4","#f3cfc4","#cfd8ff","#e7d3ff","#ffd9a8"];
+  function hash(s){ let h = 0; for (const ch of String(s)) h = (h * 31 + ch.codePointAt(0)) >>> 0; return h; }
+  function sprite(name){
+    const s = SPRITES[hash(name || "anon") % SPRITES.length]; let r = "";
+    s.px.forEach((row,y)=>[...row].forEach((ch,x)=>{ if (s.pal[ch]) r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${s.pal[ch]}"/>`; }));
+    return `<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+  }
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch(e){ return null; } };
+  let cid = store("sali-cid"); if (!cid){ cid = Math.random().toString(36).slice(2, 12); store("sali-cid", cid); }
+  const anon = () => t("anon", "นิรนาม");
+  function ago(iso){
+    const s = Math.max(1, (Date.now() - new Date(iso).getTime()) / 1000);
+    const [n, en, th] = s < 60 ? [0, "just now", "เมื่อกี้"] : s < 3600 ? [Math.floor(s/60), "m ago", " นาทีที่แล้ว"] : s < 86400 ? [Math.floor(s/3600), "h ago", " ชม.ที่แล้ว"] : [Math.floor(s/86400), "d ago", " วันที่แล้ว"];
+    return n ? n + t(en, th) : t(en, th);
+  }
+  const safeUrl = u => /^https?:\/\/[^\s<>"]+$/i.test(u || "") ? u : "";
+  const toastEl = $("toast"); let tt;
+  function toast(m){ toastEl.textContent = m; toastEl.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove("on"), 1800); }
+  function parse(q){
+    const [title = "", desc = "", tool = "", url = ""] = q.text.slice(MARK.length).split(SEP);
+    return { id:q.id, time:q.time, name:q.name, title, desc, tool, url:safeUrl(url.trim()), answers:q.answers || [] };
+  }
+
+  let data = null, failed = false, lastPost = 0;
+  const open = new Set(), pending = [];
+  function slow(){ if (Date.now() - lastPost < 20000){ toast(t("Slow down a little ✦", "ใจเย็น ๆ รอแป๊บนึงนะ ✦")); return true; } lastPost = Date.now(); return false; }
+  function post(b){ return fetch(BOARD_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(Object.assign({cid}, b)) }); }
+
+  function load(){
+    return fetch(BOARD_URL + "?action=list&_=" + Date.now()).then(r => r.json()).then(j => {
+      if (!j || !Array.isArray(j.questions)) throw 0;
+      data = j.questions.filter(q => String(q.text).startsWith(MARK)).map(parse); failed = false;
+      for (let i = pending.length - 1; i >= 0; i--){
+        const p = pending[i];
+        const ok = p.kind === "show" ? data.some(s => s.title === p.title && s.name === (p.name || "anon"))
+                                     : (data.find(s => s.id === p.qid) || {answers:[]}).answers.some(a => a.text === p.text);
+        if (ok || Date.now() - p.at > 90000) pending.splice(i, 1);
+      }
+      render();
+    }).catch(() => { failed = !data; render(); });
+  }
+
+  /* ----- form ----- */
+  const f = { name:$("s-name"), tool:$("s-tool"), title:$("s-title"), desc:$("s-desc"), url:$("s-url") };
+  f.name.value = store("sali-nick") || "";
+  const valid = () => f.title.value.trim().length >= 2 && f.desc.value.trim().length >= 5;
+  Object.values(f).forEach(i => i.addEventListener("input", () => { $("s-send").disabled = !valid(); $("cc").textContent = f.desc.value.length + "/300"; }));
+  $("s-send").onclick = () => {
+    if (!valid() || slow()) return;
+    let url = f.url.value.trim(); if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
+    if (url && !safeUrl(url)){ toast(t("That link doesn't look right", "ลิงก์ดูไม่ถูกต้อง")); lastPost = 0; return; }
+    const name = f.name.value.trim(), title = f.title.value.trim(), desc = f.desc.value.trim(), tool = f.tool.value.trim();
+    store("sali-nick", name);
+    post({ type:"ask", tag:"general", name, hp:$("s-hp").value, text: MARK + [title, desc, tool, url].join(SEP) });
+    pending.unshift({ kind:"show", name, title, desc, tool, url, at:Date.now() });
+    f.title.value = f.desc.value = f.url.value = ""; $("s-send").disabled = true; $("cc").textContent = "0/300";
+    render(); toast(t("Shared! ✦", "โชว์แล้ว! ✦"));
+    setTimeout(load, 2500);
+  };
+
+  /* ----- cards ----- */
+  function comment(a, isPending){
+    const r = el("div", "cm" + (isPending ? " pending" : ""));
+    const av = el("div", "ava"); av.innerHTML = sprite(a.name || "anon");
+    const b = el("div", "b"); b.append(el("span", "nm", (a.name || anon()) + " · " + (isPending ? t("sending…", "กำลังส่ง…") : ago(a.time))), document.createTextNode(a.text));
+    r.append(av, b); return r;
+  }
+  function card(s, isPending){
+    const c = el("article", "card show" + (open.has(s.id) ? " open" : ""));
+    c.style.setProperty("--c", COLORS[hash(s.title) % COLORS.length]);
+    const top = el("div", "top");
+    const av = el("span", "ava"); av.innerHTML = sprite(s.name || "anon");
+    top.append(av, el("span", "by", s.name || anon()));
+    top.appendChild(isPending ? el("span", "pending tm", t("sending…", "กำลังส่ง…")) : el("span", "tm", ago(s.time)));
+    c.appendChild(top);
+    const inn = el("div", "in");
+    inn.append(el("h3", "", s.title), el("p", "desc", s.desc));
+    if (s.tool){ const g = el("div", "good"); g.appendChild(el("span", "", "🛠 " + s.tool)); inn.appendChild(g); }
+    const row = el("div", "row");
+    if (s.url){ const l = el("div", "links"); const a = el("a", "g", t("VIEW ↗", "ดูผลงาน ↗")); a.href = s.url; a.target = "_blank"; a.rel = "noopener nofollow ugc"; l.style.paddingTop = 0; l.appendChild(a); row.appendChild(l); }
+    if (!isPending){
+      const extra = pending.filter(p => p.kind === "cm" && p.qid === s.id);
+      const n = s.answers.length + extra.length;
+      const b = el("button", "cheer", "💬 " + n + " " + t(n === 1 ? "comment" : "comments", "คอมเมนต์")); b.type = "button";
+      b.onclick = () => { open.has(s.id) ? open.delete(s.id) : open.add(s.id); render(); };
+      row.appendChild(b);
+      inn.appendChild(row); c.appendChild(inn);
+      const box = el("div", "cmts");
+      s.answers.forEach(a => box.appendChild(comment(a)));
+      extra.forEach(a => box.appendChild(comment(a, true)));
+      const fm = el("div", "cmform");
+      const ni = el("input", "inp nmi"); ni.maxLength = 24; ni.placeholder = t("Nickname", "ชื่อเล่น"); ni.value = store("sali-nick") || "";
+      const ti = el("input", "inp"); ti.maxLength = 600; ti.placeholder = t("Say something nice ✦", "ชมหรือถามได้เลย ✦");
+      const sb = el("button", "pxbtn", t("SEND", "ส่ง")); sb.type = "button";
+      const send = () => {
+        const text = ti.value.trim(); if (text.length < 2 || slow()) return;
+        const name = ni.value.trim(); store("sali-nick", name);
+        post({ type:"answer", qid:s.id, name, text });
+        pending.push({ kind:"cm", qid:s.id, name, text, at:Date.now() });
+        open.add(s.id); render(); toast(t("Sent! ✦", "ส่งแล้ว! ✦")); setTimeout(load, 2500);
+      };
+      sb.onclick = send; ti.onkeydown = e => { if (e.key === "Enter") send(); };
+      fm.append(ni, ti, sb); box.appendChild(fm); c.appendChild(box);
+    } else { if (row.children.length) inn.appendChild(row); c.appendChild(inn); }
+    return c;
+  }
+  function stateBox(title, text, retry){
+    const s = el("div", "state"); s.appendChild(el("b", "", title)); if (text) s.appendChild(el("span", "", text));
+    if (retry){ const b = el("button", "pxbtn ghost", t("TRY AGAIN", "ลองใหม่")); b.type = "button"; b.onclick = load; s.append(el("br"), b); b.style.marginTop = "14px"; }
+    return s;
+  }
+  function render(){
+    $("s-send").textContent = t("SHOW IT ▶", "โชว์เลย ▶");
+    const list = $("list"); list.innerHTML = "";
+    pending.filter(p => p.kind === "show").forEach(p => list.appendChild(card(p, true)));
+    if (!data){
+      $("count").textContent = "";
+      if (failed) list.appendChild(stateBox(t("SHOWCASE IS WARMING UP", "หน้าโชว์ผลงานกำลังเตรียมตัว"), t("Couldn't load right now.", "โหลดไม่ได้ตอนนี้"), true));
+      else { const s = el("div", "state"); s.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>'; list.appendChild(s); }
+      return;
+    }
+    $("count").textContent = data.length + t(data.length === 1 ? " project" : " projects", " ผลงาน");
+    if (!data.length && !pending.some(p => p.kind === "show")){ list.appendChild(stateBox(t("NOTHING HERE YET", "ยังไม่มีผลงาน"), t("Be the first to show what you made ✦", "มาเป็นคนแรกที่โชว์ผลงานเลย ✦"))); return; }
+    data.forEach(s => list.appendChild(card(s)));
+  }
+  $("refresh").onclick = () => { load(); toast(t("Refreshed", "รีเฟรชแล้ว")); };
+  document.addEventListener("langchange", render);
+  setInterval(() => { if (!document.hidden) load(); }, 45000);
+  render(); load();
+})();
+</script>
+
+</body>
+</html>
