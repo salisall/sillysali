@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Board — Sali's AI Club</title>
+<meta name="description" content="Leave an AI question for the club. Anyone who knows can drop by and answer.">
+<meta property="og:title" content="Ask Board ✦ — Sali's AI Club">
+<meta property="og:description" content="Got an AI question? Leave it here and the club will help.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:760px;margin:0 auto}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* top bar (same as home) */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .head{text-align:center;padding:52px 0 32px}
+  .head .eyebrow{font-size:30px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  .head h1{font-family:"Press Start 2P",monospace;font-weight:400;font-size:clamp(24px,5vw,40px);line-height:1.3;margin:12px 0 18px}
+  .head h1 span{background:var(--pink);padding:0 8px;box-shadow:4px 4px 0 var(--ink);border:3px solid var(--ink);display:inline-block}
+  .head p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto}
+
+  /* shared pixel bits */
+  .pxbox{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .tbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P",monospace;font-size:10px}
+  .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .tbar .r{margin-left:auto}
+  .pxbtn{font-family:"Press Start 2P",monospace;font-size:10px;line-height:1.4;padding:11px 14px;background:var(--ink);color:var(--bg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .08s steps(2),box-shadow .08s steps(2);white-space:nowrap}
+  .pxbtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--accent)}
+  .pxbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--accent)}
+  .pxbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .pxbtn.ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .inp{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);outline:none;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .inp:focus{border-color:var(--accent);background:var(--paper)}
+  textarea.inp{resize:vertical;min-height:92px;line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .08s steps(2)}
+  .chip b{color:var(--accent);font-weight:500}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .chip[aria-pressed="true"] b{color:var(--butter)}
+  .ava{flex:none;width:34px;height:34px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+  /* compose */
+  .compose{margin-bottom:46px}
+  .compose .in{padding:16px;display:grid;gap:12px}
+  .compose .who{display:flex;align-items:center;gap:10px}
+  .compose .who .inp{max-width:260px}
+  .compose .foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .compose .foot small{color:var(--muted);font-size:12.5px;margin-right:auto}
+  .compose .spark{position:absolute;width:10px;height:10px;background:var(--butter);border:2px solid var(--ink);animation:float 2.4s steps(6) infinite}
+  .compose .spark.a{top:-14px;right:46px}.compose .spark.b{bottom:40px;left:-16px;background:var(--sage);animation-delay:.9s}
+  @keyframes float{50%{transform:translateY(-8px) rotate(45deg)}}
+
+  /* board */
+  .bar2{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .bar2 .count{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);margin-left:auto}
+  .refresh{font-family:"IBM Plex Mono",monospace;font-size:12.5px;padding:5px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:2px 2px 0 var(--ink)}
+  .list{display:grid;gap:18px;padding-bottom:30px}
+  .thread{background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);animation:pop .3s steps(4) both}
+  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .thread.pending{opacity:.75;border-style:dashed}
+  .q{display:flex;gap:12px;padding:14px 16px;align-items:flex-start}
+  .q .body{flex:1;min-width:0}
+  .q .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:4px}
+  .q .meta .nm{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent)}
+  .q .meta .tg{font-family:"IBM Plex Mono",monospace;padding:0 6px;border:1.5px solid var(--ink);color:var(--ink);background:var(--bg)}
+  .q .meta .sending{font-family:"IBM Plex Mono",monospace;background:var(--butter);padding:0 6px;border:1.5px solid var(--ink);color:var(--ink)}
+  .q .txt{font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:16px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+  .toggle{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:9px 16px;border:none;border-top:2px dashed var(--line);background:none;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted)}
+  .toggle:hover{color:var(--ink)}
+  .toggle .n{background:var(--accent-soft);color:var(--accent);padding:0 6px;border:1.5px solid var(--ink);font-weight:500}
+  .toggle .n.zero{background:var(--butter);color:var(--ink)}
+  .toggle .arr{margin-left:auto;font-family:"Press Start 2P",monospace;font-size:8px}
+  .answers{display:none;border-top:3px solid var(--ink);background:color-mix(in srgb,var(--accent-soft) 45%,var(--paper));padding:14px 16px;gap:10px;flex-direction:column}
+  .thread.open .answers{display:flex}
+  .a{display:flex;gap:10px;align-items:flex-end;animation:pop .3s steps(4) both}
+  .a .bub{max-width:84%;background:var(--bg);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);padding:8px 11px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+  .a .bub .nm{display:block;font-family:"Press Start 2P",monospace;font-size:8px;color:var(--accent);margin-bottom:4px}
+  .a .bub .when{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);margin-left:6px}
+  .a.pending .bub{border-style:dashed}
+  .noans{font-size:13.5px;color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .reply{display:grid;grid-template-columns:150px 1fr auto;gap:8px;margin-top:6px}
+  .reply .inp{font-size:14px;padding:8px 10px}
+
+  .state{text-align:center;padding:40px 16px;border:3px dashed var(--line);color:var(--muted);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .state b{display:block;font-family:"Press Start 2P",monospace;font-size:12px;color:var(--ink);margin-bottom:10px;font-weight:400;line-height:1.6}
+  .state .pxbtn{margin-top:14px}
+  .dots{display:inline-flex;gap:6px}
+  .dots i{width:8px;height:8px;background:var(--ink);animation:dot 1s steps(2) infinite}
+  .dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+  @keyframes dot{50%{transform:translateY(-5px)}}
+
+  .rules{font-size:12.5px;color:var(--muted);text-align:center;margin:10px 0 60px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);font-family:"Press Start 2P",monospace;font-size:10px;padding:12px 16px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .25s steps(4),visibility .25s;z-index:50;visibility:hidden}
+  .toast.on{transform:translate(-50%,0);visibility:visible}
+
+  @media (max-width:900px){ .tags li:not(.keep){display:none} }
+  @media (max-width:560px){
+    .reply{grid-template-columns:1fr auto}
+    .reply .nmi{grid-column:1/-1}
+    .compose .who .inp{max-width:none}
+    .pxbox{box-shadow:5px 5px 0 var(--ink)}
+  }
+  @media (prefers-reduced-motion:reduce){ .thread,.a,.compose .spark,.dots i{animation:none} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
+        <li><a href="club.html" data-th="ลงชื่อรอ">Waitlist</a></li>
+        <li><a href="index.html#about" data-th="เกี่ยวกับฉัน">About</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="narrow">
+    <header class="head">
+      <span class="eyebrow hand" data-th="สงสัยอะไร ถามได้เลย ✦">no question is too small ✦</span>
+      <h1><span>ASK BOARD</span></h1>
+      <p data-th="ติดตรงไหนเรื่อง AI ทิ้งคำถามไว้ตรงนี้ ใครรู้หรืออยากคุยด้วยก็แวะมาตอบได้ ✦">Stuck on something AI? Leave your question here, and anyone who knows (or just wants to chat) can drop by and answer ✦</p>
+    </header>
+
+    <!-- new question -->
+    <div class="pxbox compose">
+      <i class="spark a"></i><i class="spark b"></i>
+      <div class="tbar"><span class="sq"></span>#new-question<span class="r" id="charcount">0/600</span></div>
+      <div class="in">
+        <div class="who">
+          <div class="ava" id="me-ava"></div>
+          <input class="inp" id="q-name" maxlength="24" placeholder="Nickname (optional)" data-th-placeholder="ชื่อเล่น (ไม่ใส่ก็ได้)">
+        </div>
+        <div class="chips" id="q-tags" role="group" aria-label="Topic"></div>
+        <textarea class="inp" id="q-text" maxlength="600" placeholder="e.g. How do I make ChatGPT always answer in my brand's tone?" data-th-placeholder="เช่น ทำยังไงให้ ChatGPT ตอบเป็นโทนแบรนด์เราทุกครั้ง?"></textarea>
+        <input class="hp" id="q-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="foot">
+          <small data-th="โพสต์แล้วทุกคนเห็นนะ อย่าใส่ข้อมูลส่วนตัว">Posts are public, so skip personal info.</small>
+          <button class="pxbtn" id="q-send" type="button" disabled>POST ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- board -->
+    <div class="bar2">
+      <div class="chips" id="filters" role="group" aria-label="Filter"></div>
+      <span class="count" id="count"></span>
+      <button class="refresh" id="refresh" type="button">↻</button>
+    </div>
+    <div class="list" id="list"></div>
+
+    <p class="rules" data-th="ใจดีกับทุกคนนะ ✦ โพสต์ที่ไม่เหมาะสมอาจถูกซ่อน">Be kind ✦ inappropriate posts may be hidden.</p>
+  </div>
+
+  <footer>
+    <span>© 2026 Sali</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
+  </footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="lang.js"></script>
+<script>
+/* ============================================================
+   ASK BOARD
+   Uses the same Google Apps Script as the survey (club.html).
+   Questions land in the "questions" tab, answers in "answers".
+   To hide a post: type x in its "hide" column in the Sheet.
+   ============================================================ */
+const BOARD_URL = "https://script.google.com/macros/s/AKfycbwiCo1T-G52QNsmsYG5ApV6PLNcRsgqnKRekP4kWrBPr_EPqpUp-f9gDDRnhiaFl-Dj/exec";
+const TAGS = ["general", "skills", "tools", "prompts"];
+
+(function(){
+  /* ---------- pixel avatars ---------- */
+  const SPRITES = [
+    {pal:{a:"#f3cfc4",b:"#1d1c1a",c:"#e58f86"}, px:[".a....a.",".a....a.",".aa..aa.","aaaaaaaa","abaaaaba","aaaccaaa",".aaaaaa.","..a..a.."]},
+    {pal:{a:"#cfd8ff",b:"#1d1c1a",c:"#2f4bd6"}, px:["...cc...","...b....",".aaaaaa.","abbaabba","abbaabba","aaaaaaaa","aaccccaa",".a....a."]},
+    {pal:{a:"#f6e7a8",b:"#1d1c1a",c:"#e58f86"}, px:["a......a","aa....aa","aaaaaaaa","abaaaaba","aaaccaaa","aaaaaaaa",".aaaaaa.","a......a"]},
+    {pal:{a:"#a9c99a",b:"#1d1c1a",c:"#e58f86"}, px:[".aa..aa.","abaaaaba","aaaaaaaa","aaaaaaaa","abbbbbba","aaaaaaaa",".aaaaaa.","a.a..a.a"]},
+    {pal:{a:"#cfdcc4",b:"#1d1c1a",c:"#e58f86"}, px:["..aaaa..",".aaaaaa.","aabaabaa","aaaaaaaa","aaaaaaaa","aaaccaaa",".aaaaaa.","..a..a.."]},
+    {pal:{a:"#e7d3ff",b:"#1d1c1a",c:"#8a5cf5"}, px:["..c..c..",".aaaaaa.","aaaaaaaa","abaaaaba","aaaaaaaa","aacaacaa",".aaaaaa.",".a.aa.a."]}
+  ];
+  function hash(s){ let h = 0; for (const ch of String(s)) h = (h * 31 + ch.codePointAt(0)) >>> 0; return h; }
+  function sprite(name){
+    const s = SPRITES[hash(name || "anon") % SPRITES.length]; let r = "";
+    s.px.forEach((row,y)=>[...row].forEach((ch,x)=>{ if (s.pal[ch]) r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${s.pal[ch]}"/>`; }));
+    return `<svg viewBox="0 0 8 8" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+  }
+
+  /* ---------- helpers ---------- */
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const store = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch(e){ return null; } };
+  let cid = store("sali-cid"); if (!cid){ cid = Math.random().toString(36).slice(2, 12); store("sali-cid", cid); }
+  const anonName = () => t("anon", "นิรนาม");
+  function ago(iso){
+    const s = Math.max(1, (Date.now() - new Date(iso).getTime()) / 1000);
+    const [n, en, th] = s < 60 ? [0, "just now", "เมื่อกี้"] : s < 3600 ? [Math.floor(s/60), "m ago", " นาทีที่แล้ว"] : s < 86400 ? [Math.floor(s/3600), "h ago", " ชม.ที่แล้ว"] : [Math.floor(s/86400), "d ago", " วันที่แล้ว"];
+    return n ? n + t(en, th) : t(en, th);
+  }
+  const toastEl = $("toast"); let tt;
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add("on"); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove("on"), 1800); }
+
+  /* ---------- state ---------- */
+  let data = null, failed = false, filter = "all", newTag = "general";
+  const open = new Set(), pending = [];   // pending: {kind, qid, name, text, at, tag}
+
+  /* ---------- network ---------- */
+  function load(quiet){
+    if (!quiet && !data) render();
+    return fetch(BOARD_URL + "?action=list&_=" + Date.now())
+      .then(r => r.json())
+      .then(j => {
+        if (!j || !Array.isArray(j.questions)) throw 0;
+        data = j.questions; failed = false;
+        // drop pending posts that have arrived (or are too old)
+        for (let i = pending.length - 1; i >= 0; i--){
+          const p = pending[i];
+          const arrived = p.kind === "ask"
+            ? data.some(q => q.text === p.text)
+            : (data.find(q => q.id === p.qid) || {answers:[]}).answers.some(a => a.text === p.text);
+          if (arrived || Date.now() - p.at > 90000) pending.splice(i, 1);
+        }
+        render();
+      })
+      .catch(() => { failed = !data; render(); });
+  }
+  function post(body){
+    return fetch(BOARD_URL, { method:"POST", mode:"no-cors", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(Object.assign({cid}, body)) });
+  }
+  let lastPost = 0;
+  function canPost(){
+    if (Date.now() - lastPost < 20000){ toast(t("Slow down a little ✦", "ใจเย็น ๆ รอแป๊บนึงนะ ✦")); return false; }
+    lastPost = Date.now(); return true;
+  }
+
+  /* ---------- compose ---------- */
+  const qName = $("q-name"), qText = $("q-text"), qSend = $("q-send");
+  qName.value = store("sali-nick") || "";
+  function meAva(){ $("me-ava").innerHTML = sprite(qName.value.trim() || cid); }
+  meAva();
+  qName.addEventListener("input", meAva);
+  qText.addEventListener("input", () => { $("charcount").textContent = qText.value.length + "/600"; qSend.disabled = qText.value.trim().length < 3; });
+
+  function tagChips(){
+    const box = $("q-tags"); box.innerHTML = "";
+    TAGS.forEach(tg => {
+      const b = el("button", "chip"); b.type = "button"; b.innerHTML = "<b>#</b>" + tg;
+      b.setAttribute("aria-pressed", tg === newTag);
+      b.onclick = () => { newTag = tg; tagChips(); };
+      box.appendChild(b);
+    });
+  }
+
+  qSend.onclick = () => {
+    const text = qText.value.trim(); if (text.length < 3 || !canPost()) return;
+    const name = qName.value.trim(); store("sali-nick", name);
+    post({ type:"ask", name, tag:newTag, text, hp:$("q-hp").value });
+    pending.unshift({ kind:"ask", name, text, tag:newTag, at:Date.now() });
+    qText.value = ""; qText.dispatchEvent(new Event("input"));
+    filter = "all"; render();
+    toast(t("Posted! ✦", "โพสต์แล้ว! ✦"));
+    setTimeout(() => load(true), 2500);
+  };
+
+  /* ---------- board ---------- */
+  function filters(){
+    const box = $("filters"); box.innerHTML = "";
+    ["all", ...TAGS].forEach(tg => {
+      const b = el("button", "chip"); b.type = "button";
+      b.innerHTML = tg === "all" ? t("all", "ทั้งหมด") : "<b>#</b>" + tg;
+      b.setAttribute("aria-pressed", tg === filter);
+      b.onclick = () => { filter = tg; render(); };
+      box.appendChild(b);
+    });
+  }
+
+  function answerRow(a, isPending){
+    const row = el("div", "a" + (isPending ? " pending" : ""));
+    const av = el("div", "ava"); av.innerHTML = sprite(a.name || "anon");
+    const bub = el("div", "bub");
+    const nm = el("span", "nm", a.name || anonName());
+    nm.appendChild(el("span", "when", isPending ? t("sending…", "กำลังส่ง…") : ago(a.time)));
+    bub.append(nm, document.createTextNode(a.text));
+    row.append(av, bub); return row;
+  }
+
+  function thread(q, isPending){
+    const card = el("div", "thread" + (isPending ? " pending" : "") + (open.has(q.id) ? " open" : ""));
+    const top = el("div", "q");
+    const av = el("div", "ava"); av.innerHTML = sprite(q.name || "anon");
+    const body = el("div", "body");
+    const meta = el("div", "meta");
+    meta.append(el("span", "nm", q.name || anonName()), el("span", "tg", "#" + (q.tag || "general")));
+    meta.appendChild(isPending ? el("span", "sending", t("sending…", "กำลังส่ง…")) : el("span", "", ago(q.time)));
+    body.append(meta, el("div", "txt", q.text));
+    top.append(av, body); card.appendChild(top);
+    if (isPending) return card;
+
+    const extra = pending.filter(p => p.kind === "answer" && p.qid === q.id);
+    const n = q.answers.length + extra.length;
+    const tog = el("button", "toggle"); tog.type = "button";
+    const badge = el("span", "n" + (n ? "" : " zero"), String(n));
+    tog.append(document.createTextNode("💬 "), badge, document.createTextNode(" " + (n ? t(n === 1 ? "answer" : "answers", "คำตอบ") : t("be the first to answer", "ยังไม่มีคนตอบ มาเป็นคนแรกเลย"))), el("span", "arr", open.has(q.id) ? "▲" : "▼"));
+    tog.onclick = () => { open.has(q.id) ? open.delete(q.id) : open.add(q.id); render(); };
+    card.appendChild(tog);
+
+    const box = el("div", "answers");
+    if (!n) box.appendChild(el("div", "noans", t("No answers yet. Know something? Share it ✦", "ยังไม่มีคำตอบ ใครรู้ช่วยแชร์หน่อยนะ ✦")));
+    q.answers.forEach(a => box.appendChild(answerRow(a)));
+    extra.forEach(a => box.appendChild(answerRow(a, true)));
+
+    const rep = el("div", "reply");
+    const ni = el("input", "inp nmi"); ni.maxLength = 24; ni.placeholder = t("Nickname", "ชื่อเล่น"); ni.value = store("sali-nick") || "";
+    const ti = el("input", "inp"); ti.maxLength = 600; ti.placeholder = t("Write an answer…", "พิมพ์คำตอบ…");
+    const sb = el("button", "pxbtn", t("SEND", "ส่ง")); sb.type = "button";
+    const send = () => {
+      const text = ti.value.trim(); if (text.length < 2 || !canPost()) return;
+      const name = ni.value.trim(); store("sali-nick", name);
+      post({ type:"answer", qid:q.id, name, text });
+      pending.push({ kind:"answer", qid:q.id, name, text, at:Date.now() });
+      open.add(q.id); render(); toast(t("Answer sent! ✦", "ส่งคำตอบแล้ว! ✦"));
+      setTimeout(() => load(true), 2500);
+    };
+    sb.onclick = send; ti.onkeydown = e => { if (e.key === "Enter") send(); };
+    rep.append(ni, ti, sb); box.appendChild(rep);
+    card.appendChild(box);
+    return card;
+  }
+
+  function stateBox(title, text, retry){
+    const s = el("div", "state");
+    s.appendChild(el("b", "", title));
+    if (text) s.appendChild(el("span", "", text));
+    if (retry){ const b = el("button", "pxbtn ghost", t("TRY AGAIN", "ลองใหม่")); b.type = "button"; b.onclick = () => load(); s.appendChild(el("br")); s.appendChild(b); }
+    return s;
+  }
+
+  function render(){
+    tagChips(); filters();
+    qSend.textContent = t("POST ▶", "โพสต์ ▶");
+    const list = $("list"); list.innerHTML = "";
+    const mine = pending.filter(p => p.kind === "ask" && (filter === "all" || p.tag === filter));
+    mine.forEach(p => list.appendChild(thread({ name:p.name, tag:p.tag, text:p.text, answers:[] }, true)));
+
+    if (!data){
+      $("count").textContent = "";
+      if (failed) list.appendChild(stateBox(t("BOARD IS WARMING UP", "บอร์ดกำลังเตรียมตัว"), t("Couldn't load questions right now.", "โหลดคำถามไม่ได้ตอนนี้"), true));
+      else if (!mine.length){ const s = el("div", "state"); s.innerHTML = '<span class="dots"><i></i><i></i><i></i></span>'; list.appendChild(s); }
+      return;
+    }
+    const shown = data.filter(q => filter === "all" || q.tag === filter);
+    $("count").textContent = shown.length + t(shown.length === 1 ? " question" : " questions", " คำถาม");
+    if (!shown.length && !mine.length){
+      list.appendChild(stateBox(t("NO QUESTIONS YET", "ยังไม่มีคำถาม"), t("Be the first to ask something ✦", "มาเป็นคนแรกที่ถามเลย ✦")));
+      return;
+    }
+    shown.forEach(q => list.appendChild(thread(q)));
+  }
+
+  $("refresh").onclick = () => { load(); toast(t("Refreshed", "รีเฟรชแล้ว")); };
+  document.addEventListener("langchange", render);
+  // auto-refresh every 45s while the tab is visible
+  setInterval(() => { if (!document.hidden) load(true); }, 45000);
+  render(); load();
+})();
+</script>
+</body>
+</html>

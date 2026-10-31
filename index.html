@@ -168,6 +168,8 @@
   .px-btn.soon{background:var(--paper);cursor:default}
   .px-btn.soon:hover{transform:none;box-shadow:5px 5px 0 var(--ink)}
   .club-note{font-size:12px;color:var(--muted);margin-top:16px}
+  .club-cta{display:flex;flex-wrap:wrap;gap:14px}
+  .px-btn.ask{background:var(--pink)}
 
   .pxwin{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:150px 1fr;grid-template-rows:auto 1fr;image-rendering:pixelated}
   .pxwin .tbar{grid-column:1/-1;display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P",monospace;font-size:10px}
@@ -247,7 +249,10 @@
           <span><b>#</b>prompts</span>
           <span><b>#</b>showcase</span>
         </div>
-        <a class="px-btn" id="club-join" href="#" target="_blank" rel="noopener">▶ <span data-th="เข้าร่วมคลับ">JOIN THE CLUB</span></a>
+        <div class="club-cta">
+          <a class="px-btn" id="club-join" href="#" target="_blank" rel="noopener">▶ <span data-th="เข้าร่วมคลับ">JOIN THE CLUB</span></a>
+          <a class="px-btn ask" href="ask.html">💬 <span data-th="ทิ้งคำถามไว้">ASK THE CLUB</span></a>
+        </div>
         <p class="club-note" id="club-note" data-th="กลุ่มเล็ก เป็นกันเอง ภาษาไทย/อังกฤษ ✦">Small, friendly, Thai &amp; English ✦</p>
       </div>
 
