@@ -222,17 +222,17 @@
   const renderers = {
     cards(s, sec){
       const box = el("div", "cards");
-      s.items.forEach(([t, p]) => { const d = el("div"); d.append(el("b", "", t), el("p", "", p)); box.appendChild(d); });
+      s.items.forEach(([title, p]) => { const d = el("div"); d.append(el("b", "", title), el("p", "", p)); box.appendChild(d); });
       sec.appendChild(box);
     },
     steps(s, sec){
       const ol = el("ol", "steps");
-      s.items.forEach(([t, p]) => { const li = el("li"); const d = el("div"); d.append(el("b", "", t), el("p", "", p)); li.appendChild(d); ol.appendChild(li); });
+      s.items.forEach(([title, p]) => { const li = el("li"); const d = el("div"); d.append(el("b", "", title), el("p", "", p)); li.appendChild(d); ol.appendChild(li); });
       sec.appendChild(ol);
     },
     flow(s, sec){
       const box = el("div", "flow");
-      s.items.forEach(([t, a, b], i) => { const d = el("div"); d.append(el("b", "", (i + 1) + " · " + t), el("span", "", a), el("i", "", b)); box.appendChild(d); });
+      s.items.forEach(([title, a, b], i) => { const d = el("div"); d.append(el("b", "", (i + 1) + " · " + title), el("span", "", a), el("i", "", b)); box.appendChild(d); });
       sec.appendChild(box);
     },
     formula(s, sec){
@@ -247,10 +247,10 @@
     },
     prompts(s, sec){
       const box = el("div", "prompts");
-      s.items.forEach(([t, code]) => {
+      s.items.forEach(([title, code]) => {
         const c = el("div", "code"); const h = el("header");
         const b = el("button", "copy", t("Copy", "ก๊อป")); b.type = "button"; b.onclick = () => copy(code, t("Prompt copied", "ก๊อป prompt แล้ว"));
-        h.append(el("span", "", t), b);
+        h.append(el("span", "", title), b);
         c.append(h, el("pre", "", code)); box.appendChild(c);
       });
       sec.appendChild(box);
