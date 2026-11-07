@@ -19,6 +19,13 @@ const TOOLS  = ["ChatGPT", "Gamma", "HeyGen", "Higgsfield", "Claude", "Multi-too
 
 const GUIDES = [
   {
+    slug: "cafe-mood", title: "CAFE MOOD — เว็บสั่งกาแฟแบบมีลูกเล่น",
+    desc: "Prompt เดียวสร้างเว็บร้านกาแฟ: แก้วดูดเข้าตะกร้า ท็อปปิ้งตกทีละเม็ด",
+    topic: "Vibe coding", tool: "Claude", keyword: "CAFE", count: "21 ลูกเล่น", isNew: true,
+    titleEn: "CAFE MOOD — a coffee order site with motion",
+    descEn: "One prompt builds a café ordering site: cups fly into the cart, toppings drop piece by piece", countEn: "21 effects"
+  },
+  {
     slug: "japan-mood", title: "Japan mood prompts / Cinema",
     desc: "ทำ AI short film สไตล์ญี่ปุ่น 6 ฉาก ตัวละครเดียวกันทุกฉาก",
     topic: "AI video", tool: "Higgsfield", keyword: "JAPAN", count: "6 ฉาก", isNew: true,
