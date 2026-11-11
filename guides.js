@@ -19,6 +19,13 @@ const TOOLS  = ["ChatGPT", "Gamma", "HeyGen", "Higgsfield", "Claude", "Multi-too
 
 const GUIDES = [
   {
+    slug: "file-sort", title: "จัดไฟล์ทั้งเครื่องด้วย Claude ใน 1 นาที",
+    desc: "Prompt เดียวจัด Downloads รก ๆ เข้าโฟลเดอร์ ไม่ต้องเขียนโค้ด ไม่มีไฟล์หาย",
+    topic: "Office & productivity", tool: "Claude", keyword: "FILE", count: "8 ขั้น", isNew: true,
+    titleEn: "Sort every file on your computer with Claude in 1 minute",
+    descEn: "One prompt turns a messy Downloads folder into neat folders: no code, nothing deleted", countEn: "8 steps"
+  },
+  {
     slug: "cafe-mood", title: "CAFE MOOD — เว็บสั่งกาแฟแบบมีลูกเล่น",
     desc: "Prompt เดียวสร้างเว็บร้านกาแฟ: แก้วดูดเข้าตะกร้า ท็อปปิ้งตกทีละเม็ด",
     topic: "Vibe coding", tool: "Claude", keyword: "CAFE", count: "21 ลูกเล่น", isNew: true,
