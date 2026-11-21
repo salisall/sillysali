@@ -19,6 +19,13 @@ const TOOLS  = ["ChatGPT", "Gamma", "HeyGen", "Higgsfield", "Claude", "Multi-too
 
 const GUIDES = [
   {
+    slug: "christmas-photobooth", title: "Christmas Photobooth — คลิปโฟโต้บูธแฟลชสตูดิโอ",
+    desc: "Prompt เดียวใส่ไฟแดง แฟลชตรงบีต และปริ้นขาวดำเด้งทับหน้าทุกท่า",
+    topic: "AI video", tool: "Claude", keyword: "BOOTH", count: "6 ขั้น", isNew: true,
+    titleEn: "Christmas Photobooth — a studio-flash photobooth edit",
+    descEn: "One prompt adds a red focus light, on-beat flashes and a black-and-white print over your face in every pose", countEn: "6 steps"
+  },
+  {
     slug: "file-sort", title: "จัดไฟล์ทั้งเครื่องด้วย Claude ใน 1 นาที",
     desc: "Prompt เดียวจัด Downloads รก ๆ เข้าโฟลเดอร์ ไม่ต้องเขียนโค้ด ไม่มีไฟล์หาย",
     topic: "Office & productivity", tool: "Claude", keyword: "FILE", count: "8 ขั้น", isNew: true,
