@@ -235,7 +235,7 @@
     },
     steps(s, sec){
       const ol = el("ol", "steps");
-      // optional 3rd item: { code: "copyable command", img: "guides/img/…jpg", alt: "…", cap: "caption" }
+      // optional 3rd item: { code: "copyable command", img: "guides/img/…jpg", alt: "…", cap: "caption", w: 260 (max image width in px, default 520) }
       s.items.forEach(([title, p, x]) => {
         const li = el("li"); const d = el("div"); d.append(el("b", "", title), el("p", "", p));
         if (x && x.code){
@@ -245,6 +245,7 @@
         }
         if (x && x.img){
           const f = el("figure", "shot"); const im = el("img"); im.src = x.img; im.alt = x.alt || title; im.loading = "lazy"; im.decoding = "async";
+          if (x.w) im.style.maxWidth = x.w + "px";
           f.appendChild(im); if (x.cap) f.appendChild(el("figcaption", "", x.cap)); d.appendChild(f);
         }
         li.appendChild(d); ol.appendChild(li);
