@@ -8,23 +8,22 @@
    "label": "before we start",
    "heading": "ต้องมีอะไรบ้าง",
    "items": [
-    ["คลิปที่มีเพลง", "คลิปแนวตั้งที่เราโพสหลายท่า แต่ละท่าตัดเป็นช็อตสั้น ๆ ต่อกัน และมีเพลงอยู่ในคลิปแล้ว"],
-    ["Claude Code", "ใช้ได้ทั้งแอป Claude (แท็บ Code) หรือ Claude Code ใน Terminal"],
-    ["Prompt เดียว", "ก๊อปจากด้านล่างไปวาง ไม่ต้องเขียนโค้ด ไม่ต้องตัดต่อเอง"],
-    ["รูปท่าที่ชอบ (ไม่ใส่ก็ได้)", "ถ้าอยากเลือกเองว่าแฟลชตรงไหน แคปภาพช็อตนั้นแนบไปด้วย Claude จะใช้ภาพนั้นแทน"]
-   ]
-  },
-  {
-   "type": "flow",
-   "label": "what happens",
-   "heading": "ในคลิปเกิดอะไรขึ้นบ้าง",
-   "intro": "ทุกท่าที่โพสจะได้ลำดับแบบนี้ ตรงจังหวะเพลงทุกครั้ง",
-   "items": [
-    ["ไฟแดงโฟกัส", "จุดไฟแดงนุ่ม ๆ ขึ้นที่แก้ม", "→ เหมือนกล้องกำลังหาโฟกัส"],
-    ["แฟลชครึ่งบน", "แสงแฟลชติดแค่ด้านบนของภาพ 1 เฟรม", "→ เหมือนชัตเตอร์เริ่มลั่น"],
-    ["แฟลชเต็ม", "ภาพสว่างจ้าแค่ 1 เฟรมพอดีบีต", "→ ช็อตที่ถูกถ่ายไป"],
-    ["ภาพค้าง + ปริ้น", "ภาพหยุด 1 วินาที ปริ้นขาวดำเด้งขึ้นทับหน้า", "→ เหมือนรูปออกจากตู้"],
-    ["เล่นต่อ", "ตัดกลับไปที่คลิปทันที เพลงไม่สะดุด", "→ ไปท่าต่อไป"]
+    [
+     "คลิปที่มีเพลง",
+     "คลิปแนวตั้งที่เราโพสหลายท่า แต่ละท่าตัดเป็นช็อตสั้น ๆ ต่อกัน และมีเพลงอยู่ในคลิปแล้ว"
+    ],
+    [
+     "Claude Code",
+     "ใช้ได้ทั้งแอป Claude (แท็บ Code) หรือ Claude Code ใน Terminal"
+    ],
+    [
+     "Prompt เดียว",
+     "ก๊อปจากด้านล่างไปวาง ไม่ต้องเขียนโค้ด ไม่ต้องตัดต่อเอง"
+    ],
+    [
+     "รูปท่าที่ชอบ (ไม่ใส่ก็ได้)",
+     "ถ้าอยากเลือกเองว่าแฟลชตรงไหน แคปภาพช็อตนั้นแนบไปด้วย Claude จะใช้ภาพนั้นแทน"
+    ]
    ]
   },
   {
@@ -32,12 +31,48 @@
    "label": "step by step",
    "heading": "ทำตามนี้ทีละขั้น",
    "items": [
-    ["ถ่ายคลิปโพสหลายท่า", "ตั้งกล้องแนวตั้ง หันหน้าเข้ากล้อง โพสท่าละ 1–2 วินาที เปลี่ยนท่าแล้วตัดเป็นช็อตใหม่ ใส่เพลงที่ชอบลงไปในคลิปเลย ฉากหลังเป็นม่านหรือผนังเรียบ ๆ แสงอุ่น ๆ จะได้ฟีลตู้โฟโต้บูธมากขึ้น"],
-    ["เปิด Claude Code ในโฟลเดอร์ที่มีคลิป", "สร้างโฟลเดอร์ใหม่ ใส่คลิป (และรูปท่าที่อยากให้แฟลช ถ้ามี) แล้วเปิดโฟลเดอร์นั้นใน Claude Code จะใช้ Terminal หรือแอป Claude แท็บ Code ก็ได้", {"code": "cd ~/Desktop/photobooth && claude"}],
-    ["วาง prompt แล้วกดส่ง", "ก๊อป prompt ด้านล่างไปวาง บอกชื่อไฟล์คลิป (หรือแนบคลิปไปเลย) แล้วกด Enter Claude จะหาจุดตัดแต่ละท่า หาบีตเพลง หาหน้า แล้วเลือกเฟรมที่ชัดที่สุดของแต่ละท่า"],
-    ["ดู preview ก่อนเรนเดอร์จริง", "Claude จะยังไม่เรนเดอร์ทั้งคลิป แต่ส่งแถบภาพทุกช็อตที่มีปริ้นทับ และภาพปริ้นใกล้ ๆ 1 ใบมาให้ดู พร้อมบอกเลขเฟรมที่แฟลช ถ้าโอเคพิมพ์ OK ถ้าอยากแก้ก็บอกได้เลย เช่น \"ลด grain หน่อย\" หรือ \"ท่าที่ 3 ขอเฟรมอื่น\"", {"img": "guides/img/christmas-photobooth/02-preview.jpg", "alt": "Claude Code แสดงแถบภาพ preview ทุกช็อตพร้อมเลขเฟรมแฟลช และภาพปริ้นใกล้ ๆ รอให้ตอบ OK", "cap": "Claude ส่ง preview ทุกช็อตมาให้ดูก่อน ตอบ OK แล้วค่อยเรนเดอร์ไฟล์จริง"}],
-    ["ได้คลิปโฟโต้บูธ", "ได้ไฟล์ MP4 ความยาวเท่าคลิปเดิม เสียงเพลงเดิมไม่ถูกแตะ แต่ละท่ามีไฟแดง แฟลช และปริ้นขาวดำโทนอุ่น ขอบดำแบบกระดาษฉีก เด้งขึ้นทับหน้าพอดี", {"img": "guides/img/christmas-photobooth/01-print.jpg", "alt": "ภาพปริ้นขาวดำโทนอุ่นขอบดำวางทับหน้าในคลิป ฉากหลังม่านสีน้ำตาล", "cap": "ปริ้นขาวดำมีเกรนฟิล์มและขอบฉีก วางทับหน้าจริงในคลิปพอดี"}],
-    ["ดูครบทุกท่า", "ทุกท่าที่เจอหน้าจะได้รูปของตัวเอง แม้มือจะบังหน้าบางส่วนก็ยังได้ ลองเอาไปลงรีลคริสต์มาส หรือใช้แคปเป็นรูปโปรไฟล์ก็น่ารัก", {"img": "guides/img/christmas-photobooth/03-strip.jpg", "alt": "แถบภาพปริ้นขาวดำหลายท่าเรียงกัน แต่ละท่าวางทับหน้าในคลิป", "cap": "ทุกท่าได้ปริ้นของตัวเอง เรียงเป็นแถบเหมือนรูปจากตู้"}]
+    [
+     "ถ่ายคลิปโพสหลายท่า",
+     "ตั้งกล้องแนวตั้ง หันหน้าเข้ากล้อง โพสท่าละ 1–2 วินาที เปลี่ยนท่าแล้วตัดเป็นช็อตใหม่ ใส่เพลงที่ชอบลงไปในคลิปเลย ฉากหลังเป็นม่านหรือผนังเรียบ ๆ แสงอุ่น ๆ จะได้ฟีลตู้โฟโต้บูธมากขึ้น"
+    ],
+    [
+     "เปิด Claude Code ในโฟลเดอร์ที่มีคลิป",
+     "สร้างโฟลเดอร์ใหม่ ใส่คลิป (และรูปท่าที่อยากให้แฟลช ถ้ามี) แล้วเปิดโฟลเดอร์นั้นใน Claude Code จะใช้ Terminal หรือแอป Claude แท็บ Code ก็ได้",
+     {
+      "code": "cd ~/Desktop/photobooth && claude"
+     }
+    ],
+    [
+     "วาง prompt แล้วกดส่ง",
+     "ก๊อป prompt ด้านล่างไปวาง บอกชื่อไฟล์คลิป (หรือแนบคลิปไปเลย) แล้วกด Enter Claude จะหาจุดตัดแต่ละท่า หาบีตเพลง หาหน้า แล้วเลือกเฟรมที่ชัดที่สุดของแต่ละท่า"
+    ],
+    [
+     "ดู preview ก่อนเรนเดอร์จริง",
+     "Claude จะยังไม่เรนเดอร์ทั้งคลิป แต่ส่งแถบภาพทุกช็อตที่มีปริ้นทับ และภาพปริ้นใกล้ ๆ 1 ใบมาให้ดู พร้อมบอกเลขเฟรมที่แฟลช ถ้าโอเคพิมพ์ OK ถ้าอยากแก้ก็บอกได้เลย เช่น \"ลด grain หน่อย\" หรือ \"ท่าที่ 3 ขอเฟรมอื่น\"",
+     {
+      "img": "guides/img/christmas-photobooth/02-preview.jpg",
+      "alt": "Claude Code แสดงแถบภาพ preview ทุกช็อตพร้อมเลขเฟรมแฟลช และภาพปริ้นใกล้ ๆ รอให้ตอบ OK",
+      "cap": "Claude ส่ง preview ทุกช็อตมาให้ดูก่อน ตอบ OK แล้วค่อยเรนเดอร์ไฟล์จริง"
+     }
+    ],
+    [
+     "ได้คลิปโฟโต้บูธ",
+     "ได้ไฟล์ MP4 ความยาวเท่าคลิปเดิม เสียงเพลงเดิมไม่ถูกแตะ แต่ละท่ามีไฟแดง แฟลช และปริ้นขาวดำโทนอุ่น ขอบดำแบบกระดาษฉีก เด้งขึ้นทับหน้าพอดี",
+     {
+      "img": "guides/img/christmas-photobooth/01-print.jpg",
+      "alt": "ภาพปริ้นขาวดำโทนอุ่นขอบดำวางทับหน้าในคลิป ฉากหลังม่านสีน้ำตาล",
+      "cap": "ปริ้นขาวดำมีเกรนฟิล์มและขอบฉีก วางทับหน้าจริงในคลิปพอดี"
+     }
+    ],
+    [
+     "ดูครบทุกท่า",
+     "ทุกท่าที่เจอหน้าจะได้รูปของตัวเอง แม้มือจะบังหน้าบางส่วนก็ยังได้ ลองเอาไปลงรีลคริสต์มาส หรือใช้แคปเป็นรูปโปรไฟล์ก็น่ารัก",
+     {
+      "img": "guides/img/christmas-photobooth/03-strip.jpg",
+      "alt": "แถบภาพปริ้นขาวดำหลายท่าเรียงกัน แต่ละท่าวางทับหน้าในคลิป",
+      "cap": "ทุกท่าได้ปริ้นของตัวเอง เรียงเป็นแถบเหมือนรูปจากตู้"
+     }
+    ]
    ]
   },
   {
@@ -46,7 +81,10 @@
    "heading": "Prompt โฟโต้บูธแฟลชสตูดิโอ",
    "intro": "ก๊อปไปวางใน Claude Code ได้เลย ส่วนท้ายสุด (THINGS I CAN CHANGE) คือสิ่งที่ปรับเองได้ ดูวิธีปรับด้านล่าง",
    "items": [
-    ["Studio flash photobooth", "Turn my attached video into a \"studio flash photobooth\" edit, at normal\nspeed, synced to the song in the video.\n\nINPUTS\n- One source video with music (required).\n- Optional: still images of the exact moments I want the flash on.\n\nSTEPS\n\n1. Split the video into poses.\n   - Detect hard cuts. Each stretch between cuts is one pose.\n   - One flash per pose. Include every pose, even ones where hands cover\n     part of the face, as long as a face is detected.\n\n2. Find the beats.\n   - Detect the song's beats (librosa beat tracking). Every flash must\n     land exactly on a beat.\n   - In each pose, pick the beat that scores best on: beat strength,\n     face sharpness, low motion, face detected.\n   - Spacing: the next flash must come at least 1 s (freeze) + 0.4 s\n     (shortest red light) after the previous one. A freeze must end\n     before the video ends.\n   - If I attached stills, use those frames instead and snap each to\n     the nearest beat.\n   - Tell me the flash frame numbers.\n\n3. Speed: normal. No slow motion. Keep the original audio untouched.\n   The output must be exactly as long as the source.\n\n4. Face and light point: detect the face in each flash frame (eyes,\n   nose, mouth corners). Aim the light at the lower cheek on the side\n   turned toward the camera: 35% of the way from the mouth corner up to\n   the eye, pushed outward by 0.32 × the distance between the eyes.\n   Track that point backward with optical flow so the light follows\n   the face. Never track across a cut.\n\n5. Lighting sequence before every flash:\n   a. Red focus-assist light: soft gaussian spot, sigma 0.30 × eye\n      distance, plus a faint halo 2.5× wider at 20% strength. Lift red\n      toward saturation by up to 62%, cut green 16% and blue 20%. Scale\n      by surface brightness so skin catches it and dark hair barely\n      does. Fade in 3 frames, hold up to 15 frames with a very slight\n      flicker, fade out 2 frames.\n   b. Gap: 4 frames with no effect.\n   c. Red light starts 24 frames before the flash. If the previous\n      freeze or a cut is closer than that, start it later (minimum 12\n      frames). Never move the flash.\n   d. One frame where only the top 36% of the picture is flash-lit.\n   e. Exactly ONE full flash frame: lift blacks to about 40/255, push\n      midtones up hard (116 → 188, 208 → 243), cut saturation to about\n      half, slightly cool, brightest on the subject. Then straight back\n      to normal.\n\n6. Freeze with print, straight after each flash:\n   a. The next 30 frames (1 s) show the flash frame without the flash\n      effect, frozen. These frames REPLACE the footage underneath so\n      the audio stays in sync. Playback resumes at flash frame + 31.\n   b. Over it, show the photo that was \"taken\": the flash frame\n      (without the flash effect), styled and placed as below.\n\n   PRINT COLOUR (black-and-white photobooth print)\n   - Convert the cropped photo to grayscale, values 0–1.\n   - Contrast: (value − 0.02) × 1.45, clip to 0–1.\n   - Gamma: value ^ 0.82 (bright flash-lit skin, deep blacks).\n   - Matte range: value × 0.86 + 0.07 (no pure black or pure white).\n   - Vignette: darken the corners by up to 22%, smooth falloff from the\n     centre.\n   - Slight blur: 0.9 px.\n   - Film grain: gaussian noise, strength 0.04, softened with a 0.7 px\n     blur. The grain stays still for the whole freeze.\n   - Warm tone: multiply blue by 0.84 and green by 0.93, leave red.\n   - Border colour: near black (about 9/255), with the same warm tone\n     and a very light grain.\n   - Border size on an 800 × 1060 print: left 26 px, right 8 px, top\n     34 px, bottom 68 px. The inner top edge is slightly rough (about\n     ±5 px). From 72% of the width to the right edge it gets rougher\n     (about ±9 px) and dips 6 px lower, like a torn corner. Soften the\n     inner edge by 1.2 px.\n\n   PRINT POSITION\n   - Crop: centre on the face box. Crop width 4.6 × the distance\n     between the eyes (capped at the video width), same aspect as the\n     photo area (766 × 958). The face sits at 42% from the top of the\n     crop. Keep the crop inside the frame.\n   - Print size: 800 × 1060 px on a 1080 × 1920 video (74% of the\n     width).\n   - Rotation: 0.7° clockwise.\n   - Placement: put the print so the face in the print sits exactly\n     over the real face in the video, as if the print replaced the\n     face. Keep it fully on screen: at least 24 px from the left and\n     right edges and at least 60 px from the top and bottom.\n   - Pop-in: fade in over 2 frames while scaling from 105% to 100%\n     over 3 frames. Hard cut back to the footage after 1 s.\n\n7. Output: one MP4, 1080 px wide for vertical video, 30 fps, H.264,\n   original audio copied. Same length as the source.\n\nBEFORE THE FULL RENDER\nShow me a strip of every freeze frame with the print in place, and a\nclose-up of one print. Wait for my OK.\n\nWHEN YOU DELIVER\nTell me the flash frames, which shots got a shorter red light, and\nanything that differs from what I asked.\n\nTHINGS I CAN CHANGE\n- Shots: [one per pose / my picks]\n- Flash on: [every beat-aligned pose / every 2nd beat / my frames]\n- Red light: [on / off], size [0.30 × eye distance]\n- Freeze length: [1] second\n- Print size: [74%] of width\n- Print position: [over the face / exact centre, same spot every shot]"]
+    [
+     "Studio flash photobooth",
+     "Turn my attached video into a \"studio flash photobooth\" edit, at normal\nspeed, synced to the song in the video.\n\nINPUTS\n- One source video with music (required).\n- Optional: still images of the exact moments I want the flash on.\n\nSTEPS\n\n1. Split the video into poses.\n   - Detect hard cuts. Each stretch between cuts is one pose.\n   - One flash per pose. Include every pose, even ones where hands cover\n     part of the face, as long as a face is detected.\n\n2. Find the beats.\n   - Detect the song's beats (librosa beat tracking). Every flash must\n     land exactly on a beat.\n   - In each pose, pick the beat that scores best on: beat strength,\n     face sharpness, low motion, face detected.\n   - Spacing: the next flash must come at least 1 s (freeze) + 0.4 s\n     (shortest red light) after the previous one. A freeze must end\n     before the video ends.\n   - If I attached stills, use those frames instead and snap each to\n     the nearest beat.\n   - Tell me the flash frame numbers.\n\n3. Speed: normal. No slow motion. Keep the original audio untouched.\n   The output must be exactly as long as the source.\n\n4. Face and light point: detect the face in each flash frame (eyes,\n   nose, mouth corners). Aim the light at the lower cheek on the side\n   turned toward the camera: 35% of the way from the mouth corner up to\n   the eye, pushed outward by 0.32 × the distance between the eyes.\n   Track that point backward with optical flow so the light follows\n   the face. Never track across a cut.\n\n5. Lighting sequence before every flash:\n   a. Red focus-assist light: soft gaussian spot, sigma 0.30 × eye\n      distance, plus a faint halo 2.5× wider at 20% strength. Lift red\n      toward saturation by up to 62%, cut green 16% and blue 20%. Scale\n      by surface brightness so skin catches it and dark hair barely\n      does. Fade in 3 frames, hold up to 15 frames with a very slight\n      flicker, fade out 2 frames.\n   b. Gap: 4 frames with no effect.\n   c. Red light starts 24 frames before the flash. If the previous\n      freeze or a cut is closer than that, start it later (minimum 12\n      frames). Never move the flash.\n   d. One frame where only the top 36% of the picture is flash-lit.\n   e. Exactly ONE full flash frame: lift blacks to about 40/255, push\n      midtones up hard (116 → 188, 208 → 243), cut saturation to about\n      half, slightly cool, brightest on the subject. Then straight back\n      to normal.\n\n6. Freeze with print, straight after each flash:\n   a. The next 30 frames (1 s) show the flash frame without the flash\n      effect, frozen. These frames REPLACE the footage underneath so\n      the audio stays in sync. Playback resumes at flash frame + 31.\n   b. Over it, show the photo that was \"taken\": the flash frame\n      (without the flash effect), styled and placed as below.\n\n   PRINT COLOUR (black-and-white photobooth print)\n   - Convert the cropped photo to grayscale, values 0–1.\n   - Contrast: (value − 0.02) × 1.45, clip to 0–1.\n   - Gamma: value ^ 0.82 (bright flash-lit skin, deep blacks).\n   - Matte range: value × 0.86 + 0.07 (no pure black or pure white).\n   - Vignette: darken the corners by up to 22%, smooth falloff from the\n     centre.\n   - Slight blur: 0.9 px.\n   - Film grain: gaussian noise, strength 0.04, softened with a 0.7 px\n     blur. The grain stays still for the whole freeze.\n   - Warm tone: multiply blue by 0.84 and green by 0.93, leave red.\n   - Border colour: near black (about 9/255), with the same warm tone\n     and a very light grain.\n   - Border size on an 800 × 1060 print: left 26 px, right 8 px, top\n     34 px, bottom 68 px. The inner top edge is slightly rough (about\n     ±5 px). From 72% of the width to the right edge it gets rougher\n     (about ±9 px) and dips 6 px lower, like a torn corner. Soften the\n     inner edge by 1.2 px.\n\n   PRINT POSITION\n   - Crop: centre on the face box. Crop width 4.6 × the distance\n     between the eyes (capped at the video width), same aspect as the\n     photo area (766 × 958). The face sits at 42% from the top of the\n     crop. Keep the crop inside the frame.\n   - Print size: 800 × 1060 px on a 1080 × 1920 video (74% of the\n     width).\n   - Rotation: 0.7° clockwise.\n   - Placement: put the print so the face in the print sits exactly\n     over the real face in the video, as if the print replaced the\n     face. Keep it fully on screen: at least 24 px from the left and\n     right edges and at least 60 px from the top and bottom.\n   - Pop-in: fade in over 2 frames while scaling from 105% to 100%\n     over 3 frames. Hard cut back to the footage after 1 s.\n\n7. Output: one MP4, 1080 px wide for vertical video, 30 fps, H.264,\n   original audio copied. Same length as the source.\n\nBEFORE THE FULL RENDER\nShow me a strip of every freeze frame with the print in place, and a\nclose-up of one print. Wait for my OK.\n\nWHEN YOU DELIVER\nTell me the flash frames, which shots got a shorter red light, and\nanything that differs from what I asked.\n\nTHINGS I CAN CHANGE\n- Shots: [one per pose / my picks]\n- Flash on: [every beat-aligned pose / every 2nd beat / my frames]\n- Red light: [on / off], size [0.30 × eye distance]\n- Freeze length: [1] second\n- Print size: [74%] of width\n- Print position: [over the face / exact centre, same spot every shot]"
+    ]
    ]
   },
   {
@@ -55,12 +93,30 @@
    "heading": "ปรับอะไรได้บ้าง",
    "intro": "แก้ในวงเล็บท้าย prompt หรือพิมพ์บอก Claude ตอนดู preview ก็ได้",
    "items": [
-    ["เลือกท่าเอง", "Shots: my picks แล้วแนบภาพท่าที่ชอบ Claude จะแฟลชตรงนั้นแล้วขยับให้ลงบีตที่ใกล้ที่สุด"],
-    ["ความถี่ของแฟลช", "Flash on: every 2nd beat ถ้าอยากให้แฟลชห่างขึ้น ดูไม่ถี่เกินไป"],
-    ["ไฟแดงโฟกัส", "Red light: off ถ้าอยากได้แค่แฟลชเพียว ๆ หรือเพิ่มขนาดจุดไฟ เช่น 0.40 × eye distance"],
-    ["ภาพค้างนานแค่ไหน", "Freeze length: 1.5 หรือ 2 วินาที ถ้าอยากให้คนดูเห็นปริ้นนานขึ้น"],
-    ["ขนาดปริ้น", "Print size: 60% ปริ้นเล็กลงเห็นตัวเรามากขึ้น หรือ 85% ให้ปริ้นเต็มจอ"],
-    ["ตำแหน่งปริ้น", "Print position: exact centre ปริ้นอยู่กลางจอที่เดิมทุกช็อต ดูเป็นระเบียบแบบอัลบั้ม"]
+    [
+     "เลือกท่าเอง",
+     "Shots: my picks แล้วแนบภาพท่าที่ชอบ Claude จะแฟลชตรงนั้นแล้วขยับให้ลงบีตที่ใกล้ที่สุด"
+    ],
+    [
+     "ความถี่ของแฟลช",
+     "Flash on: every 2nd beat ถ้าอยากให้แฟลชห่างขึ้น ดูไม่ถี่เกินไป"
+    ],
+    [
+     "ไฟแดงโฟกัส",
+     "Red light: off ถ้าอยากได้แค่แฟลชเพียว ๆ หรือเพิ่มขนาดจุดไฟ เช่น 0.40 × eye distance"
+    ],
+    [
+     "ภาพค้างนานแค่ไหน",
+     "Freeze length: 1.5 หรือ 2 วินาที ถ้าอยากให้คนดูเห็นปริ้นนานขึ้น"
+    ],
+    [
+     "ขนาดปริ้น",
+     "Print size: 60% ปริ้นเล็กลงเห็นตัวเรามากขึ้น หรือ 85% ให้ปริ้นเต็มจอ"
+    ],
+    [
+     "ตำแหน่งปริ้น",
+     "Print position: exact centre ปริ้นอยู่กลางจอที่เดิมทุกช็อต ดูเป็นระเบียบแบบอัลบั้ม"
+    ]
    ]
   },
   {
