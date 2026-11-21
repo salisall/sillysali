@@ -210,7 +210,7 @@
   if (!/^[a-z0-9-]+$/.test(slug)) return missing();
 
   // EN mode tries guides/<slug>.en.json first, then falls back to the Thai original
-  const get = f => fetch("guides/" + f + ".json").then(r => { if (!r.ok) throw 0; return r.json(); });
+  const get = f => fetch("guides/" + f + ".json", { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r.json(); });
   function load(){
     const en = window.LANG === "en";
     (en ? get(slug + ".en").then(d => (d._en = true, d)).catch(() => get(slug)) : get(slug))
