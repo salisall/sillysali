@@ -11,31 +11,64 @@
    "items": [
     [
      "เข้า gamma.app",
-     "AI tool ที่ช่วยเปลี่ยน sales CSV ให้เป็น executive presentation ได้รวดเร็ว และช่วยจัดโครงเรื่องการนำเสนอ"
+     "เปิดเว็บ gamma.app เป็น AI tool ที่ช่วยเปลี่ยนไฟล์ sales CSV ให้เป็น executive presentation ที่อ่านง่าย และช่วยจัดโครงเรื่องการนำเสนอให้",
+     {
+      "code": "gamma.app"
+     }
     ],
     [
      "แนบไฟล์ข้อมูล",
-     "กดเครื่องหมาย + เพื่อ add file ข้อมูลจริงที่จะวิเคราะห์ (เช่น sales CSV ประจำเดือน)"
+     "กดเครื่องหมาย + เพื่อ add file ข้อมูลจริงที่จะวิเคราะห์ (เช่น sales CSV ประจำเดือน)",
+     {
+      "img": "guides/img/gamma-presentation/02-attach.jpg",
+      "alt": "หน้า Gamma ที่แนบไฟล์ DESKDAY XLSX แล้ว ปุ่ม + Add or connect อยู่มุมซ้ายล่าง",
+      "cap": "กด + มุมซ้ายล่างเพื่อแนบไฟล์ (ในรูปคือไฟล์ตัวอย่าง sales มี.ค. 2026)"
+     }
     ],
     [
      "วาง prompt",
-     "ก๊อป prompt ด้านล่าง (Basic หรือ Advance) ไปวางได้เลย"
+     "ก๊อป prompt ด้านล่าง (Basic หรือ Advance) ไปวางได้เลย",
+     {
+      "img": "guides/img/gamma-presentation/03-prompt.jpg",
+      "alt": "วาง prompt แบบ Advance ในช่องพิมพ์ของ Gamma ใต้ไฟล์ที่แนบ",
+      "cap": "วาง prompt ใต้ไฟล์ที่แนบไว้แบบนี้"
+     }
     ],
     [
      "เลือก Presentation",
-     "สำคัญ! อย่าลืมเลือกตัวเลือกสร้างสไลด์ presentation แล้วกดลูกศรเพื่อส่ง"
+     "สำคัญ! อย่าลืมเลือกตัวเลือกสร้างสไลด์ presentation แล้วกดลูกศรเพื่อส่ง",
+     {
+      "img": "guides/img/gamma-presentation/04-presentation.jpg",
+      "alt": "ช่องพิมพ์ Gamma ที่เลือกตัวเลือก Presentation แล้ว พร้อมปุ่มลูกศรส่ง",
+      "cap": "ต้องเห็นป้าย Presentation ในช่องพิมพ์ แล้วค่อยกดลูกศร"
+     }
     ],
     [
      "Generate",
-     "Gamma จะสรุปโครงทั้งหมดให้เช็กก่อน ถ้าโอเคแล้วกด Generate ได้เลย"
+     "Gamma จะสรุปโครงทั้งหมดให้เช็กก่อน ถ้าโอเคแล้วกด Generate ได้เลย",
+     {
+      "img": "guides/img/gamma-presentation/05-generate.jpg",
+      "alt": "Gamma แสดงโครงสไลด์แต่ละหน้าพร้อม What happened / Why it matters / What management should do next และปุ่ม Generate",
+      "cap": "เช็กโครงทุกสไลด์ก่อน แล้วกด Generate ด้านล่าง"
+     }
     ],
     [
      "เปลี่ยน style / theme",
-     "เลือกสีและรูปแบบสไลด์ได้ตามใจ สไลด์ทั้งหมดจะถูกสร้างในเวลาไม่นาน"
+     "เลือกสีและรูปแบบสไลด์ได้ตามใจ สไลด์ทั้งหมดจะถูกสร้างในเวลาไม่นาน",
+     {
+      "img": "guides/img/gamma-presentation/06-theme.jpg",
+      "alt": "สไลด์ DESKDAY ที่สร้างเสร็จ และแผง Theme preset ให้เลือกธีม",
+      "cap": "เปิด Styles > Themes แล้วลองธีมต่าง ๆ ได้เลย"
+     }
     ],
     [
      "Export",
-     "กดจุดสามจุดมุมขวาบน เซฟเป็น PDF หรือ PowerPoint เพื่อเอาไปแก้ต่อได้"
+     "กดจุดสามจุดมุมขวาบน เซฟเป็น PDF หรือ PowerPoint เพื่อเอาไปแก้ต่อได้",
+     {
+      "img": "guides/img/gamma-presentation/07-export.jpg",
+      "alt": "เมนูจุดสามจุดมุมขวาบนของ Gamma ที่มีตัวเลือก Export",
+      "cap": "จุดสามจุดมุมขวาบน > Export… แล้วเลือก PDF, PowerPoint หรือ Google Slides"
+     }
     ]
    ]
   },
