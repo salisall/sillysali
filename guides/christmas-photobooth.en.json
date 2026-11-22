@@ -1,5 +1,6 @@
 {
  "title": "Christmas Photobooth — turn a clip into a studio-flash photobooth",
+ "uses": "✦ Made with Claude Pro · Opus 5.5 model",
  "subtitle": "Film yourself striking a few poses to a song, then let Claude Code add a red focus light, a flash on the beat and a black-and-white print that pops up over your face in every shot, just like a real photo booth. One prompt.",
  "greeting": "Thanks for commenting BOOTH 😊 Here's the full studio-flash photobooth prompt. Once your Christmas clip is ready, tag me so I can see it 🎄",
  "sections": [

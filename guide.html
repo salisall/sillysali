@@ -52,6 +52,7 @@
   .meta{display:flex;flex-wrap:wrap;gap:6px}
   .meta span{font-size:12px;font-weight:600;padding:3px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--paper)}
   .meta span.tl{background:var(--accent);border-color:var(--accent);color:#fff}
+  .uses{display:flex;width:fit-content;max-width:100%;align-items:center;gap:8px;margin:0 0 14px;padding:7px 14px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600}
   h1{font-family:"Instrument Serif","IBM Plex Sans Thai",serif;font-weight:400;font-size:clamp(38px,6vw,62px);line-height:1.05;letter-spacing:-.01em;margin:14px 0 8px}
   .sub{color:var(--muted);font-size:17px}
 
@@ -315,7 +316,10 @@
   function render(d){
     document.title = d.title + t(" — Free Guide by Sali", " — ไกด์ฟรีโดย Sali");
     app.innerHTML = "";
-    const back = el("a", "back", t("← Free guides", "← ไกด์ฟรี")); back.href = "guides.html"; app.appendChild(back);
+    const back = el("a", "back", t("← Free guides", "← ไกด์ฟรี")); back.href = "guides.html";
+    // optional "uses": plan / model the guide was made with, shown as the first line
+    if (d.uses) app.appendChild(el("div", "uses", d.uses));
+    app.appendChild(back);
 
     const m = el("div", "meta");
     if (meta.topic) m.appendChild(el("span", "", meta.topic));
