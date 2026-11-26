@@ -382,7 +382,8 @@ function wireDownload(a, productId) {
 function renderBuy() {
   var box = document.getElementById("buyArea"), owned = library()["ai-everyday"];
   if (owned) {
-    box.innerHTML = '<a href="#" class="pxbtn" id="dl2">⬇ ' + t("DOWNLOAD PDF", "ดาวน์โหลด PDF") + '</a><span class="owned">' + t("Bought · order #", "ซื้อแล้ว · ออร์เดอร์ #") + owned.orderId + '</span>';
+    box.innerHTML = '<a href="#" class="pxbtn" id="dl2">⬇ ' + t("DOWNLOAD PDF", "ดาวน์โหลด PDF") + '</a>';
+    // hidden for now: + '<span class="owned">' + t("Bought · order #", "ซื้อแล้ว · ออร์เดอร์ #") + owned.orderId + '</span>'
     wireDownload(document.getElementById("dl2"), "ai-everyday");
   } else {
     box.innerHTML = '<button class="pxbtn" type="button" id="buy">' + t("BUY NOW ฿299", "ซื้อเลย ฿299") + '</button>';
