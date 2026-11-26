@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course — Sali</title>
+<meta name="description" content="PDF guides you can buy with PromptPay and download right away.">
+<meta property="og:title" content="Course ✦ — Sali">
+<meta property="og:description" content="PDF guides you can buy with PromptPay and download right away.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Nanum+Pen+Script&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f1e8; --paper:#fbf9f3; --ink:#1d1c1a; --muted:#6c675e; --line:#e2dccf;
+    --accent:#2f4bd6; --accent-soft:#e3e8ff; --butter:#f6e7a8; --sage:#cfdcc4; --pink:#f3cfc4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141413; --paper:#1c1b19; --ink:#efebe3; --muted:#a19b90; --line:#2e2c28;
+      --accent:#8ea2ff; --accent-soft:#232a4a; --butter:#5a5022; --sage:#36432f; --pink:#4d3530;
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);color:var(--ink);
+    font:400 16px/1.65 Inter,"IBM Plex Sans Thai",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(rgba(0,0,0,.035) 1px,transparent 1px);background-size:4px 4px;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:760px;margin:0 auto}
+  .hand{font-family:"Nanum Pen Script",cursive}
+  .mono{font-family:"IBM Plex Mono",monospace}
+
+  /* top bar (same as home) */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px dashed var(--line)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+  .logo{font-family:"Instrument Serif",serif;font-size:26px;letter-spacing:-.01em}
+  .logo b{color:var(--accent);font-weight:400}
+  .tags{display:flex;gap:8px;list-style:none;flex-wrap:wrap}
+  .tags a{display:inline-block;font-size:13px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--muted);transition:.2s}
+  .tags a:hover{color:var(--ink);border-color:var(--ink)}
+  .tags a.hot{background:var(--butter);border-color:var(--ink);color:var(--ink);font-weight:600}
+  .pill{font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 16px -6px rgba(0,0,0,.35);white-space:nowrap}
+
+  /* header */
+  .head{text-align:center;padding:52px 0 32px}
+  .head .eyebrow{font-size:30px;color:var(--accent);display:inline-block;transform:rotate(-2deg)}
+  .head h1{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:clamp(24px,5vw,40px);line-height:1.3;margin:12px 0 18px}
+  .head h1 span{background:var(--pink);padding:0 8px;box-shadow:4px 4px 0 var(--ink);border:3px solid var(--ink);display:inline-block}
+  .head p{color:var(--muted);font-size:17px;max-width:560px;margin:0 auto}
+
+  /* shared pixel bits */
+  .pxbox{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .tbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--accent);color:#fff;border-bottom:3px solid var(--ink);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px}
+  .tbar .sq{width:12px;height:12px;background:#fff;border:2px solid var(--ink)}
+  .tbar .r{margin-left:auto}
+  .pxbtn{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;line-height:1.4;padding:11px 14px;background:var(--ink);color:var(--bg);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .08s steps(2),box-shadow .08s steps(2);white-space:nowrap}
+  .pxbtn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--accent)}
+  .pxbtn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--accent)}
+  .pxbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .pxbtn.ghost{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .inp{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:2px solid var(--ink);background:var(--bg);color:var(--ink);outline:none;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .inp:focus{border-color:var(--accent);background:var(--paper)}
+  textarea.inp{resize:vertical;min-height:92px;line-height:1.55}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 10px;background:var(--paper);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .08s steps(2)}
+  .chip b{color:var(--accent);font-weight:500}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .chip[aria-pressed="true"] b{color:var(--butter)}
+  .ava{flex:none;width:34px;height:34px;background:var(--bg);border:2px solid var(--ink);padding:2px}
+  .ava svg{width:100%;height:100%;display:block}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+
+  .rules{font-size:12.5px;color:var(--muted);text-align:center;margin:10px 0 60px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  footer{padding:32px 0 48px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;border-top:1px dashed var(--line)}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:10px;padding:12px 16px;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--accent);transition:transform .25s steps(4),visibility .25s;z-index:50;visibility:hidden}
+  .toast.on{transform:translate(-50%,0);visibility:visible}
+
+  @media (max-width:900px){ .tags li:not(.keep){display:none} }
+  @media (max-width:560px){
+    .reply{grid-template-columns:1fr auto}
+    .reply .nmi{grid-column:1/-1}
+    .compose .who .inp{max-width:none}
+    .pxbox{box-shadow:5px 5px 0 var(--ink)}
+  }
+  @media (prefers-reduced-motion:reduce){ .thread,.a,.compose .spark,.dots i{animation:none} }
+
+  
+
+  .head h1 span{background:var(--c)}
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 40px}
+  .tabs a{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:7px 14px;background:var(--paper);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:transform .08s steps(2)}
+  .tabs a b{color:var(--accent);font-weight:500}
+  .tabs a:hover{transform:translate(-1px,-1px)}
+  .tabs a[aria-current]{background:var(--ink);color:var(--bg)}
+  .tabs a[aria-current] b{color:var(--butter)}
+  .updated{display:block;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin:-26px 0 34px}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-bottom:50px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .card{display:flex;flex-direction:column;background:var(--paper);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);animation:pop .3s steps(4) both}
+  @keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .card .top{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:3px solid var(--ink);background:var(--c)}
+  .card .top .ic{width:30px;height:30px;display:grid;place-items:center;background:var(--paper);border:2px solid var(--ink);font-size:16px}
+  .card .top .no{margin-left:auto;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px}
+  .card .in{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .card h3{font-size:18px;font-weight:600;line-height:1.35}
+  .card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .try{margin-top:auto;padding:10px 12px;background:var(--butter);border:2px dashed var(--ink);font-size:14px;line-height:1.55;color:var(--ink)}
+  .try b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px;display:block;margin-bottom:5px}
+  .good{display:flex;flex-wrap:wrap;gap:6px}
+  .good span{font-size:12px;padding:1px 8px;border:1.5px solid var(--ink);background:var(--bg);font-family:"IBM Plex Mono",monospace}
+  .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .links a{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:8.5px;line-height:1.4;padding:8px 10px;border:2px solid var(--ink);background:var(--paper);box-shadow:2px 2px 0 var(--ink)}
+  .links a.g{background:var(--accent);color:#fff}
+  .links a:hover{transform:translate(-1px,-1px)}
+
+  .cat{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .cat h2{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:13px;line-height:1.5}
+  .cat i{flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 10px)}
+  .cat p{font-size:13.5px;color:var(--muted)}
+
+  .note{max-width:640px;margin:0 auto 26px;padding:12px 16px;border:2px dashed var(--line);font-size:13.5px;color:var(--muted);text-align:center;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:20px;margin:10px 0 70px;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink)}
+  .cta b{font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-weight:400;font-size:12px;display:block;margin-bottom:8px;line-height:1.5}
+  .cta p{color:var(--muted);font-size:14.5px;font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .cta .btns{display:flex;gap:10px;flex-wrap:wrap}
+  @media (max-width:900px){ .grid.three{grid-template-columns:1fr 1fr} }
+  @media (max-width:640px){ .grid,.grid.three{grid-template-columns:1fr} .cta{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ .card{animation:none} }
+  :root{--c:#f6e7a8}
+  .tags a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .prod{display:grid;grid-template-columns:300px 1fr;gap:34px;align-items:center;max-width:860px;margin:0 auto 80px;padding:26px;background:var(--paper);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);font-family:"IBM Plex Sans Thai",Inter,sans-serif}
+  .prod img{width:100%;display:block;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);background:#fff}
+  .prod .badge{display:inline-block;font-family:"Press Start 2P","IBM Plex Sans Thai",monospace;font-size:9px;padding:6px 8px;background:var(--c);border:2px solid var(--ink)}
+  .prod h2{font-size:26px;font-weight:600;line-height:1.3;margin:12px 0 8px}
+  .prod p{color:var(--muted);font-size:15px}
+  .prod ul{list-style:none;margin:14px 0 18px;display:flex;flex-direction:column;gap:5px;font-size:14.5px}
+  .prod li::before{content:"✦ ";color:var(--accent)}
+  .price{font-family:Inter,sans-serif;font-size:34px;font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .owned{font-size:13px;color:var(--muted)}
+  /* checkout modal */
+  .ov{position:fixed;inset:0;background:rgba(20,20,19,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:40}
+  .ov.on{display:flex}
+  .sheet{width:100%;max-width:640px;background:#fff;color:#1d1c1a;border-radius:16px;padding:22px;font-family:"IBM Plex Sans Thai",Inter,sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .sheet h3{font-size:22px;font-weight:600;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+  .x{border:none;background:#f1f1f1;border-radius:50%;width:32px;height:32px;font-size:16px}
+  .panel{background:#f4f4f3;border-radius:12px;padding:16px}
+  .oid{font-size:12px;color:#6c675e;letter-spacing:.03em}
+  .pname{font-weight:600;font-size:15px;margin:4px 0 10px}
+  .row{display:flex;justify-content:space-between;font-size:14px;color:#6c675e;padding-bottom:12px;border-bottom:1px solid #e2e2e0}
+  .row b{color:#1d1c1a;font-weight:600}
+  .total{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0}
+  .total span{font-weight:600;font-size:14px}
+  .total b{font-family:Inter,sans-serif;font-size:36px;font-weight:600;letter-spacing:-.02em}
+  .qrbox{background:#fff;border-radius:10px;padding:16px;text-align:center}
+  .qrcard{display:inline-block;width:150px;border:1px solid #e2e2e0;border-radius:10px;overflow:hidden}
+  .qrcard .hd{background:#173a6b;color:#fff;font:600 11px/1 Inter,sans-serif;padding:8px;letter-spacing:.06em}
+  .qrcard svg{width:118px;height:118px;display:block;margin:12px auto}
+  .qrbox .s{font-weight:600;font-size:14px;margin-top:10px}
+  .qrbox .n{font-size:12.5px;color:#8a857b;margin-top:4px}
+  .wait{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13.5px;color:#6c675e;margin-top:12px}
+  .wait i{width:9px;height:9px;border-radius:50%;background:#e0a800;animation:bl 1s steps(2) infinite}
+  @keyframes bl{50%{opacity:.2}}
+  .foot{font-size:12.5px;color:#6c675e;margin-top:12px}
+  .demo{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .b1{flex:1;border:none;border-radius:999px;background:#1d1c1a;color:#fff;font-weight:600;font-size:14px;padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .b2{border:1.5px solid #1d1c1a;border-radius:999px;background:#fff;font-weight:600;font-size:14px;padding:11px 16px}
+  .b1:disabled{opacity:.4;cursor:not-allowed}
+  .field{display:flex;flex-direction:column;gap:6px;font-size:14px;margin:14px 0}
+  .field input{font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid #cfcac0;border-radius:10px;outline:none}
+  .field input:focus{border-color:#2f4bd6}
+  .err{color:#b3261e;font-size:13px;min-height:18px}
+  .ok{text-align:center;padding:6px 0 4px}
+  .ok .ck{width:38px;height:38px;border-radius:50%;background:#14532d;color:#fff;display:grid;place-items:center;margin:0 auto 10px;font-size:20px}
+  .ok b{display:block;font-size:15px}
+  .ok span{font-size:13px;color:#6c675e}
+  .file{background:#fff;border-radius:10px;padding:14px;text-align:center;margin-top:12px}
+  .file div{font-weight:600;font-size:14px;margin-bottom:10px}
+  .file a{display:flex}
+  .testtag{display:inline-block;font:600 11px/1 "IBM Plex Mono",monospace;background:#fff4c2;border:1px solid #e0c84a;border-radius:999px;padding:4px 8px;margin-bottom:12px}
+  @media (max-width:720px){ .prod{grid-template-columns:1fr} .prod img{max-width:260px;margin:0 auto} .total b{font-size:30px} }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="index.html">sali<b>.</b></a>
+      <ul class="tags">
+        <li class="keep"><a class="hot" href="guides.html" data-th="ไกด์ฟรี ✦">Free guides ✦</a></li>
+        <li><a href="index.html#club" data-th="คอมมูนิตี้">AI Club</a></li>
+        <li><a href="ask.html" data-th="ถามคลับ">Ask board</a></li>
+        <li><a href="club.html" data-th="ลงชื่อรอ">Waitlist</a></li>
+        <li><a class="on" aria-current="page" href="course.html" data-th="คอร์ส">Course</a></li>
+      </ul>
+      <a class="pill" href="index.html#contact" data-th="ทักทาย ↗">Say hi ↗</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="head">
+    <span class="eyebrow hand" data-th="คู่มือ PDF ✦">pdf guides ✦</span>
+    <h1><span>#COURSE</span></h1>
+    <p data-th="ซื้อด้วย PromptPay QR แล้วดาวน์โหลดได้ทันที">Pay with a PromptPay QR and download right away.</p>
+  </header>
+
+  <article class="prod">
+    <img src="course/cover.png" alt="Cover of the AI for Everyday Work guide" width="300" height="424">
+    <div>
+      <span class="badge">PDF GUIDE</span>
+      <h2 data-th="คู่มือใช้งาน AI สำหรับคนทำงาน">AI for Everyday Work</h2>
+      <p data-th="ใช้ AI ช่วยเขียนอีเมล สรุปประชุม ทำสไลด์ และวางแผนงาน แบบทำตามได้ทีละขั้น">Use AI to write emails, sum up meetings, make slides and plan your week, step by step.</p>
+      <ul>
+        <li data-th="PDF 40 หน้า พร้อม Prompt ใช้ได้ทันที">40-page PDF with ready-to-use prompts</li>
+        <li data-th="จ่ายแล้วดาวน์โหลดได้ทันที">Download right after paying</li>
+        <li data-th="กลับมาดาวน์โหลดซ้ำได้ ไม่ต้องซื้อใหม่">Come back and download again anytime</li>
+      </ul>
+      <div class="price">฿299</div>
+      <div class="btns" id="buyArea"></div>
+    </div>
+  </article>
+
+  <footer>
+    <span>© 2026 Sali</span>
+    <span data-th="ทำในเมลเบิร์น ✦">Made in Melbourne ✦</span>
+  </footer>
+</div>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="sheet" id="sheet"></div>
+</div>
+
+<script src="lang.js"></script>
+<script>
+/* ============================================================
+   Course checkout — follows the payment process step by step.
+   PRODUCTS holds the price; the checkout never reads a price
+   from the page. `api` is the only place that talks to a
+   backend. Right now it runs in TEST MODE in the browser.
+   To go live, swap each function for a fetch() to the backend:
+     createOrder   -> POST /api/orders
+     createPayment -> POST /api/payments/create   (Opn PromptPay charge, returns QR)
+     getStatus     -> GET  /api/orders/:id/status (paid only after the webhook is verified)
+     downloadUrl   -> GET  /api/download/:token   (short-lived signed URL)
+   ============================================================ */
+var TEST_MODE = true;
+var PRODUCTS = {
+  "ai-everyday": {
+    name: "คู่มือใช้งาน AI สำหรับคนทำงาน", nameEn: "AI for Everyday Work",
+    priceSatang: 29900, file: "course/ai-for-everyday-work-sample.pdf",
+    fileName: "คู่มือ AI สำหรับคนทำงาน.pdf", fileNameEn: "ai-for-everyday-work.pdf"
+  }
+};
+var LIB_KEY = "sali-library";
+
+var api = {
+  createOrder: function (productId, email) {
+    var p = PRODUCTS[productId];
+    var d = new Date(), pad = function (n) { return String(n).padStart(2, "0"); };
+    var order = { id: "" + d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()) + String(Math.floor(Math.random() * 900) + 100),
+      productId: productId, email: email, totalSatang: p.priceSatang, currency: "THB", status: "pending" };
+    sessionStorage.setItem("order:" + order.id, JSON.stringify(order));
+    return Promise.resolve(order);
+  },
+  createPayment: function (orderId) {
+    return Promise.resolve({ chargeId: "chrg_test_" + orderId, expiresAt: Date.now() + 24 * 3600 * 1000 });
+  },
+  getStatus: function (orderId) {
+    var o = JSON.parse(sessionStorage.getItem("order:" + orderId) || "{}");
+    return Promise.resolve(o.status || "pending");
+  },
+  _testPay: function (orderId) { // test mode only: stands in for the gateway webhook
+    var o = JSON.parse(sessionStorage.getItem("order:" + orderId));
+    o.status = "paid"; sessionStorage.setItem("order:" + orderId, JSON.stringify(o));
+  },
+  downloadUrl: function (productId) {
+    return Promise.resolve(PRODUCTS[productId].file);
+  }
+};
+
+function baht(s) { return "฿" + (s / 100).toLocaleString("en-US", { minimumFractionDigits: 2 }); }
+function library() { try { return JSON.parse(localStorage.getItem(LIB_KEY)) || {}; } catch (e) { return {}; } }
+function pname(p) { return t(p.nameEn, p.name); }
+
+var ov = document.getElementById("ov"), sheet = document.getElementById("sheet"), poll = null, timer = null, current = null;
+
+function closeSheet() { ov.classList.remove("on"); clearInterval(poll); clearInterval(timer); current = null; }
+ov.addEventListener("click", function (e) { if (e.target === ov) closeSheet(); });
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && ov.classList.contains("on")) closeSheet(); });
+
+function head(title) {
+  return '<h3><span id="sheetTitle">' + title + '</span><button class="x" type="button" aria-label="Close" onclick="closeSheet()">✕</button></h3>' +
+    (TEST_MODE ? '<span class="testtag">' + t("TEST MODE · no real money", "โหมดทดสอบ · ไม่ใช่การชำระเงินจริง") + '</span>' : '');
+}
+
+// Step 1: email
+function stepEmail(productId) {
+  var p = PRODUCTS[productId];
+  ov.classList.add("on");
+  sheet.innerHTML = head(t("Checkout", "สั่งซื้อ")) +
+    '<div class="panel"><div class="pname">' + pname(p) + '</div><div class="row" style="border:none;padding:0"><span>' + t("Price", "ราคาสินค้า") + '</span><b>' + baht(p.priceSatang) + '</b></div></div>' +
+    '<form id="ef"><label class="field">' + t("Email for your receipt and download link", "อีเมลสำหรับรับใบเสร็จและลิงก์ดาวน์โหลด") +
+    '<input id="em" type="email" autocomplete="email" required placeholder="you@email.com"></label><div class="err" id="er"></div>' +
+    '<button class="b1" type="submit" style="width:100%">' + t("Continue to payment", "ไปหน้าชำระเงิน") + ' →</button></form>';
+  var f = document.getElementById("ef"), em = document.getElementById("em");
+  em.focus();
+  f.onsubmit = function (e) {
+    e.preventDefault();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) { document.getElementById("er").textContent = t("Please enter a valid email", "กรุณากรอกอีเมลให้ถูกต้อง"); return; }
+    api.createOrder(productId, em.value.trim())
+      .then(function (o) { return api.createPayment(o.id).then(function (pay) { stepQR(o, pay); }); });
+  };
+}
+
+// Step 2: QR + wait for payment
+function stepQR(order, pay) {
+  var p = PRODUCTS[order.productId];
+  current = order.id;
+  sheet.innerHTML = head(t("Payment", "ชำระเงิน")) +
+    '<div class="panel">' +
+      '<div class="oid">ORDER #' + order.id + '</div>' +
+      '<div class="pname">' + pname(p) + '</div>' +
+      '<div class="row"><span>' + t("Price", "ราคาสินค้า") + '</span><b>' + baht(p.priceSatang) + '</b></div>' +
+      '<div class="total"><span>' + t("Total", "ยอดชำระทั้งหมด") + '</span><b>฿' + (order.totalSatang / 100) + '</b></div>' +
+      '<div class="qrbox"><div class="qrcard"><div class="hd">PROMPTPAY</div>' + fakeQR(order.id) + '</div>' +
+        '<div class="s">' + t("Scan to pay", "สแกนเพื่อชำระเงิน") + '</div>' +
+        '<div class="n">' + (TEST_MODE ? t("Example screen, not a real payment QR", "ตัวอย่างหน้าจอ ไม่ใช่ QR สำหรับชำระเงินจริง") : t("Pay with any Thai banking app", "สแกนจ่ายได้ทุกแอปธนาคาร")) + '</div>' +
+        '<div class="wait" role="status"><i></i><span>' + t("Waiting for payment · checks automatically", "รอการชำระเงิน · ระบบตรวจสอบให้อัตโนมัติ") + '</span></div>' +
+        '<div class="n" id="exp"></div>' +
+      '</div>' +
+      '<div class="foot">' + t("After paying, keep this page open. It moves on by itself once the payment is confirmed.", "หลังจากชำระเงินแล้ว เปิดหน้านี้ค้างไว้ ระบบจะไปหน้าถัดไปเองเมื่อยืนยันยอดแล้ว") + '</div>' +
+    '</div>' +
+    (TEST_MODE ? '<div class="demo"><button class="b1" type="button" id="tp">' + t("Simulate a successful payment", "จำลองว่าชำระเงินสำเร็จ") + '</button><button class="b2" type="button" onclick="closeSheet()">' + t("Cancel", "ยกเลิก") + '</button></div>' : '');
+
+  var exp = document.getElementById("exp");
+  function tick() {
+    var s = Math.max(0, Math.floor((pay.expiresAt - Date.now()) / 1000));
+    exp.textContent = t("QR expires in ", "QR หมดอายุใน ") + [Math.floor(s / 3600), Math.floor(s / 60) % 60, s % 60].map(function (n) { return String(n).padStart(2, "0"); }).join(":");
+  }
+  tick(); timer = setInterval(tick, 1000);
+  if (TEST_MODE) document.getElementById("tp").onclick = function () { this.disabled = true; this.textContent = t("Confirming…", "กำลังยืนยันยอด…"); api._testPay(order.id); };
+  // the page only trusts the status from api.getStatus, never its own buttons
+  poll = setInterval(function () {
+    api.getStatus(order.id).then(function (st) { if (st === "paid" && current === order.id) { clearInterval(poll); clearInterval(timer); stepDone(order); } });
+  }, 1500);
+}
+
+// Step 3: unlocked
+function stepDone(order) {
+  var p = PRODUCTS[order.productId], lib = library();
+  lib[order.productId] = { orderId: order.id, at: Date.now() };
+  localStorage.setItem(LIB_KEY, JSON.stringify(lib));
+  renderBuy();
+  sheet.innerHTML = head(t("Done", "สำเร็จ")) +
+    '<div class="panel"><div class="ok"><div class="ck">✓</div><b>Payment Successful!</b><span>' + t("Thanks for your order", "ขอบคุณสำหรับการสั่งซื้อ") + ' · ORDER #' + order.id + '</span></div>' +
+    '<div class="file"><div>' + t(p.fileNameEn, p.fileName) + '</div><a class="b1" id="dl" href="#">⬇ Download PDF</a></div>' +
+    '<div class="foot" style="text-align:center">' + t("You can come back to this page and download it again.", "กลับมาที่หน้านี้เพื่อดาวน์โหลดซ้ำได้ตลอด") + '</div></div>';
+  wireDownload(document.getElementById("dl"), order.productId);
+}
+
+function wireDownload(a, productId) {
+  var p = PRODUCTS[productId];
+  a.onclick = function (e) {
+    e.preventDefault();
+    api.downloadUrl(productId).then(function (url) {
+      var x = document.createElement("a"); x.href = url; x.download = t(p.fileNameEn, p.fileName);
+      document.body.appendChild(x); x.click(); x.remove();
+    });
+  };
+}
+
+function renderBuy() {
+  var box = document.getElementById("buyArea"), owned = library()["ai-everyday"];
+  if (owned) {
+    box.innerHTML = '<a href="#" class="pxbtn" id="dl2">⬇ ' + t("DOWNLOAD PDF", "ดาวน์โหลด PDF") + '</a><span class="owned">' + t("Bought · order #", "ซื้อแล้ว · ออร์เดอร์ #") + owned.orderId + '</span>';
+    wireDownload(document.getElementById("dl2"), "ai-everyday");
+  } else {
+    box.innerHTML = '<button class="pxbtn" type="button" id="buy">' + t("BUY NOW ฿299", "ซื้อเลย ฿299") + '</button>';
+    document.getElementById("buy").onclick = function () { stepEmail("ai-everyday"); };
+  }
+}
+
+// decorative QR, not scannable
+function fakeQR(seedStr) {
+  var seed = 0, r = "", n = 25;
+  for (var i = 0; i < seedStr.length; i++) seed = (seed * 31 + seedStr.charCodeAt(i)) % 233280;
+  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  function finder(x, y) { return '<rect x="' + x + '" y="' + y + '" width="7" height="7"/><rect x="' + (x + 1) + '" y="' + (y + 1) + '" width="5" height="5" fill="#fff"/><rect x="' + (x + 2) + '" y="' + (y + 2) + '" width="3" height="3"/>'; }
+  for (var y = 0; y < n; y++) for (var x = 0; x < n; x++) {
+    if ((x < 8 && y < 8) || (x > 16 && y < 8) || (x < 8 && y > 16)) continue;
+    if (rnd() > .52) r += '<rect x="' + x + '" y="' + y + '" width="1" height="1"/>';
+  }
+  return '<svg viewBox="0 0 25 25" shape-rendering="crispEdges" aria-hidden="true"><g fill="#1d1c1a">' + r + finder(0, 0) + finder(18, 0) + finder(0, 18) + '</g></svg>';
+}
+
+renderBuy();
+document.addEventListener("langchange", function () { renderBuy(); if (ov.classList.contains("on")) closeSheet(); });
+</script>
+</body>
+</html>
